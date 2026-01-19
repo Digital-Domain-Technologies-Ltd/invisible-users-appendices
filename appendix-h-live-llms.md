@@ -19,7 +19,7 @@ The example below shows both metadata sections (top) and standard URL sections (
 
 ## About the Author & Consultancy
 
-**Tom Cranstoun** is a seasoned Adobe Experience Manager (AEM) expert and Principal Consultant at Digital Domain Technologies (DDT). With over 15 years of experience in enterprise content management, he specializes in Adobe Edge Delivery Services (EDS), document-based authoring, and AI-native development.
+**Tom Cranstoun** is a seasoned CMS expert and Principal Consultant at Digital Domain Technologies (DDT). With over 25 years of experience in enterprise content management, he specializes in Adobe Edge Delivery Services (EDS), document-based authoring, and AI-native development.
 
 **Key Achievements:**
 
