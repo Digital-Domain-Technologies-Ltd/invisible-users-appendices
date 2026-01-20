@@ -27,7 +27,7 @@ These proposals complement, not replace, established standards:
 - **AI meta tags** (proposed) — Extend existing meta tag patterns
 - **data-agent-visible** (proposed) — New semantic marker for hidden metadata
 - **Common data attributes** (proposed) — Explicit state management patterns
-- **EDS markdown metadata tables** (emerging) — Adobe EDS convention, applicable to static site generators
+- **Pandoc YAML frontmatter** (established) — Universal markdown metadata standard
 
 See Appendix D for comprehensive guide to all patterns (established + proposed).
 
@@ -613,125 +613,112 @@ These data attributes extend established conventions:
 
 ---
 
-## Pattern 4: EDS Markdown Metadata Tables
+## Pattern 4: Pandoc YAML Frontmatter for Markdown Metadata
 
-### Status (EDS Markdown Metadata)
+### Status (Pandoc YAML Frontmatter)
 
-**Proposed Pattern** — Established in Adobe EDS ecosystem, emerging for general use
+**Established Standard** — Universal markdown frontmatter supported by Pandoc, Hugo, Jekyll, Gatsby, Quarto, and all major static site generators
 
-### Rationale (EDS Markdown Metadata)
+### Rationale (Pandoc YAML Frontmatter)
 
 Markdown converters (like converturltomd.com) strip critical metadata when converting HTML to markdown. Agents lose JSON-LD structured data, HTML meta tags, and Schema.org markup - exactly the signals they need for accurate citation and source attribution.
 
-The EDS (Adobe Edge Delivery Services) approach solves this by embedding metadata directly in markdown files using a table structure with a `metadata` title row. Instead of converting HTML→markdown and losing metadata, you write markdown WITH metadata from the start.
+Pandoc YAML frontmatter solves this by embedding metadata directly in markdown files using a standardized YAML header block. Instead of converting HTML→markdown and losing metadata, you write markdown WITH metadata from the start.
 
-**Why markdown metadata tables?**
+**Why Pandoc YAML frontmatter?**
 
+- Universal standard supported across the markdown ecosystem
 - Preserves metadata that would be lost in HTML-to-markdown conversion
-- Machine-readable (agents can parse table structure)
-- Human-readable (renders as visible table in markdown viewers)
-- Platform-agnostic (works in any markdown system, not just EDS)
-- Forward-compatible (tables render normally even if not processed)
+- Machine-readable (standard YAML format)
+- Human-readable (clear key-value structure)
+- Rich feature set (extensive Pandoc metadata capabilities)
+- Forward-compatible (gracefully ignored by parsers that don't process frontmatter)
+- Extensive tooling support (Pandoc, Hugo, Jekyll, Gatsby, Quarto)
 
-### Use Cases (EDS Markdown Metadata)
+### Use Cases (Pandoc YAML Frontmatter)
 
-1. **Static Site Generators** — Markdown-based blogs and documentation (Hugo, Jekyll, Gatsby)
-2. **Content Management Systems** — Systems that convert HTML to markdown for editing
+1. **Static Site Generators** — Markdown-based blogs and documentation (Hugo, Jekyll, Gatsby, Quarto)
+2. **Pandoc Document Processing** — Converting markdown to PDF, HTML, DOCX with metadata
 3. **AI Agent Content Ingestion** — Preserving metadata when agents read markdown directly
 4. **Multi-format Publishing** — Single source for HTML, PDF, and agent consumption
+5. **Academic Publishing** — Papers, articles, and research documentation with complete metadata
 
-### Implementation Pattern (EDS Markdown Metadata)
+### Implementation Pattern (Pandoc YAML Frontmatter)
 
-**Three placement strategies - design for both audiences:**
+**Standard YAML frontmatter format:**
 
-#### 1. Top Placement (Frontmatter) - For AI Agents
+YAML frontmatter is placed at the **top of the document** (frontmatter position), enclosed by triple-dash delimiters:
 
-```markdown
-| metadata |  |
-| -------- | ------- |
-| title | Your Website Has Invisible Customers |
-| author | Tom Cranstoun |
-| publication-date | 17/Jan/2026 |
-| jsonld | article |
-| description | AI agents are visiting your website right now |
+```yaml
+---
+title: "Your Website Has Invisible Customers"
+author: "Tom Cranstoun"
+date: "2026-01-17"
+description: "AI agents are visiting your website right now"
+abstract: "Extended context about invisible users and AI agent traffic patterns"
+keywords: [ai-agents, web-accessibility, seo, metadata]
+ai-instruction: "This article introduces AI agents as website visitors"
+purpose: "Educational content for web developers"
+---
 
 # Your Website Has Invisible Customers
 
 [Article content begins...]
 ```
 
+**Standard Pandoc fields:**
+
+- `title` — Document title
+- `author` — Content creator (can be array for multiple authors)
+- `date` — Publication date (YYYY-MM-DD format)
+- `abstract` — Extended summary for AI agents and academic contexts
+- `keywords` — Array of topic tags for categorization
+
+**Custom fields for AI agents:**
+
+- `description` — Brief SEO-style summary
+- `ai-instruction` — Specific guidance for AI agents parsing the document
+- `purpose` — Why this document exists
+- `context` — Background information AI agents need
+
+**Advanced Pandoc capabilities:**
+
+For comprehensive documentation on all available YAML header options, see: <https://www.codestudy.net/blog/what-can-i-control-with-yaml-header-options-in-pandoc/>
+
 **Advantages:**
 
 - Agents find metadata immediately (no content parsing required)
-- Standard frontmatter convention (Hugo, Jekyll, Gatsby)
-- Machine-readable before content processing
+- Standard frontmatter convention across all major tools
+- Machine-readable YAML format
+- Processed automatically by static site generators
+- Extensible with custom fields
 
-#### 2. Bottom Placement (Footnote-Style) - For Humans
-
-```markdown
-# Your Website Has Invisible Customers
-
-[Article content...]
-
----
-
-| metadata |  |
-| -------- | ------- |
-| title | Your Website Has Invisible Customers |
-| author | Tom Cranstoun |
-| publication-date | 17/Jan/2026 |
-| jsonld | article |
-```
-
-**Advantages:**
-
-- Doesn't clutter article start for human readers
-- Renders like a footnote in markdown viewers
-- Metadata available after reading content
-
-#### Decision Guide - Choose Based on Use Case
-
-**Choose top placement if:**
-
-- Primary consumers are AI agents or automated systems
-- Using static site generators that expect frontmatter (Hugo, Jekyll, Gatsby)
-- Markdown will be processed programmatically (build tools, scripts)
-- Human readers will consume the generated HTML, not raw markdown
-
-**Choose bottom placement if:**
-
-- Primary consumers are humans reading markdown directly (GitHub, markdown viewers)
-- Want clean article start without metadata clutter
-- Metadata serves as reference/citation information
-- Content flow matters more than machine parsing speed
-
-**Note on both placements:** Having metadata in both locations creates redundancy. Whilst this doesn't break anything, it requires maintaining two copies of the same information. Choose the placement that matches your primary use case rather than duplicating metadata.
-
-### Why This Works (EDS Markdown Metadata)
+### Why This Works (Pandoc YAML Frontmatter)
 
 **For humans:**
 
-- Top placement: Markdown viewers render tables, provides context upfront
-- Bottom placement: Doesn't interrupt reading flow, appears as footnote
-- Either placement works - choose based on whether humans read raw markdown or generated HTML
+- YAML is human-readable (clear key: value structure)
+- Frontmatter position is standard convention (familiar to developers)
+- Minimal visual clutter (hidden by most markdown renderers)
 
 **For CLI agents:**
 
-- Visible in markdown before any processing
-- Standard key-value pairs easy to parse
-- No HTML-to-markdown conversion loss
+- YAML parsing libraries available in all languages
+- Standard format with well-defined spec
+- No ambiguity in interpretation
 
 **For browser agents:**
 
-- EDS converts markdown tables to HTML meta tags automatically
-- Agents can parse either markdown or generated HTML
-- Best of both worlds (structured markdown + semantic HTML)
+- Static site generators convert YAML to HTML meta tags automatically
+- Agents can parse either markdown source or generated HTML
+- Best of both worlds (structured metadata + semantic HTML)
 
 **For server-based agents:**
 
-- Standard markdown table format (widely supported)
+- Standard YAML format (universal support)
 - Preserves metadata when fetching markdown directly
 - No dependency on HTML generation
+- Can be extracted without parsing full document
 
 ### Relationship to Chapter 10 Markdown Problem
 
@@ -746,95 +733,105 @@ Markdown converters strip critical metadata when converting HTML to markdown:
 
 Result: Agents can read content but cannot cite accurately or prove authoritative source.
 
-**EDS markdown metadata tables solve this:**
+**Pandoc YAML frontmatter solves this:**
 
-Instead of converting HTML→markdown and losing metadata, you write markdown WITH metadata embedded from the start. The metadata table preserves:
+Instead of converting HTML→markdown and losing metadata, you write markdown WITH metadata embedded from the start. YAML frontmatter preserves:
 
 - Author attribution (for accurate citation)
 - Publication dates (for content freshness)
-- Schema.org type (article, product, etc.)
+- Document type and purpose
 - Contact information
-- Long descriptions for AI context
+- Extended descriptions for AI context
 
-**When EDS generates HTML from markdown:**
+**When static site generators process markdown:**
 
-- Metadata table → HTML meta tags automatically
-- Metadata table → JSON-LD structured data (if configured)
+- YAML frontmatter → HTML meta tags automatically
+- YAML frontmatter → JSON-LD structured data (if configured)
 - Both agents (reading markdown) and search engines (reading HTML) get metadata
 
 **This complements Chapter 10's llms.txt proposal:**
 
-- llms.txt: Site-wide metadata at the top
-- EDS markdown tables: Per-page metadata at the top (and optionally bottom)
+- llms.txt: Site-wide metadata at the root
+- YAML frontmatter: Per-page metadata at the top
 - Both: Machine-readable markdown that preserves metadata
 
 ### Common Metadata Fields
 
+**Standard Pandoc fields:**
+
 | Field | Purpose | Example Values |
 | ----- | ------- | -------------- |
-| title | Page title | Your Website Has Invisible Customers |
-| author | Content creator | Tom Cranstoun |
-| creation-date | When originally created | 15/Dec/2024 |
-| publication-date | When published | 17/Jan/2026 |
-| description | Short summary | Introducing "The Invisible Users" book |
-| longdescription | Extended context | AI agents are visiting your website right now... |
-| jsonld | Schema.org type | article, book, product, person |
-| image | Featured image | ![][image1] or URL |
-| LinkedIn | Author profile | <https://www.linkedin.com/in/tom-cranstoun/> |
+| title | Document title | Your Website Has Invisible Customers |
+| author | Content creator(s) | Tom Cranstoun or [Tom Cranstoun, Jane Smith] |
+| date | Publication date | 2026-01-17 |
+| abstract | Extended summary | AI agents are visiting your website... |
+| keywords | Topic tags | [ai-agents, web-accessibility, seo] |
 
-### Forward Compatibility (EDS Markdown Metadata)
+**Custom fields for AI agents:**
 
-**If markdown parsers don't recognise the pattern:**
+| Field | Purpose | Example Values |
+| ----- | ------- | -------------- |
+| description | Brief summary | Introducing "The Invisible Users" book |
+| ai-instruction | Agent guidance | This article introduces AI agents as visitors |
+| purpose | Document intent | Educational content for web developers |
+| context | Background info | Part of "The Invisible Users" book series |
 
-- Tables render normally in markdown viewers
-- Content remains readable for humans
-- No breakage in non-EDS systems
+### Forward Compatibility (Pandoc YAML Frontmatter)
 
-**If static site generators don't process metadata tables:**
+**If markdown parsers don't recognise YAML frontmatter:**
 
-- Table displays as visible metadata (human-readable fallback)
-- Agents can still parse table structure
-- Manual conversion to HTML meta tags possible
+- YAML block is typically hidden or ignored in rendering
+- Document content below YAML remains fully functional
+- No visual breakage in markdown viewers
 
-**If agents don't recognise metadata tables:**
+**If static site generators don't process YAML:**
 
-- Standard markdown tables are well-supported
-- Agents can parse table structure even without specific metadata handling
-- Degrades to visible structured information
+- Frontmatter is silently ignored by the renderer
+- Document displays without metadata (graceful degradation)
+- Manual extraction still possible via text processing
+
+**If AI agents don't recognise YAML frontmatter:**
+
+- YAML is a widely supported structured data format
+- Most modern agents parse YAML natively
+- Falls back to document content if metadata ignored
 
 **Progressive enhancement:**
 
-- Works best in EDS (automatic HTML meta tag generation)
-- Works well in static site generators (can be processed by build tools)
-- Works acceptably in plain markdown (human and agent readable)
+- Works best in Pandoc ecosystem (full metadata processing)
+- Works well in Hugo/Jekyll/Gatsby/Quarto (automatic site integration)
+- Works acceptably in plain markdown viewers (hidden metadata)
 
-### Adoption Considerations (EDS Markdown Metadata)
+### Adoption Considerations (Pandoc YAML Frontmatter)
 
 **Adopt now if:**
 
-- Using Adobe Edge Delivery Services
-- Using markdown-based static site generators (Hugo, Jekyll, Gatsby)
+- Using markdown-based static site generators (Hugo, Jekyll, Gatsby, Quarto)
+- Using Pandoc for document conversion (markdown to PDF, HTML, DOCX)
 - Publishing content that needs to be citable by AI agents
-- Converting HTML to markdown and losing metadata
+- Converting HTML to markdown and need to preserve metadata
+- Creating technical documentation or educational content
 
 **Wait if:**
 
 - Using traditional CMS (WordPress, Drupal) - use HTML meta tags instead
 - Publishing only in HTML format - use Pattern 1 (AI meta tags)
 - Content doesn't need AI citation (internal docs, drafts)
+- Using a system that doesn't support YAML frontmatter
 
 **Decision guide:**
 
-- **Markdown-native publishing?** → Use EDS metadata tables
+- **Markdown-native publishing?** → Use Pandoc YAML frontmatter
 - **HTML-native publishing?** → Use Pattern 1 (AI meta tags)
-- **Both formats?** → Use both patterns (metadata table in markdown, meta tags in HTML)
+- **Both formats?** → Use both patterns (YAML in markdown, meta tags in HTML)
+- **Need PDF generation?** → YAML frontmatter integrates with Pandoc PDF workflow
 
-### Cross-References (EDS Markdown Metadata)
+### Cross-References (Pandoc YAML Frontmatter)
 
 - **Mentioned in:** Chapter 10 (markdown converter problem, lines 51-68)
 - **Mentioned in:** Chapter 10 (extended llms.txt metadata, line 112 - "at the top of the file")
-- **Mentioned in:** Chapter 12 (Adobe Edge Delivery Services, line 2019)
-- **Implemented in:** code-examples/eds/helix-query.yaml
+- **Documented in:** Appendix H (Markdown Metadata Standards for AI Agents section)
+- **Reference:** [Pandoc YAML Header Options](https://www.codestudy.net/blog/what-can-i-control-with-yaml-header-options-in-pandoc/)
 - **Related to:** Pattern 1 (AI meta tags provide similar metadata in HTML)
 - **Complements:** llms.txt extended metadata (Appendix H)
 
@@ -882,7 +879,7 @@ Use this framework to decide:
 
 1. data-agent-visible (if you have transactions)
 2. llms.txt file (emerging convention, gaining traction)
-3. EDS markdown metadata tables (if using markdown-based publishing)
+3. Pandoc YAML frontmatter (if using markdown-based publishing)
 
 **Priority 3 (experiment):**
 
@@ -971,7 +968,7 @@ If you implement these patterns:
 1. **AI Meta Tag Namespace** (6 tags) — Page-level agent guidance
 2. **data-agent-visible Attribute** — Hidden machine-readable instructions
 3. **Common Data Attributes** (25+ attributes) — Explicit state management and e-commerce data
-4. **EDS Markdown Metadata Tables** — Preserve metadata in markdown-based publishing
+4. **Pandoc YAML Frontmatter** — Universal markdown metadata standard
 
 ### Key Principles
 
