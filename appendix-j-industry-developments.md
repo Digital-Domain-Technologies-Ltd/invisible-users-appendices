@@ -1429,7 +1429,7 @@ Copilot Checkout demonstrates validation patterns in production - study their er
 
 ### Overview
 
-Three days after Microsoft expanded Copilot Checkout, Google announced the Universal Commerce Protocol (UCP) at the National Retail Federation (NRF) conference - bringing the total to three major platforms launching agent commerce systems within seven days. What makes this announcement extraordinary isn't just another platform launch, it's that direct competitors - Target and Walmart - jointly endorsed a common protocol.
+Three days after Microsoft expanded Copilot Checkout, Google announced the Universal Commerce Protocol (UCP) at the National Retail Federation (NRF) conference. Combined with Anthropic's Claude Cowork launch the following day (January 12th), four major platforms launched agent systems within eight days. What makes this announcement extraordinary isn't just another platform launch, it's that direct competitors - Target and Walmart - jointly endorsed a common protocol.
 
 ### Key Details
 
@@ -1652,7 +1652,7 @@ Chapter 9 expressed hope that OpenAI/Stripe and Google would merge ACP and UCP b
 
 **For Platform Strategists:**
 
-- Three major platforms launching within seven days demonstrates competitive intensity
+- Four major platforms launching within eight days demonstrates competitive intensity
 - Platforms respond to competitors within days, not quarters
 - Strategic planning cycles must account for rapid platform evolution
 - Open vs. closed competition creates clear camps: OpenAI/Stripe/Google versus Microsoft
@@ -1762,8 +1762,8 @@ The cooperation that enabled UCP endorsement may also enable ACP/UCP merger. If 
 
 **Analysis:**
 
-- NEW Chapter 9 of this book: "The Platform Race" (written during the seven-day acceleration, updated after Google announcement)
-- Cross-platform competitive analysis (OpenAI/Stripe ACP, Microsoft Copilot Checkout, Amazon Alexa+)
+- NEW Chapter 9 of this book: "The Platform Race" (written during the eight-day convergence, updated after Google and Anthropic announcements)
+- Cross-platform competitive analysis (OpenAI/Stripe ACP, Microsoft Copilot Checkout, Amazon Alexa+, Anthropic Cowork)
 
 **Technical Specifications:**
 

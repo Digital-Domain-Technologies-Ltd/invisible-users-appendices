@@ -1870,7 +1870,7 @@ The event page promotes webinars, workshops, or live presentations. For AI agent
       <p style="margin-top: 1.5rem;"><a href="https://www.boye-co.com/blog/2026/1/websites-work-until-dont" class="btn">Register Now</a></p>
     </div>
     <h2>The Platform Race Context</h2>
-    <p>In seven days this January, Amazon, Microsoft, and Google launched AI agent commerce systems. Each bet billions on agents mediating online shopping - but they chose opposite strategies.</p>
+    <p>In eight days this January, Amazon, Microsoft, Google, and Anthropic launched AI agent systems. Three focused on commerce, one on autonomous workflows - but all bet billions that agents will mediate how humans interact with digital systems.</p>
     <p>Google and OpenAI went open (any merchant, any agent). Microsoft went closed (Microsoft only). When Target and Walmart - fierce competitors - endorse the same open protocol, it signals where the industry is heading.</p>
     <p>The timeline just compressed. When an agent fails to navigate your site, it silently excludes you from recommendations. You lose thousands of potential customers who never knew you existed.</p>
     <h2>What You'll Learn</h2>

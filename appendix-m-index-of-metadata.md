@@ -1,3 +1,17 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, structured data patterns, testing methodologies, and terminology used throughout The Invisible Users."
+keywords: [metadata-index, schema-org, yaml-frontmatter, html-attributes, structured-data, testing-methodologies, terminology-framework, anti-patterns-reference]
+ai-instruction: |
+  This is a book appendix serving as a comprehensive metadata reference.
+  Write as if it has always existed. NEVER include: publication dates about
+  the appendix itself, "we added", "new section", "this update", or any
+  meta-commentary about the document's development. Write definitive present
+  tense. Historical context about subject matter (industry standards, protocol
+  launches) is allowed.
+---
+
 # Appendix M: Index of Metadata
 
 **Purpose:** Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, and structured data patterns used throughout The Invisible Users.
@@ -840,15 +854,174 @@ Metadata terms defined in main Glossary.md:
 
 ---
 
-## Appendix Navigation
+## 18. Testing Methodologies
 
-- **Previous:** [Appendix L - Proposed AI Metadata Patterns](appendix-l-proposed-ai-metadata-patterns.md)
-- **Next:** [Return to Main Bibliography](../README.md)
+### Testing Frameworks for AI Readability
+
+| Test Name | Time | Complexity | Impact | Description |
+|-----------|------|------------|--------|-------------|
+| The Morning-After Test | 30 sec | Easy | High | Copy HTML to Claude/ChatGPT, ask what page is about |
+| Disable JavaScript Test | 1 min | Easy | High | Check if site remains usable without JavaScript |
+| View Source Test | 1 min | Easy | High | Verify essential content appears in served HTML |
+| Link Text Extraction Test | 2 min | Easy | Medium | Extract all links, verify they're self-explanatory |
+| Heading Hierarchy Validation | 2 min | Easy | Medium | Check logical h1 → h2 → h3 structure |
+
+**The Morning-After Test** - Most effective early validation method:
+
+1. View page source (not inspect element)
+2. Copy entire HTML
+3. Paste into Claude, ChatGPT, or Gemini
+4. Ask specific questions about product, price, features
+5. Evaluate accuracy of responses
+
+**10-Point Quick Audit Checklist:**
+
+1. Disable CSS - does critical information disappear?
+2. Disable JavaScript - is site still usable?
+3. View source - is main content in served HTML?
+4. Extract links - are they descriptive?
+5. Check headings - logical hierarchy?
+6. Find images - meaningful alt text?
+7. Locate forms - proper label elements?
+8. Check tables - structured with th, caption, scope?
+9. Review sitemap - current and complete?
+10. Validate Schema.org - matches visible content?
+
+**Scoring:** 8-10 points = excellent, 5-7 = moderate, 0-4 = significant problems
+
+**Testing Tools:**
+
+- **Browser Console Scripts:** JavaScript snippets for link extraction, heading validation
+- **Playwright:** Automated testing for key user journeys
+- **Schema.org Validator:** <https://validator.schema.org/>
+- **Google Rich Results Test:** Validate JSON-LD structured data
+
+**Chapter References:** 12
 
 ---
 
-**Document Status:** v1.0 - Complete metadata index covering Schema.org types, ARIA attributes, data attributes, YAML frontmatter, HTML meta tags, JSON-LD, microdata, and semantic HTML elements.
+## 19. Anti-Patterns Reference
 
-**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters.
+### Complete List of 13 Anti-Patterns
 
-**Total Metadata Elements Cataloged:** 150+ distinct elements across 17 categories.
+| # | Anti-Pattern | Impact | Detection | Fix Complexity |
+|---|--------------|--------|-----------|----------------|
+| 1 | Visual-only information | High | 1 min | Easy |
+| 2 | Content in images | High | 1 min | Medium |
+| 3 | Generic link text | Medium | 2 min | Easy |
+| 4 | Broken heading hierarchy | Medium | 2 min | Easy |
+| 5 | JavaScript-only navigation | High | 1 min | Medium |
+| 6 | Hidden content no fallback | High | 1 min | Easy |
+| 7 | No/outdated sitemap | High | 30 sec | Easy |
+| 8 | Inconsistent Schema.org | High | 5 min | Medium |
+| 9 | Forms without labels | Medium | 2 min | Easy |
+| 10 | Table abuse | Medium | 2 min | Medium |
+| 11 | Content in iframes | High | 1 min | Hard |
+| 12 | PDF-only content | High | 1 min | Medium |
+| 13 | Auto-playing content | Medium | 1 min | Easy |
+
+**Quick Wins Summary** (if you can only fix 5 things):
+
+1. **Heading hierarchy** (30 min) - Ensure logical h1 → h2 → h3 structure
+2. **Link text** (1-2 hours) - Replace "click here" with descriptive labels
+3. **Image alt text** (2-3 hours) - Meaningful descriptions for all images
+4. **Sitemap** (1 hour) - Create or update sitemap.xml
+5. **Basic Schema.org** (1 hour) - Organization/LocalBusiness on homepage
+
+**Total:** 6-8 hours solves 80% of agent-readability problems
+
+**Chapter References:** 11, 12, Appendix N
+
+**Complete catalog:** See [Appendix N - Anti-Patterns Catalog](appendix-n-anti-patterns-catalog.md) for detailed descriptions, code examples, and fixes for all 13 patterns.
+
+---
+
+## 20. Terminology Framework
+
+### Core Concepts and Principles
+
+**The Three Types of AI Readers** (taxonomy from Chapter 10):
+
+1. **Raw Parsers** - Fetch HTML without executing JavaScript or CSS
+   - What they see: Pure HTML structure
+   - What they miss: JavaScript-generated content, CSS visual cues
+   - Examples: Traditional crawlers, llms.txt-based agents, server-based tools
+
+2. **Browser-Based Agents** - Execute full browser environment
+   - What they see: Rendered page as humans experience it
+   - What they miss: Nothing technical, but interpret via DOM not vision
+   - Examples: Browser automation, Playwright, conversational AI with web interaction
+
+3. **Vision Models** - Screenshot-based visual interpretation
+   - What they see: Complete visual presentation including CSS effects
+   - What they miss: Link destinations, underlying structure, non-visual metadata
+   - Examples: GPT-4 Vision, Claude with image analysis, multimodal systems
+
+**Token Budget** (AI constraint from Chapter 10):
+
+Language model context windows measured in tokens (roughly word chunks):
+
+- GPT-4: 128,000 tokens (~96,000 words)
+- Claude: 200,000 tokens (~150,000 words)
+- Gemini: 2,000,000 tokens (~1,500,000 words)
+
+**Practical implication:** Single web page with scaffolding consumes 10,000-50,000 tokens. DOM order determines what agents see first. Put main content before navigation/sidebars to prioritize signal over noise.
+
+**Strategic Redundancy** (design principle from Chapter 11):
+
+Not DRY violation - intentional duplication serving different consumers:
+
+- **Visual layer:** Images, styled prices, positioned buttons (for sighted humans)
+- **Semantic layer:** Alt text, heading hierarchy, ARIA labels (for assistive tech)
+- **Metadata layer:** JSON-LD, explicit currency, availability (for agents)
+
+Each layer serves specific audiences. Maintain consistency across layers but don't eliminate redundancy.
+
+**The Morning-After Test** (testing framework from Chapter 12):
+
+Copy page HTML, paste into AI, ask "What is this page about?" Tests raw parser readability immediately without tools. Identifies 80% of compatibility problems in 30 seconds.
+
+**DOM Order is Reading Order** (principle from Chapter 10):
+
+Agents read HTML top-to-bottom regardless of CSS positioning. Visual layout (CSS) can differ from document structure (HTML) but content priority must match reading order.
+
+**Visual vs Semantic Clarity** (design layer distinction from Chapter 11):
+
+- **Visual clarity:** Makes things look like what they are (button looks clickable)
+- **Semantic clarity:** Marks things up as what they are (button uses `<button>`)
+
+Both layers work together. HTML describes what things are. CSS controls how things look.
+
+**Convergence Principle** (core insight from Chapter 11):
+
+Patterns that optimize for AI agents also benefit accessibility users. Screen readers need semantic HTML - so do agents. One solution serves multiple audiences without trade-offs.
+
+**Schema.org Type Prioritization** (guidance from Chapter 10):
+
+Six essential types cover 90% of use cases:
+
+1. Organization/LocalBusiness
+2. Article/BlogPosting/NewsArticle
+3. Product/Offer
+4. FAQPage/Question/Answer
+5. HowTo
+6. WebPage/WebSite
+
+Start with type matching your core content. Complete implementation of one type beats incomplete coverage of many.
+
+**Chapter References:** 10, 11, 12
+
+---
+
+## Appendix Navigation
+
+- **Previous:** [Appendix L - Proposed AI Metadata Patterns](appendix-l-proposed-ai-metadata-patterns.md)
+- **Next:** [Appendix N - Anti-Patterns Catalog](appendix-n-anti-patterns-catalog.md)
+
+---
+
+**Document Status:** v1.1 - Extended metadata index with testing methodologies, anti-patterns reference, and terminology framework.
+
+**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters. New sections integrate patterns from "Don't Make AI Think" practical guide.
+
+**Total Metadata Elements Cataloged:** 150+ distinct elements across 20 categories (expanded from 17 with testing, anti-patterns, and terminology sections).

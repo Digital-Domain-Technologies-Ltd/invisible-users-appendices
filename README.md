@@ -45,8 +45,10 @@ These appendices support both "The Bible" (comprehensive guide) and "Don't Make 
 ## Status
 
 **Publication:** Due Q1 2026
-**Word count:** ~58,600 words
+**Word count:** ~61,600 words
 **Current state:** Complete and ready for publication
+
+**Latest Update (22 January 2026):** Added Appendix N (Anti-Patterns Catalog) and enhanced Appendix M (Index of Metadata). All 14 appendix files now include standardized YAML frontmatter (author, date, description, keywords, ai-instruction).
 
 ## Appendices
 
@@ -67,6 +69,8 @@ These appendices support both "The Bible" (comprehensive guide) and "Don't Make 
 - **Appendix I:** Pipeline Failure Case Study - Real incident analysis
 - **Appendix J:** Industry Developments - Tracking the agent ecosystem
 - **Appendix L:** Proposed AI Metadata Patterns - Emerging conventions
+- **Appendix M:** Index of Metadata - Comprehensive categorized reference with testing methodologies and terminology
+- **Appendix N:** Anti-Patterns Catalog - 13 common mistakes with detection methods and fixes
 
 ### Web Materials
 
