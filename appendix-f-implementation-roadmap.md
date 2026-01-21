@@ -18,7 +18,7 @@ ai-instruction: |
 
 A practical guide to making your website work well for both AI agents and human users.
 
-**Based on:** *The Invisible Users: Designing the Web for AI Agents and Everyone Else*
+**Based on:** *MX-Bible: Designing the Web for AI Agents and Everyone Else*
 
 ---
 

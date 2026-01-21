@@ -1,4 +1,4 @@
-# The Invisible Users - Common Page Patterns Demo Site
+# MX-Bible - Common Page Patterns Demo Site
 
 ## Site Information
 
@@ -13,7 +13,7 @@
 
 This site demonstrates twenty common page patterns for AI-friendly web design. Each page combines semantic HTML, Schema.org structured data, explicit state attributes, and accessible markup to work universally for both humans and AI agents.
 
-The patterns are documented in "The Invisible Users: Designing the Web for AI Agents and Everyone Else" (Appendix K: Common Page Patterns).
+The patterns are documented in "MX-Bible: Designing the Web for AI Agents and Everyone Else" (Appendix K: Common Page Patterns).
 
 ## Access Guidelines
 
@@ -70,7 +70,7 @@ All content is freely accessible for educational purposes. These patterns are de
 
 - [Appendix K: Common Page Patterns](https://allabout.network/invisible-users/web/appendix-k.html): Complete documentation for these patterns
 - [Appendix D: AI-Friendly HTML Guide](https://allabout.network/invisible-users/web/appendix-d.html): Comprehensive patterns beyond basic page types
-- [Main Project](https://allabout.network/invisible-users/): The Invisible Users book project
+- [Main Project](https://allabout.network/invisible-users/): MX-Bible book project
 
 ## Key Features Demonstrated
 
@@ -91,4 +91,4 @@ If a specific pattern is unavailable, alternative examples are available at:
 
 ## Attribution
 
-When using these patterns, attribution to "The Invisible Users" by Tom Cranstoun is appreciated but not required. These are educational resources designed to improve web accessibility for everyone.
+When using these patterns, attribution to "MX-Bible" by Tom Cranstoun is appreciated but not required. These are educational resources designed to improve web accessibility for everyone.

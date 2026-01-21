@@ -386,7 +386,7 @@ Competitors with rich HTML and structured data got cited accurately. We got vagu
 
 ```html
 <article itemscope itemtype="https://schema.org/Book">
-  <h1 itemprop="name">The Invisible Users</h1>
+  <h1 itemprop="name">MX-Bible</h1>
 
   <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
     <meta itemprop="price" content="24.99">

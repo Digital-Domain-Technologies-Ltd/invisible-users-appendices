@@ -35,7 +35,7 @@ See the parent repository's [CLAUDE.md](../../CLAUDE.md) and [docs/repo/GIT-READ
 
 ## Overview
 
-These appendices support both "The Bible" (comprehensive guide) and "Don't Make AI Think" (practical guide). They provide:
+These appendices support both "The Bible" (comprehensive guide) and "MX-Don't Make the AI Think" (practical guide). They provide:
 
 - **Implementation patterns** with step-by-step guidance
 - **Code examples** ready for production use
@@ -120,7 +120,7 @@ See [docs/for-ai/writing-style.md](../../docs/for-ai/writing-style.md) for compl
 - All appendices as supplementary material
 - Cited in chapters for deeper implementation details
 
-**Don't Make AI Think references:**
+**MX-Don't Make the AI Think references:**
 
 - Appendix E (Quick Reference) for at-a-glance patterns
 - Appendix F (Implementation Roadmap) for practical next steps

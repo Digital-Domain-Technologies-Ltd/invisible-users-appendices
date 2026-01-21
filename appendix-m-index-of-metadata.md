@@ -1,7 +1,7 @@
 ---
 author: "Tom Cranstoun"
 date: "2026-01-22"
-description: "Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, structured data patterns, testing methodologies, and terminology used throughout The Invisible Users."
+description: "Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, structured data patterns, testing methodologies, and terminology used throughout MX-Bible."
 keywords: [metadata-index, schema-org, yaml-frontmatter, html-attributes, structured-data, testing-methodologies, terminology-framework, anti-patterns-reference]
 ai-instruction: |
   This is a book appendix serving as a comprehensive metadata reference.
@@ -14,7 +14,7 @@ ai-instruction: |
 
 # Appendix M: Index of Metadata
 
-**Purpose:** Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, and structured data patterns used throughout The Invisible Users.
+**Purpose:** Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, and structured data patterns used throughout MX-Bible.
 
 **Status Legend:**
 
@@ -399,7 +399,7 @@ ai-instruction: |
 
 | Field | Status | Recommendation | Description |
 |-------|--------|----------------|-------------|
-| book | PROJECT | REC | Book series identification ("The Invisible Users Bible") |
+| book | PROJECT | REC | Book series identification ("MX-Bible Bible") |
 | chapter | PROJECT | REC | Chapter sequence number |
 | wordcount | PROJECT | CTX | Content length metric for tracking |
 
@@ -1022,6 +1022,6 @@ Start with type matching your core content. Complete implementation of one type 
 
 **Document Status:** v1.1 - Extended metadata index with testing methodologies, anti-patterns reference, and terminology framework.
 
-**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters. New sections integrate patterns from "Don't Make AI Think" practical guide.
+**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters. New sections integrate patterns from "MX-Don't Make the AI Think" practical guide.
 
 **Total Metadata Elements Cataloged:** 150+ distinct elements across 20 categories (expanded from 17 with testing, anti-patterns, and terminology sections).

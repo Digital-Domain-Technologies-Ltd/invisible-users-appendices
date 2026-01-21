@@ -109,7 +109,7 @@ Complete documentation for these patterns is available in:
 
 These pages are examples from:
 
-**The Invisible Users: Designing the Web for AI Agents and Everyone Else**
+**MX-Bible: Designing the Web for AI Agents and Everyone Else**
 By Tom Cranstoun
 <https://allabout.network/invisible-users>
 

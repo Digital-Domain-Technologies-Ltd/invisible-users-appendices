@@ -16,7 +16,7 @@ ai-instruction: |
 
 # Appendix G: Resource Directory
 
-Curated resources referenced in *The Invisible Users: Designing the Web for AI Agents and Everyone Else*
+Curated resources referenced in *MX-Bible: Designing the Web for AI Agents and Everyone Else*
 
 ---
 

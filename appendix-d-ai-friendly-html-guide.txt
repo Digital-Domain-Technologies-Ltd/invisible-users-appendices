@@ -165,7 +165,7 @@ AI agents parse HTML directly. They don't see colours, fonts, or visual styling.
 
 ```html
 <header style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
-  <h1 style="color: white;">The Invisible Users</h1>
+  <h1 style="color: white;">MX-Bible</h1>
   <p style="color: white; opacity: 0.7;">Designing the Web for AI Agents</p>
 </header>
 ```
@@ -176,7 +176,7 @@ The `opacity: 0.7` creates insufficient contrast for humans (fails WCAG AA). Age
 
 ```html
 <header style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
-  <h1 style="color: white;">The Invisible Users</h1>
+  <h1 style="color: white;">MX-Bible</h1>
   <p style="color: #e0e7ff;">Designing the Web for AI Agents</p>
 </header>
 ```
@@ -284,7 +284,7 @@ By 2026, agents need structured signals to cite accurately, not just plain text 
 **Bad - Pre-converting to markdown for agents:**
 
 ```markdown
-# The Invisible Users
+# MX-Bible
 
 Author: Tom Cranstoun
 
@@ -301,7 +301,7 @@ All context is gone. No way to verify currency, no publication date in machine-r
 
 ```html
 <article itemscope itemtype="https://schema.org/Book">
-  <h1 itemprop="name">The Invisible Users</h1>
+  <h1 itemprop="name">MX-Bible</h1>
 
   <div itemprop="author" itemscope itemtype="https://schema.org/Person">
     <span itemprop="name">Tom Cranstoun</span>
@@ -367,7 +367,7 @@ https://example.com/about
 **Contact:** tom.cranstoun@gmail.com
 **Website:** https://allabout.network
 
-Tom Cranstoun specialises in making websites work for both humans and AI agents. This site demonstrates the GEO and accessibility patterns described in "The Invisible Users" book (published March 2026).
+Tom Cranstoun specialises in making websites work for both humans and AI agents. This site demonstrates the GEO and accessibility patterns described in "MX-Bible" book (published March 2026).
 
 **What you'll find here:**
 - Technical implementation patterns for agent-friendly web design
@@ -2281,7 +2281,7 @@ For books, e-books, or published works. Can be combined with Product type for co
 {
   "@context": "https://schema.org",
   "@type": ["Product", "Book"],
-  "name": "The Invisible Users",
+  "name": "MX-Bible",
   "author": {
     "@type": "Person",
     "name": "Tom Cranstoun"
@@ -4826,4 +4826,4 @@ This isn't accommodation. This is good design that serves everyone.
 
 ### Further Reading
 
-For business implications, security considerations, and legal frameworks, see *The Invisible Users: Designing the Web for AI Agents and Everyone Else*.
+For business implications, security considerations, and legal frameworks, see *MX-Bible: Designing the Web for AI Agents and Everyone Else*.

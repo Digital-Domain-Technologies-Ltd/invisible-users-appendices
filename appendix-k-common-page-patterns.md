@@ -143,23 +143,23 @@ The home page is your digital storefront. It must immediately communicate what y
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="The Invisible Users - A practical guide to designing websites that work for AI agents and everyone else. Learn AI-friendly patterns, accessibility best practices, and future-proof implementation strategies.">
+  <meta name="description" content="MX-Bible - A practical guide to designing websites that work for AI agents and everyone else. Learn AI-friendly patterns, accessibility best practices, and future-proof implementation strategies.">
 
   <!-- AI-specific meta tags (proposed pattern from Chapter 13) -->
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>The Invisible Users | Designing the Web for AI Agents and Everyone Else</title>
+  <title>MX-Bible | Designing the Web for AI Agents and Everyone Else</title>
 
   <!-- Schema.org structured data for home page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "The Invisible Users",
+    "name": "MX-Bible",
     "alternateName": "Designing the Web for AI Agents and Everyone Else",
     "description": "A practical guide to designing websites that work for AI agents and everyone else",
     "url": "https://allabout.network/invisible-users",
@@ -186,7 +186,7 @@ The home page is your digital storefront. It must immediately communicate what y
     },
     "mainEntity": {
       "@type": "Book",
-      "name": "The Invisible Users",
+      "name": "MX-Bible",
       "bookFormat": "https://schema.org/EBook",
       "inLanguage": "en-GB",
       "numberOfPages": "TBD",
@@ -210,7 +210,7 @@ The home page is your digital storefront. It must immediately communicate what y
 </head>
 <body>
   <header>
-    <h1>The Invisible Users</h1>
+    <h1>MX-Bible</h1>
     <p>Designing the Web for AI Agents and Everyone Else</p>
     <div class="hero-buttons">
       <a href="appendix-index.html" class="btn">View Appendices</a>
@@ -320,7 +320,7 @@ The home page is your digital storefront. It must immediately communicate what y
       <p>Start with the free appendices, explore the patterns, and transform your websites to work for everyone.</p>
       <div class="hero-buttons">
         <a href="appendix-index.html" class="btn" style="background: white; color: #2563eb;">View All Appendices</a>
-        <a href="mailto:tom.cranstoun@gmail.com?subject=Question about The Invisible Users" class="btn" style="background: #1e40af; color: white;">Contact the Author</a>
+        <a href="mailto:tom.cranstoun@gmail.com?subject=Question about MX-Bible" class="btn" style="background: #1e40af; color: white;">Contact the Author</a>
       </div>
     </section>
 
@@ -377,24 +377,24 @@ The about page explains who you are, what you do, and why it matters. For AI age
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="About The Invisible Users project - the author's journey from discovering AI agent compatibility challenges to creating practical implementation guidance for web professionals worldwide.">
+  <meta name="description" content="About MX-Bible project - the author's journey from discovering AI agent compatibility challenges to creating practical implementation guidance for web professionals worldwide.">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>About | The Invisible Users</title>
+  <title>About | MX-Bible</title>
 
   <!-- Schema.org structured data for about page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About The Invisible Users",
-    "description": "The story behind The Invisible Users book and project",
+    "name": "About MX-Bible",
+    "description": "The story behind MX-Bible book and project",
     "url": "https://allabout.network/invisible-users/web/about.html",
     "datePublished": "2026-01-11",
     "dateModified": "2026-01-11",
@@ -456,7 +456,7 @@ The about page explains who you are, what you do, and why it matters. For AI age
 <body>
   <header>
     <h1>About This Project</h1>
-    <p>The story behind The Invisible Users</p>
+    <p>The story behind MX-Bible</p>
   </header>
 
   <main class="container about-content" role="main" data-load-state="complete">
@@ -496,7 +496,7 @@ The about page explains who you are, what you do, and why it matters. For AI age
 
     <section data-section-type="project-scope">
       <h2>What This Project Includes</h2>
-      <p>The Invisible Users is more than a book. It's an integrated set of resources:</p>
+      <p>MX-Bible is more than a book. It's an integrated set of resources:</p>
       <ul>
         <li><strong>The Book</strong> — 11 chapters (~57,000 words) examining the collision between modern web design and AI agents</li>
         <li><strong>10 Appendices</strong> — Freely accessible online with implementation cookbooks, battle-tested lessons, and real-world case studies</li>
@@ -523,7 +523,7 @@ The about page explains who you are, what you do, and why it matters. For AI age
       <h3>Explore the Content</h3>
       <p>All ten appendices are freely available online. Start with the Implementation Cookbook or dive into battle-tested lessons from production deployments.</p>
       <a href="appendix-index.html" class="btn">View All Appendices</a>
-      <a href="mailto:tom.cranstoun@gmail.com?subject=Question about The Invisible Users" class="btn">Contact Tom</a>
+      <a href="mailto:tom.cranstoun@gmail.com?subject=Question about MX-Bible" class="btn">Contact Tom</a>
     </div>
 
   </main>
@@ -566,16 +566,16 @@ The contact page provides explicit ways to reach you. For AI agents, it needs cl
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="Contact Tom Cranstoun about The Invisible Users book, professional web audits, collaboration opportunities, or the identity delegation project.">
+  <meta name="description" content="Contact Tom Cranstoun about MX-Bible book, professional web audits, collaboration opportunities, or the identity delegation project.">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>Contact | The Invisible Users</title>
+  <title>Contact | MX-Bible</title>
 
   <!-- Schema.org structured data for contact page -->
   <script type="application/ld+json">
@@ -583,7 +583,7 @@ The contact page provides explicit ways to reach you. For AI agents, it needs cl
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact Tom Cranstoun",
-    "description": "Get in touch about The Invisible Users book, web audits, or collaboration",
+    "description": "Get in touch about MX-Bible book, web audits, or collaboration",
     "url": "https://allabout.network/invisible-users/web/contact.html",
     "mainEntity": {
       "@type": "Person",
@@ -650,7 +650,7 @@ The contact page provides explicit ways to reach you. For AI agents, it needs cl
       <article class="contact-card" data-contact-type="email" data-response-time="24-48-hours">
         <h3>Email</h3>
         <p>Direct email for all enquiries. Best for detailed questions or proposal discussions.</p>
-        <a href="mailto:tom.cranstoun@gmail.com?subject=Enquiry about The Invisible Users">Send Email</a>
+        <a href="mailto:tom.cranstoun@gmail.com?subject=Enquiry about MX-Bible">Send Email</a>
       </article>
 
       <article class="contact-card" data-contact-type="linkedin" data-response-time="1-3-days">
@@ -727,18 +727,18 @@ The sales page is dedicated to selling a specific product — in this case, the 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="The Invisible Users book - comprehensive guide to AI-friendly web design with 11 chapters and 10 appendices">
+  <meta name="description" content="MX-Bible book - comprehensive guide to AI-friendly web design with 11 chapters and 10 appendices">
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
-  <title>The Invisible Users Book | Product Details</title>
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <title>MX-Bible Book | Product Details</title>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "The Invisible Users: Designing the Web for AI Agents and Everyone Else",
+    "name": "MX-Bible: Designing the Web for AI Agents and Everyone Else",
     "description": "Comprehensive guide examining how modern web design fails for AI agents and how to fix it",
     "image": "https://allabout.network/invisible-users/cover.jpg",
     "sku": "INVISIBLE-USERS-2026",
@@ -795,7 +795,7 @@ The sales page is dedicated to selling a specific product — in this case, the 
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header><h1>The Invisible Users</h1><p>Complete Product Details</p></header>
+  <header><h1>MX-Bible</h1><p>Complete Product Details</p></header>
   <main class="container" role="main" data-product-id="invisible-users-book" data-availability="preorder">
     <div class="product-grid">
       <div class="product-details">
@@ -847,23 +847,23 @@ The collection page lists related resources — appendices, chapters, or tools. 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="Complete directory of The Invisible Users appendices - implementation cookbooks, battle-tested lessons, quick references, and case studies for AI-friendly web design.">
+  <meta name="description" content="Complete directory of MX-Bible appendices - implementation cookbooks, battle-tested lessons, quick references, and case studies for AI-friendly web design.">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>Appendices Directory | The Invisible Users</title>
+  <title>Appendices Directory | MX-Bible</title>
 
   <!-- Schema.org structured data for collection page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "The Invisible Users - Appendices Directory",
+    "name": "MX-Bible - Appendices Directory",
     "description": "Complete collection of appendices providing implementation guidance for AI-friendly web design",
     "url": "https://allabout.network/invisible-users/web/appendix-index.html",
     "author": {
@@ -873,7 +873,7 @@ The collection page lists related resources — appendices, chapters, or tools. 
     },
     "isPartOf": {
       "@type": "Book",
-      "name": "The Invisible Users"
+      "name": "MX-Bible"
     },
     "mainEntity": {
       "@type": "ItemList",
@@ -1139,7 +1139,7 @@ The consulting service page sells professional services — in this case, web au
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | The Invisible Users</title>
+  <title>Login | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
 
   <!-- Schema.org structured data for login page -->
@@ -1230,9 +1230,9 @@ The blog post page shares insights and expertise. For AI agents, it needs Articl
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>Why Modern Forms Break AI Agents (And How to Fix Them) | The Invisible Users</title>
+  <title>Why Modern Forms Break AI Agents (And How to Fix Them) | MX-Bible</title>
 
   <!-- Schema.org structured data for blog post -->
   <script type="application/ld+json">
@@ -1265,7 +1265,7 @@ The blog post page shares insights and expertise. For AI agents, it needs Articl
     "inLanguage": "en-GB",
     "isPartOf": {
       "@type": "Blog",
-      "name": "The Invisible Users Blog"
+      "name": "MX-Bible Blog"
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -1414,7 +1414,7 @@ The blog post page shares insights and expertise. For AI agents, it needs Articl
     <div class="author-bio" data-author="tom-cranstoun">
       <h3>About the Author</h3>
       <p>
-        <strong>Tom Cranstoun</strong> is a software consultant and the author of "The Invisible Users: Designing the Web for AI Agents and Everyone Else". He specialises in building web systems that work reliably for both humans and AI agents.
+        <strong>Tom Cranstoun</strong> is a software consultant and the author of "MX-Bible: Designing the Web for AI Agents and Everyone Else". He specialises in building web systems that work reliably for both humans and AI agents.
       </p>
       <p>
         Contact: <a href="mailto:tom.cranstoun@gmail.com">tom.cranstoun@gmail.com</a> |
@@ -1480,9 +1480,9 @@ The article page presents comprehensive technical documentation or case studies.
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>Complete Guide to llms.txt Implementation | The Invisible Users</title>
+  <title>Complete Guide to llms.txt Implementation | MX-Bible</title>
 
   <!-- Schema.org structured data for technical article -->
   <script type="application/ld+json">
@@ -1704,9 +1704,9 @@ The article page presents comprehensive technical documentation or case studies.
 
       <section id="real-world-example" data-section-id="example">
         <h2>Real-World Example</h2>
-        <p>Here's a complete llms.txt file for The Invisible Users project:</p>
+        <p>Here's a complete llms.txt file for MX-Bible project:</p>
 
-        <pre><code># The Invisible Users
+        <pre><code># MX-Bible
 
 ## Site Information
 **Last updated:** January 2026
@@ -1800,7 +1800,7 @@ The event page promotes webinars, workshops, or live presentations. For AI agent
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webinar: The Platform Race | The Invisible Users</title>
+  <title>Webinar: The Platform Race | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
@@ -1909,7 +1909,7 @@ The login page provides user authentication. For AI agents, it needs proper form
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | The Invisible Users</title>
+  <title>Login | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
@@ -1990,7 +1990,7 @@ The checkout page handles purchase completion. For AI agents, it needs CheckoutP
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout | The Invisible Users</title>
+  <title>Checkout | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
@@ -2047,7 +2047,7 @@ The checkout page handles purchase completion. For AI agents, it needs CheckoutP
       </form>
       <aside class="order-summary" data-order-total="TBD">
         <h3>Order Summary</h3>
-        <p style="margin: 1rem 0;"><strong>The Invisible Users</strong></p>
+        <p style="margin: 1rem 0;"><strong>MX-Bible</strong></p>
         <p>Subtotal: Contact for pricing</p>
         <p style="margin-top: 1.5rem; font-size: 1.25rem; font-weight: 700;">Total: TBD</p>
       </aside>
@@ -2080,7 +2080,7 @@ The search results page displays query results. For AI agents, it needs SearchRe
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Results | The Invisible Users</title>
+  <title>Search Results | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
@@ -2123,7 +2123,7 @@ The search results page displays query results. For AI agents, it needs SearchRe
     </div>
     <p style="margin: 2rem 0; color: #6b7280;">Found 3 results for "AI agents"</p>
     <article class="search-result" data-result-position="1">
-      <h3><a href="index.html">The Invisible Users - Home</a></h3>
+      <h3><a href="index.html">MX-Bible - Home</a></h3>
       <p>A practical guide to designing websites that work for AI agents and everyone else...</p>
     </article>
     <article class="search-result" data-result-position="2">
@@ -2162,7 +2162,7 @@ The portfolio page showcases case studies and project examples. For AI agents, i
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Studies | The Invisible Users</title>
+  <title>Case Studies | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
@@ -2238,7 +2238,7 @@ The team page introduces staff members. For AI agents, it needs ProfilePage sche
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team | The Invisible Users</title>
+  <title>Team | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
@@ -2287,7 +2287,7 @@ The team page introduces staff members. For AI agents, it needs ProfilePage sche
     <article class="team-member" data-person-id="tom-cranstoun">
       <h2>Tom Cranstoun</h2>
       <p><strong>Author and Software Consultant</strong></p>
-      <p>Tom is a software consultant specialising in web systems that work reliably for both humans and AI agents. Author of "The Invisible Users: Designing the Web for AI Agents and Everyone Else".</p>
+      <p>Tom is a software consultant specialising in web systems that work reliably for both humans and AI agents. Author of "MX-Bible: Designing the Web for AI Agents and Everyone Else".</p>
       <p><a href="mailto:tom.cranstoun@gmail.com">tom.cranstoun@gmail.com</a> | <a href="https://www.linkedin.com/in/tom-cranstoun/">LinkedIn</a></p>
     </article>
   </main>
@@ -2319,13 +2319,13 @@ The testimonials page displays customer reviews and ratings. For AI agents, it n
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testimonials | The Invisible Users</title>
+  <title>Testimonials | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "name": "The Invisible Users",
+    "name": "MX-Bible",
     "review": [
       {
         "@type": "Review",
@@ -2439,24 +2439,24 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="Frequently asked questions about The Invisible Users book - AI agents, web design, implementation guidance, and identity delegation">
+  <meta name="description" content="Frequently asked questions about MX-Bible book - AI agents, web design, implementation guidance, and identity delegation">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>Frequently Asked Questions | The Invisible Users</title>
+  <title>Frequently Asked Questions | MX-Bible</title>
 
   <!-- Schema.org structured data for FAQ page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "name": "The Invisible Users - Frequently Asked Questions",
-    "description": "Common questions about The Invisible Users book, AI agent compatibility, implementation guidance, and identity delegation infrastructure",
+    "name": "MX-Bible - Frequently Asked Questions",
+    "description": "Common questions about MX-Bible book, AI agent compatibility, implementation guidance, and identity delegation infrastructure",
     "author": {
       "@type": "Person",
       "name": "Tom Cranstoun",
@@ -2471,16 +2471,16 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
     "keywords": ["AI agents", "web design", "accessibility", "Schema.org", "semantic HTML", "llms.txt", "identity delegation", "agent-mediated commerce"],
     "isPartOf": {
       "@type": "Book",
-      "name": "The Invisible Users",
+      "name": "MX-Bible",
       "url": "https://allabout.network/invisible-users"
     },
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is The Invisible Users about?",
+        "name": "What is MX-Bible about?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Invisible Users examines how modern web design optimised for human users fails for AI agents, and how fixing this benefits everyone. The book provides practical guidance for making websites accessible to both humans and AI agents through semantic HTML, explicit state management, and structured data.",
+          "text": "MX-Bible examines how modern web design optimised for human users fails for AI agents, and how fixing this benefits everyone. The book provides practical guidance for making websites accessible to both humans and AI agents through semantic HTML, explicit state management, and structured data.",
           "dateCreated": "2026-01-11",
           "author": {
             "@type": "Person",
@@ -2563,7 +2563,7 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
       "@type": "AskAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "mailto:tom.cranstoun@gmail.com?subject=Question about The Invisible Users",
+        "urlTemplate": "mailto:tom.cranstoun@gmail.com?subject=Question about MX-Bible",
         "actionPlatform": [
           "http://schema.org/DesktopWebPlatform",
           "http://schema.org/MobileWebPlatform"
@@ -2577,7 +2577,7 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
 <body>
   <header>
     <h1>Frequently Asked Questions</h1>
-    <p>Common questions about The Invisible Users</p>
+    <p>Common questions about MX-Bible</p>
   </header>
 
   <main class="container" role="main" data-load-state="complete">
@@ -2586,8 +2586,8 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
       <h2>About the Book</h2>
 
       <article class="faq-item" id="what-is-book">
-        <h3>What is The Invisible Users about?</h3>
-        <p>The Invisible Users examines how modern web design optimised for human users fails for AI agents, and how fixing this benefits everyone. The book provides practical guidance for making websites accessible to both humans and AI agents through semantic HTML, explicit state management, and structured data.</p>
+        <h3>What is MX-Bible about?</h3>
+        <p>MX-Bible examines how modern web design optimised for human users fails for AI agents, and how fixing this benefits everyone. The book provides practical guidance for making websites accessible to both humans and AI agents through semantic HTML, explicit state management, and structured data.</p>
       </article>
 
       <article class="faq-item" id="who-should-read">
@@ -2654,17 +2654,17 @@ The 404 error page provides helpful guidance when content is unavailable. For AI
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="Page not found - The requested page could not be found on The Invisible Users website">
+  <meta name="description" content="Page not found - The requested page could not be found on MX-Bible website">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
   <meta name="llms-txt" content="/llms.txt">
 
-  <title>404 - Page Not Found | The Invisible Users</title>
+  <title>404 - Page Not Found | MX-Bible</title>
 
   <!-- Schema.org structured data for error page -->
   <script type="application/ld+json">
@@ -2676,7 +2676,7 @@ The 404 error page provides helpful guidance when content is unavailable. For AI
     "url": "https://allabout.network/invisible-users/web/site/404.html",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "The Invisible Users",
+      "name": "MX-Bible",
       "url": "https://allabout.network/invisible-users"
     },
     "datePublished": "2026-01-11",
@@ -2810,7 +2810,7 @@ The privacy policy page explains data collection and usage. For AI agents, it ne
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Results | The Invisible Users</title>
+  <title>Search Results | MX-Bible</title>
   <meta name="ai-preferred-access" content="html">
   <script type="application/ld+json">
   {
@@ -2853,7 +2853,7 @@ The privacy policy page explains data collection and usage. For AI agents, it ne
     </div>
     <p style="margin: 2rem 0; color: #6b7280;">Found 3 results for "AI agents"</p>
     <article class="search-result" data-result-position="1">
-      <h3><a href="index.html">The Invisible Users - Home</a></h3>
+      <h3><a href="index.html">MX-Bible - Home</a></h3>
       <p>A practical guide to designing websites that work for AI agents and everyone else...</p>
     </article>
     <article class="search-result" data-result-position="2">
@@ -2899,7 +2899,7 @@ The pricing page compares multiple service or product tiers side-by-side. For AI
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
   <title>Pricing | Web Audit Suite</title>
 
@@ -3140,16 +3140,16 @@ The author or profile page establishes personal identity and expertise. For AI a
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="About Tom Cranstoun - Software consultant, author of The Invisible Users, and advocate for building websites that work for AI agents and everyone else.">
+  <meta name="description" content="About Tom Cranstoun - Software consultant, author of MX-Bible, and advocate for building websites that work for AI agents and everyone else.">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
   <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
   <meta name="ai-freshness" content="monthly">
   <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+  <meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 
-  <title>About Tom Cranstoun | The Invisible Users</title>
+  <title>About Tom Cranstoun | MX-Bible</title>
 
   <!-- Schema.org structured data for author/person page -->
   <script type="application/ld+json">
@@ -3157,7 +3157,7 @@ The author or profile page establishes personal identity and expertise. For AI a
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     "name": "Tom Cranstoun - Author Profile",
-    "description": "Software consultant and author of The Invisible Users, examining how modern web design affects AI agents and everyone else",
+    "description": "Software consultant and author of MX-Bible, examining how modern web design affects AI agents and everyone else",
     "inLanguage": "en-GB",
     "datePublished": "2026-01-12",
     "dateModified": "2026-01-12",
@@ -3190,7 +3190,7 @@ The author or profile page establishes personal identity and expertise. For AI a
         "Semantic HTML",
         "Agent-Friendly Design"
       ],
-      "description": "Software consultant with over 15 years of experience building web systems. Author of The Invisible Users, examining how modern web design optimized for human users fails for AI agents, and how fixing this benefits everyone.",
+      "description": "Software consultant with over 15 years of experience building web systems. Author of MX-Bible, examining how modern web design optimized for human users fails for AI agents, and how fixing this benefits everyone.",
       "hasCredential": [
         {
           "@type": "EducationalOccupationalCredential",
@@ -3249,7 +3249,7 @@ The author or profile page establishes personal identity and expertise. For AI a
         <div style="flex: 1; min-width: 300px;">
           <h2 style="font-size: 2rem; color: #1e40af; margin-bottom: 1rem;">Tom Cranstoun</h2>
           <p style="font-size: 1.15rem; color: #4b5563; margin-bottom: 1rem;">
-            Software consultant with over 15 years of experience building web systems that serve both humans and machines. Author of <em>The Invisible Users</em>, examining the collision between modern web design and AI agents.
+            Software consultant with over 15 years of experience building web systems that serve both humans and machines. Author of <em>MX-Bible</em>, examining the collision between modern web design and AI agents.
           </p>
           <div style="margin-top: 1.5rem;">
             <a href="mailto:tom.cranstoun@gmail.com" class="btn" style="display: inline-block; margin: 0.5rem 0.5rem 0.5rem 0;">Contact</a>
@@ -3306,9 +3306,9 @@ The author or profile page establishes personal identity and expertise. For AI a
     </section>
 
     <section style="max-width: 900px; margin: 0 auto 3rem;">
-      <h2 style="font-size: 2rem; color: #1e40af; margin-bottom: 1.5rem;">The Invisible Users</h2>
+      <h2 style="font-size: 2rem; color: #1e40af; margin-bottom: 1.5rem;">MX-Bible</h2>
       <p style="font-size: 1.1rem; color: #4b5563; margin-bottom: 1rem;">
-        <em>The Invisible Users</em> examines a critical challenge in modern web development: websites optimized for human users often fail for AI agents. The book provides practical patterns that work for both audiences, demonstrating that improving agent compatibility also enhances human accessibility.
+        <em>MX-Bible</em> examines a critical challenge in modern web development: websites optimized for human users often fail for AI agents. The book provides practical patterns that work for both audiences, demonstrating that improving agent compatibility also enhances human accessibility.
       </p>
       <p style="font-size: 1.1rem; color: #4b5563; margin-bottom: 1rem;">
         Published Q1 2026, the book includes 11 chapters (~57,000 words), 10 freely accessible appendices, and production-ready code examples. It addresses four audiences: web professionals implementing agent-friendly patterns, agent system developers building reliable automation, business leaders navigating agent-mediated commerce, and partners evaluating opportunities in the emerging agent economy.

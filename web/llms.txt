@@ -1,4 +1,4 @@
-# The Invisible Users - Appendices
+# MX-Bible - Appendices
 
 > Practical guides for designing AI agent-friendly websites
 
@@ -12,7 +12,7 @@
 
 ## About
 
-These appendices accompany "The Invisible Users: Designing the Web for AI Agents and Everyone Else" by Tom Cranstoun.
+These appendices accompany "MX-Bible: Designing the Web for AI Agents and Everyone Else" by Tom Cranstoun.
 
 The book examines how modern web design optimised for human users fails for AI agents, and how fixing this benefits everyone. These appendices provide practical implementation guidance, quick references, and real-world case studies.
 
@@ -30,7 +30,7 @@ The book examines how modern web design optimised for human users fails for AI a
 
 - **Copyright:** © 2026 Tom Cranstoun. All rights reserved.
 - **Content Usage:** All rights reserved, not licensed for public distribution
-- **Attribution Format:** "The Invisible Users by Tom Cranstoun"
+- **Attribution Format:** "MX-Bible by Tom Cranstoun"
 - **Training Usage:** Not permitted
 - **Rate Limits:** Please respect reasonable crawling rates (max 1 request per second)
 - **Commercial Use:** Content is proprietary; contact for licensing inquiries

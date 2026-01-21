@@ -212,7 +212,7 @@ AI agents parse HTML directly. They don't see colours, fonts, or visual styling.
 
 ```html
 <header style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
-  <h1 style="color: white;">The Invisible Users</h1>
+  <h1 style="color: white;">MX-Bible</h1>
   <p style="color: white; opacity: 0.7;">Designing the Web for AI Agents</p>
 </header>
 ```
@@ -223,7 +223,7 @@ The `opacity: 0.7` creates insufficient contrast for humans (fails WCAG AA). Age
 
 ```html
 <header style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
-  <h1 style="color: white;">The Invisible Users</h1>
+  <h1 style="color: white;">MX-Bible</h1>
   <p style="color: #e0e7ff;">Designing the Web for AI Agents</p>
 </header>
 ```
@@ -1313,7 +1313,7 @@ For books, e-books, or published works. Can be combined with Product type for co
 {
   "@context": "https://schema.org",
   "@type": ["Product", "Book"],
-  "name": "The Invisible Users",
+  "name": "MX-Bible",
   "author": {
     "@type": "Person",
     "name": "Tom Cranstoun"
@@ -3075,7 +3075,7 @@ This isn't accommodation. This is good design that serves everyone.
 
 ### Further Reading
 
-For business implications, security considerations, and legal frameworks, see *The Invisible Users: Designing the Web for AI Agents and Everyone Else*.
+For business implications, security considerations, and legal frameworks, see *MX-Bible: Designing the Web for AI Agents and Everyone Else*.
 
 ```text
 ```

@@ -28,7 +28,7 @@ A formal proposal document for experimental AI metadata patterns that extend exi
 
 **Maturity Level:** Forward-compatible proposals that won't break if agents don't recognise them
 
-This appendix consolidates all proposed and experimental patterns mentioned throughout "The Invisible Users". These patterns follow established conventions (like robots meta tags or viewport meta tags) and represent logical extensions that may standardise as the AI agent ecosystem matures.
+This appendix consolidates all proposed and experimental patterns mentioned throughout "MX-Bible". These patterns follow established conventions (like robots meta tags or viewport meta tags) and represent logical extensions that may standardise as the AI agent ecosystem matures.
 
 **Important:** These are NOT established standards. They are proposals based on production implementations and logical extensions of existing patterns.
 
@@ -149,7 +149,7 @@ Attribution requirements with specific attribution text.
 **Example:**
 
 ```html
-<meta name="ai-attribution" content="required" text="Source: The Invisible Users by Tom Cranstoun, https://allabout.network/invisible-users/">
+<meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 ```
 
 **Rationale:** Explicit statement of attribution expectations with precise text to use, ensuring consistent attribution across all AI-generated content.
@@ -787,10 +787,10 @@ Instead of converting HTML→markdown and losing metadata, you write markdown WI
 
 | Field | Purpose | Example Values |
 | ----- | ------- | -------------- |
-| description | Brief summary | Introducing "The Invisible Users" book |
+| description | Brief summary | Introducing "MX-Bible" book |
 | ai-instruction | Agent guidance | This article introduces AI agents as visitors |
 | purpose | Document intent | Educational content for web developers |
-| context | Background info | Part of "The Invisible Users" book series |
+| context | Background info | Part of "MX-Bible" book series |
 
 ### Forward Compatibility (Pandoc YAML Frontmatter)
 
