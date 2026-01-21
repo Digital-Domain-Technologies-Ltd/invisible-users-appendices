@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Quick reference guide for AI assistants generating HTML, covering data attributes, core rules, and semantic patterns."
+keywords: [quick-reference, ai-patterns, data-attributes, semantic-markup, validation, state-management]
+book: "Shared"
+appendix: "E"
+wordcount: 1394
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix E: AI Patterns Quick Reference
 
 > Quick reference for AI assistants generating HTML that works for both humans and AI agents.

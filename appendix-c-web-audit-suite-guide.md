@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Complete guide to auditing your website for AI agent compatibility using Web Audit Suite."
+keywords: [web-audit-suite, site-auditing, compatibility-testing, scoring-system, pa11y, lighthouse]
+book: "Shared"
+appendix: "C"
+wordcount: 5906
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix C: Web Audit Suite User Guide
 
 Complete guide to auditing your website for AI agent compatibility using Web Audit Suite.

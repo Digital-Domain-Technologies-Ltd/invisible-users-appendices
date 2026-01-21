@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Priority-based implementation roadmap for AI agent compatibility, from critical quick wins to advanced patterns."
+keywords: [implementation-roadmap, priorities, quick-wins, structured-data, progressive-enhancement, phased-approach]
+book: "Shared"
+appendix: "F"
+wordcount: 4432
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix F: Implementation Roadmap
 
 A practical guide to making your website work well for both AI agents and human users.

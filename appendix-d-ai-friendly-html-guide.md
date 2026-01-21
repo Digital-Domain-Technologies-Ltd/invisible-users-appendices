@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Comprehensive prescriptive guide for building web interfaces that work for both humans and AI agents, covering semantic HTML, structured data, and practical patterns."
+keywords: [ai-friendly-html, semantic-html, structured-data, progressive-enhancement, form-patterns, schema-org]
+book: "Shared"
+appendix: "D"
+wordcount: 10624
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix D: AI-Friendly HTML Guide
 
 A prescriptive guide for developers creating web interfaces that work for both humans and AI agents. The content is formatted as a markdown file that can be copied and fed directly to AI coding assistants like Claude Code, Cursor, or GitHub Copilot.

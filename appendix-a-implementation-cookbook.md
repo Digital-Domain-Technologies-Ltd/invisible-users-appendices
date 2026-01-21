@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Quick-reference code recipes for implementing AI agent compatibility patterns, including persistent errors, explicit state, and semantic forms."
+keywords: [implementation-cookbook, code-recipes, quick-reference, persistent-errors, explicit-state, semantic-forms]
+book: "Shared"
+appendix: "A"
+wordcount: 3082
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix A: Implementation Cookbook
 
 Quick-reference recipes for common AI agent compatibility patterns. Copy these implementations directly into your projects.

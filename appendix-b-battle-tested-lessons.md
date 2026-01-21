@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Real-world learnings from production implementations: mistakes to avoid and solutions that work."
+keywords: [battle-tested-lessons, production-learnings, progressive-enhancement, common-mistakes, proven-solutions]
+book: "Shared"
+appendix: "B"
+wordcount: 2701
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix B: Battle-Tested Lessons
 
 Real-world learnings from implementing AI agent compatibility patterns in production. Mistakes to avoid and solutions that work.

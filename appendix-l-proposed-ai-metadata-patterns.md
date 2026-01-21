@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Formal proposal document for experimental AI metadata patterns including ai-* meta tags, data-agent-visible attributes, and Pandoc YAML frontmatter."
+keywords: [proposed-patterns, ai-metadata, experimental-standards, forward-compatible, meta-tags, pandoc-yaml-frontmatter]
+book: "Shared"
+appendix: "L"
+wordcount: 4235
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 \newpage
 
 # Appendix L: Proposed AI Metadata Patterns

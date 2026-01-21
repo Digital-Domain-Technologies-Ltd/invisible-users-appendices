@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Chronological tracking of major AI agent commerce and browser automation developments, including platform launches and protocol announcements."
+keywords: [industry-developments, agentic-commerce-protocol, platform-race, browser-agents, commerce-standards, real-world-deployments]
+book: "Shared"
+appendix: "J"
+wordcount: 16460
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 \newpage
 
 # Appendix J - Industry Developments

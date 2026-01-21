@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Detailed analysis of the £203,000 cruise pricing error demonstrating why agent creators must build validation layers and confidence scoring."
+keywords: [pipeline-failure, validation-layers, confidence-scoring, data-extraction-errors, guardrails, case-study]
+book: "Shared"
+appendix: "I"
+wordcount: 2838
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 \newpage
 
 # Appendix I - Pipeline Failure Case Study

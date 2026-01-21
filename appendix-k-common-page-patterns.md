@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Production-ready HTML templates for 20 common page types with semantic structure, Schema.org data, and AI-friendly patterns."
+keywords: [page-patterns, html-templates, schema-org, semantic-html, production-ready, page-types]
+book: "Shared"
+appendix: "K"
+wordcount: 12517
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix K: Common Page Patterns
 
 Production-ready HTML templates demonstrating AI-friendly patterns for common page types.

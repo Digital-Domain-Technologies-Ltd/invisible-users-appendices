@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Example llms.txt file with extended metadata format for AI agent discovery and content curation."
+keywords: [llms-txt, content-curation, ai-discovery, metadata, extended-format]
+book: "Shared"
+appendix: "H"
+wordcount: 1253
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix H: Example llms.txt File {.unnumbered}
 
 \markboth{Appendix H: Example llms.txt File}{Appendix H: Example llms.txt File}

@@ -1,3 +1,19 @@
+---
+author: "Tom Cranstoun"
+date: "2026-01-22"
+description: "Curated directory of standards, specifications, tools, and resources for building AI-friendly websites."
+keywords: [resources, standards, specifications, tools, schema-org, wcag, validation-tools, llms-txt]
+book: "Shared"
+appendix: "G"
+wordcount: 2257
+ai-instruction: |
+  This is a book manuscript appendix. Write as if it has always existed.
+  NEVER include: publication dates, "we added", "new feature", "launching",
+  "this update", or any meta-commentary about the book's development.
+  Write definitive present tense. Historical context about subject matter
+  (industry events, product launches) is allowed.
+---
+
 # Appendix G: Resource Directory
 
 Curated resources referenced in *The Invisible Users: Designing the Web for AI Agents and Everyone Else*
