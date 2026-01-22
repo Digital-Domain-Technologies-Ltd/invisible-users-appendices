@@ -193,6 +193,73 @@ Using a lighter colour (`#e0e7ff`) instead of opacity ensures adequate contrast 
 
 Use tools like WebAIM's contrast checker to verify your colour choices meet accessibility standards for human users.
 
+### Component Names Must Match Use
+
+Component names, ARIA labels, and semantic class names must accurately describe their actual purpose. When labels contradict actual use, AI agents extract incorrect data or hallucinate details based on expected schemas.
+
+**Why this matters for AI agents:**
+
+- **Zero-tolerance parsing** - Agents treat labels as source of truth, not suggestions
+- **Schema expectations** - Wrong labels trigger incorrect data extraction patterns
+- **No context inference** - Unlike humans, agents cannot "figure out" what you meant
+- **Silent failure** - Mislabeled components cause hallucination without error logs
+
+**Bad - Mislabeled component:**
+
+```html
+<aside class="bio-section"
+       aria-label="Author biography"
+       data-component="author-bio">
+  <div class="bio-catch">Quick take on today's agent commerce news</div>
+  <div class="author-name">Author: <strong>Tom Cranstoun</strong></div>
+</aside>
+```
+
+**Why this fails:**
+
+- `aria-label="Author biography"` signals biographical information (education, career, background)
+- Agent expects: professional history, personal details, achievements
+- Agent receives: blog introduction tagline + author name
+- Result: Agent extracts wrong data, treats introduction as biography, hallucinates missing biographical details
+
+**Good - Semantically accurate:**
+
+```html
+<aside class="blog-introduction"
+       aria-label="Blog introduction"
+       data-component="blog-header">
+  <div class="introduction-message">Quick take on today's agent commerce news</div>
+  <div class="author-name">Author: <strong>Tom Cranstoun</strong></div>
+</aside>
+```
+
+**Why this works:**
+
+- Component name matches actual use: `blog-introduction` not `bio-section`
+- ARIA label describes actual content: "Blog introduction" not "Author biography"
+- Data attribute reflects purpose: `blog-header` not `author-bio`
+- Agent extracts correct information without inference
+
+**The human vs agent distinction:**
+
+- **Human user** - Reads content, understands context, ignores incorrect label, completes task
+- **AI agent** - Parses label as definitive signal, extracts wrong data, hallucinates based on expected schema, fails silently
+
+**Rules for semantic accuracy:**
+
+1. **Match labels to content** - If it's an introduction, label it "introduction" not "biography"
+2. **Use precise class names** - `product-specifications` not `product-details` when showing specs
+3. **Align data attributes** - `data-component="checkout-summary"` not `data-component="cart"` for order summary
+4. **Test with strict interpretation** - Would a literal reading of your labels accurately describe the content?
+
+**Common mislabeling patterns to avoid:**
+
+- `aria-label="Navigation"` on element that contains search bar and utility links (use `aria-label="Site header utilities"`)
+- `class="footer-links"` on element containing copyright notice and company address (use `class="footer-legal-info"`)
+- `data-section="pricing"` on element showing feature comparison table without prices (use `data-section="feature-comparison"`)
+
+**Backward compatibility note:** Source format and semantic accuracy can differ. The `/create-blog` skill maintains `{{BIO_CATCH}}` placeholder name in markdown source (for existing files) whilst outputting semantically correct HTML with `blog-introduction` and `aria-label="Blog introduction"`. Input convenience doesn't justify output inaccuracy.
+
 ### Separate CSS and JavaScript from HTML
 
 Inline styles and inline scripts add unnecessary weight for server-side agents that don't execute or render visual styling. Separation of concerns improves performance for agents and maintainability for developers.
