@@ -1229,6 +1229,251 @@ The CSS hides the skip link off-screen by default, but when it receives keyboard
 
 People using keyboard navigation, screen readers, switch controls and other assistive technologies rely on skip links to reach main content and other important sections easier and faster. This method is very helpful and important for users that depend on keyboard and similar input.
 
+### Complete Blog Accessibility Pattern
+
+Blog posts require comprehensive accessibility implementation. This complete pattern demonstrates WCAG 2.1 AA compliance whilst ensuring AI agent compatibility.
+
+**HTML Structure:**
+
+```html
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta tags, Open Graph, Schema.org JSON-LD -->
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <!-- Skip to Content (WCAG 2.4.1) -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Author Biography Sidebar -->
+  <aside class="bio-section"
+         aria-label="Author biography"
+         data-component="author-bio">
+    <div class="bio-label">Blogroll</div>
+    <div class="bio-content">
+      <img src="author.png"
+           alt="Author profile picture"
+           width="80"
+           height="80">
+      <div class="bio-text">
+        <div class="bio-catch">Brief introduction to article topic</div>
+        <div class="author-name">Author: <strong>Name</strong></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Collapsible Table of Contents -->
+  <details id="index" class="table-of-contents">
+    <summary>Index</summary>
+    <nav aria-label="Table of contents">
+      <ul>
+        <li><a href="#section-1">Section 1</a></li>
+        <li><a href="#section-2">Section 2</a></li>
+      </ul>
+    </nav>
+  </details>
+
+  <!-- Main Content -->
+  <main id="main" tabindex="-1">
+    <article data-article-type="blog-post" data-word-count="7200">
+      <header>
+        <h1>Article Title</h1>
+        <div class="article-meta"
+             data-published="2026-01-22"
+             data-reading-time="36 min">
+          <time datetime="2026-01-22">22 January 2026</time>
+          <span>·</span>
+          <span>36 min read</span>
+        </div>
+      </header>
+
+      <h2 id="section-1">First Section</h2>
+      <p>Content here...</p>
+    </article>
+  </main>
+
+  <!-- Floating Back to Top -->
+  <a href="#" class="back-to-top" aria-label="Back to top">
+    Back to Top
+  </a>
+
+  <footer>
+    <p>Copyright notice</p>
+  </footer>
+</body>
+</html>
+```
+
+**Key Accessibility Requirements:**
+
+1. **Skip to Content Link (WCAG 2.4.1 Bypass Blocks)**
+   - First interactive element in <body>
+   - Visually hidden, appears on keyboard focus
+   - Links to main content with id="main"
+   - Main element has tabindex="-1" for focus management
+
+2. **Semantic Landmarks**
+   - <aside> for author biography (implicit complementary landmark)
+   - <nav> for table of contents (with aria-label)
+   - <main> for article content (only one per page)
+   - <article> for blog post content
+   - <footer> for copyright/metadata
+
+3. **Focus Indicators (WCAG 2.4.7 Focus Visible)**
+   - All interactive elements have visible focus styles
+   - 2px solid outline with 2px offset
+   - Sufficient contrast against all backgrounds
+
+4. **Color Contrast (WCAG 1.4.3 Contrast Minimum)**
+   - Links use #0066cc (4.58:1 ratio on white)
+   - Never use #3498db (3.14:1 - fails AA)
+   - Bio section blue border uses accessible color
+
+5. **Touch Targets (WCAG 2.5.5 Target Size)**
+   - Mobile back-to-top button: minimum 44x44px
+   - All interactive elements meet minimum size
+
+6. **Reduced Motion (WCAG 2.3.3 Animation from Interactions)**
+   - Respects prefers-reduced-motion media query
+   - Disables transitions for users with vestibular disorders
+
+**Complete CSS Implementation:**
+
+```css
+/* Skip to Content Link (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #0066cc;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Bio Section */
+.bio-section {
+  background-color: #f8f9fa;
+  border-left: 4px solid #0066cc;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Links with Accessible Color (WCAG 1.4.3) */
+a {
+  color: #0066cc;  /* 4.58:1 ratio on white */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Focus Styles for All Interactive Elements (WCAG 2.4.7) */
+a:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+
+.table-of-contents summary:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.back-to-top:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .skip-link,
+  .back-to-top {
+    display: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  body {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  article h2 {
+    page-break-after: avoid;
+  }
+}
+
+/* Responsive Design with Touch Targets (WCAG 2.5.5) */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 1rem;
+    left: 1rem;
+    padding: 0.75rem 1rem;
+    min-width: 44px;   /* Minimum touch target */
+    min-height: 44px;  /* Minimum touch target */
+  }
+}
+```
+
+**Benefits Across Audiences:**
+
+- **Keyboard users:** Skip link, focus indicators, no keyboard traps
+- **Screen reader users:** Semantic landmarks, aria-labels, proper heading hierarchy
+- **Low vision users:** High contrast colors, text remains readable when zoomed
+- **Users with vestibular disorders:** Reduced motion support eliminates animation
+- **Mobile users:** 44x44px minimum touch targets
+- **Print users:** Clean printout with visible URLs, no decorative elements
+- **AI agents:** Semantic structure, explicit state attributes, clear hierarchy
+
+**Common Mistakes to Avoid:**
+
+1. **Don't use role="complementary" on <aside>** - Redundant (HTML validator error)
+2. **Don't use #3498db for text/links** - Fails WCAG AA contrast (3.14:1)
+3. **Don't forget :focus styles** - Many developers only implement :hover
+4. **Don't ignore prefers-reduced-motion** - Critical for accessibility
+5. **Don't make touch targets smaller than 44x44px on mobile**
+
+**Testing Checklist:**
+
+- [ ] Tab through page - skip link appears first
+- [ ] All interactive elements show focus indicator
+- [ ] Run axe DevTools - zero violations
+- [ ] Check contrast ratios - all pass 4.5:1 minimum
+- [ ] Test with reduced motion enabled - no animations
+- [ ] Validate HTML - zero errors
+- [ ] Test on mobile - touch targets adequate
+- [ ] Print page - layout clean, URLs visible
+
+This pattern demonstrates the convergence principle: implementing for the most demanding users (keyboard, screen reader, reduced motion) creates structure that benefits everyone including AI agents.
+
 ### Navigation and Breadcrumbs
 
 Make site structure explicit so agents understand where they are and where they can go.
