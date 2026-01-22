@@ -2749,6 +2749,140 @@ Shows hierarchical navigation structure. Used on nearly every page to help agent
 
 **Implementation:** Include BreadcrumbList on all pages except the homepage. Position 1 always points to the homepage, subsequent items show the path to the current page.
 
+**JSON-LD Validation: Common Errors and Fixes**
+
+JSON-LD structured data must be valid JSON and follow Schema.org specifications. Two common errors break validation:
+
+**1. Invalid Date Format**
+
+Schema.org requires ISO 8601 date format (YYYY-MM-DD) for all date properties. Human-readable formats cause validation failures.
+
+**Wrong - Human-Readable Format:**
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Machine Experience Guide",
+  "datePublished": "22/Jan/2026",
+  "dateModified": "25/Jan/2026"
+}
+```
+
+**Correct - ISO 8601 Format:**
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Machine Experience Guide",
+  "datePublished": "2026-01-22",
+  "dateModified": "2026-01-25"
+}
+```
+
+**Date Format Conversion (JavaScript):**
+
+If your metadata source uses DD/Mon/YYYY format, convert before generating JSON-LD:
+
+```javascript
+function convertDateToISO(dateString) {
+  // Convert "22/Jan/2026" to "2026-01-22"
+  const ddMonYyyy = /^(\d{1,2})\/([A-Za-z]{3})\/(\d{4})$/;
+  const match = dateString.match(ddMonYyyy);
+
+  if (match) {
+    const day = match[1].padStart(2, '0');
+    const monthName = match[2];
+    const year = match[3];
+
+    const monthMap = {
+      'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04',
+      'May': '05', 'Jun': '06', 'Jul': '07', 'Aug': '08',
+      'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
+    };
+
+    const month = monthMap[monthName];
+    if (month) {
+      return `${year}-${month}-${day}`;
+    }
+  }
+
+  return dateString; // Return as-is if already ISO format
+}
+
+// Usage
+const isoDate = convertDateToISO("22/Jan/2026"); // Returns "2026-01-22"
+```
+
+**2. Markdown Syntax in URLs**
+
+Angle brackets (`<` and `>`) are markdown link syntax, not valid JSON. Remove them from all URL values.
+
+**Wrong - Angle Brackets:**
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tom Cranstoun",
+  "url": "<https://allabout.network>"
+}
+```
+
+**Correct - Clean URLs:**
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tom Cranstoun",
+  "url": "https://allabout.network"
+}
+```
+
+**URL Cleanup (JavaScript):**
+
+Strip angle brackets when processing markdown metadata tables:
+
+```javascript
+// Strip angle brackets from URLs
+const cleanUrl = rawUrl.replace(/^<|>$/g, '');
+
+// Example
+const linkedInUrl = "<https://linkedin.com/in/username/>".replace(/^<|>$/g, '');
+// Result: "https://linkedin.com/in/username/"
+```
+
+**Validation Methods:**
+
+Test JSON-LD validity before deployment:
+
+1. **Node.js JSON Parser (Development):**
+
+```javascript
+try {
+  JSON.parse(jsonLdString);
+  console.log('Valid JSON-LD');
+} catch (error) {
+  console.error('Invalid JSON-LD:', error.message);
+}
+```
+
+2. **Google Rich Results Test (Production):**
+
+Visit: <https://search.google.com/test/rich-results>
+
+Paste your page URL or HTML source. Google validates JSON-LD syntax and checks Schema.org property requirements.
+
+3. **Schema.org Validator:**
+
+Visit: <https://validator.schema.org/>
+
+Validates JSON-LD structure against Schema.org specifications. Reports missing required properties and type mismatches.
+
+**Best Practice:** Validate during build process. Invalid JSON-LD fails silently in browsers but prevents AI agents from extracting structured data. Use automated validation in CI/CD pipelines to catch errors before deployment.
+
 **Book (Publications):**
 
 For books, e-books, or published works. Can be combined with Product type for commercial offerings:
