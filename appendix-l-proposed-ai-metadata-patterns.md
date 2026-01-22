@@ -125,15 +125,17 @@ How often content changes.
 
 Where to find structured data.
 
-**Values:** `json-ld`, `microdata`, `rdfa`, `api`
+**Values:** `json-ld`, `schema.org-jsonld`, `microdata`, `rdfa`, `api`
 
 **Example:**
 
 ```html
 <meta name="ai-structured-data" content="json-ld">
+<!-- OR more specific: -->
+<meta name="ai-structured-data" content="schema.org-jsonld">
 ```
 
-**Rationale:** Tells agents which structured data format to parse, avoiding guessing.
+**Rationale:** Tells agents which structured data format to parse, avoiding guessing. The value `schema.org-jsonld` is more specific (explicitly indicates Schema.org vocabulary within JSON-LD format), while `json-ld` is simpler and sufficient since the JSON-LD script already declares `"@context": "https://schema.org"`. Both are valid; choose based on preference for specificity vs simplicity.
 
 #### ai-attribution
 
