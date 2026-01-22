@@ -1053,6 +1053,170 @@ Address information complete in HTML. Map iframe enhances visual experience but 
 
 **Source:** Chapter 9 (Anti-patterns)
 
+### Don't Use ASCII Diagrams in Production HTML
+
+ASCII diagrams in code blocks are not accessible to screen readers and cannot be parsed semantically by AI agents. Text-based diagrams may look clever in markdown source files, but they fail completely when it matters most.
+
+**Why ASCII diagrams fail:**
+
+- **Screen readers** - Announce ASCII art as individual characters ("hyphen hyphen hyphen arrow down arrow down"), not as structural relationships
+- **AI agents** - See text characters, not diagram semantics. Cannot extract flow, relationships, or hierarchy
+- **Search engines** - Cannot index diagram content or understand relationships depicted
+- **No scalability** - Break at different viewport widths, font sizes, or zoom levels
+- **No semantic meaning** - Boxes, arrows, and connections have no explicit markup
+
+**Bad — ASCII diagram in code block:**
+
+```html
+<section id="architecture">
+  <h2>Content Distribution Model</h2>
+
+  <pre><code class="language-text">Entity Asset Layer (your sovereign database)
+    ↓  ↓  ↓
+Platforms consume your assets (not own them)
+    ↓  ↓  ↓
+MX publishes assets as portable HTML metadata
+    ↓
+AI agents read your assets regardless of platform</code></pre>
+</section>
+```
+
+**What agents encounter:**
+
+- CLI agents: Plain text with arrow characters (no structure)
+- Browser agents: Monospace text that looks like a diagram visually but has no semantic meaning
+- Screen readers: "Entity Asset Layer (your sovereign database) down arrow down arrow down arrow Platforms consume..."
+- No way to extract "Entity Asset Layer" as a concept or understand its relationship to "Platforms"
+
+**Good — Proper SVG with accessibility:**
+
+```html
+<section id="architecture">
+  <h2>Content Distribution Model</h2>
+
+  <figure class="diagram">
+    <object type="image/svg+xml"
+            data="content-distribution-model.svg"
+            aria-labelledby="diagram-title diagram-desc">
+      <img src="content-distribution-model.png"
+           alt="Diagram showing three-tier content distribution: Entity Asset Layer at top, Platforms in middle consuming assets, MX publishing layer below, with AI agents reading from the bottom">
+    </object>
+    <figcaption id="diagram-title">Content Distribution Model</figcaption>
+  </figure>
+
+  <!-- Hidden detailed description for screen readers and agents -->
+  <div id="diagram-desc" class="visually-hidden">
+    Three-tier architecture diagram showing:
+    Layer 1 (top): Entity Asset Layer - your sovereign database controls all content
+    Layer 2 (middle): Multiple platforms consume your assets without owning them
+    Layer 3 (bottom): MX publishing layer converts assets to portable HTML metadata
+    Result: AI agents can read your content regardless of which platform hosts it
+  </div>
+</section>
+```
+
+**Why SVG works better:**
+
+- **Semantic structure** - `<rect>`, `<path>`, `<text>` elements explicitly define diagram components
+- **Accessibility** - `<title>`, `<desc>`, and ARIA labels provide text alternatives
+- **AI parsing** - Agents can extract text from `<text>` elements and understand spatial relationships from coordinates
+- **Scalability** - Vector graphics scale perfectly at any size
+- **Screen reader support** - Proper ARIA markup announces diagram purpose, not individual characters
+- **Fallback content** - `<object>` tag supports PNG fallback for agents that don't parse SVG
+
+**Alternative — Inline SVG for smaller diagrams:**
+
+For simple diagrams under 50KB, embed SVG directly in HTML:
+
+```html
+<figure class="diagram">
+  <svg viewBox="0 0 800 400"
+       xmlns="http://www.w3.org/2000/svg"
+       role="img"
+       aria-labelledby="svg-title svg-desc">
+    <title id="svg-title">Content Distribution Model</title>
+    <desc id="svg-desc">Three-tier architecture showing Entity Asset Layer at top, platforms in middle, MX publishing layer at bottom, with AI agents reading from all layers</desc>
+
+    <!-- Box 1: Entity Asset Layer -->
+    <rect x="200" y="50" width="400" height="60"
+          fill="#f3f4f6" stroke="#0066cc" stroke-width="2" rx="4"/>
+    <text x="400" y="85" text-anchor="middle" font-size="16" fill="#2d3748">
+      Entity Asset Layer (your sovereign database)
+    </text>
+
+    <!-- Arrows -->
+    <path d="M 300 110 L 300 150" stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 400 110 L 400 150" stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 500 110 L 500 150" stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Box 2: Platforms -->
+    <rect x="150" y="150" width="500" height="60"
+          fill="#f3f4f6" stroke="#0066cc" stroke-width="2" rx="4"/>
+    <text x="400" y="185" text-anchor="middle" font-size="16" fill="#2d3748">
+      Platforms consume your assets (not own them)
+    </text>
+
+    <!-- Arrows -->
+    <path d="M 300 210 L 300 250" stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 400 210 L 400 250" stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 500 210 L 500 250" stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Box 3: MX Publishing -->
+    <rect x="150" y="250" width="500" height="60"
+          fill="#f3f4f6" stroke="#0066cc" stroke-width="2" rx="4"/>
+    <text x="400" y="285" text-anchor="middle" font-size="16" fill="#2d3748">
+      MX publishes assets as portable HTML metadata
+    </text>
+
+    <!-- Arrow -->
+    <path d="M 400 310 L 400 350" stroke="#0066cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Box 4: AI Agents -->
+    <rect x="200" y="350" width="400" height="60"
+          fill="#e6f2ff" stroke="#0066cc" stroke-width="2" rx="4"/>
+    <text x="400" y="385" text-anchor="middle" font-size="16" fill="#0066cc" font-weight="bold">
+      AI agents read your assets regardless of platform
+    </text>
+
+    <!-- Arrow marker definition -->
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="10"
+              refX="5" refY="5" orient="auto">
+        <polygon points="0 0, 10 5, 0 10" fill="#0066cc"/>
+      </marker>
+    </defs>
+  </svg>
+  <figcaption>Figure: Content Distribution Model</figcaption>
+</figure>
+```
+
+**Benefits of proper diagram markup:**
+
+- **Agents can extract text** - SVG `<text>` elements are readable and indexable
+- **Relationships are explicit** - Arrow paths connect specific elements
+- **Semantic file naming** - `content-distribution-model.svg` describes content (not `diagram-1.svg`)
+- **Accessibility compliant** - Meets WCAG 2.1 AA requirements with proper ARIA labels
+- **Future-proof** - Structure can be enhanced with additional metadata without breaking existing functionality
+
+**When ASCII diagrams are acceptable:**
+
+ASCII diagrams may be appropriate in:
+
+- **Internal documentation** - Team wikis, developer notes, Slack messages where quick communication matters more than accessibility
+- **Code comments** - Explaining algorithm logic inline where the audience is developers reading source code
+- **Markdown source files** - Planning documents, drafts, or internal specifications that will be converted to proper visualisations before publication
+
+**Never use ASCII diagrams in production HTML that will be accessed by:**
+
+- Screen reader users
+- AI agents performing discovery or analysis
+- Search engines indexing your content
+- International users where ASCII characters may not render correctly
+
+**Implementation note:** The `/create-blog` skill (see `.claude/skills/create-blog/skill.md`) automatically detects ASCII diagrams in markdown source files and converts them to properly accessible SVG visualisations during HTML generation. This workflow allows authors to sketch diagrams quickly in ASCII whilst ensuring production output meets accessibility standards.
+
+**Source:** Chapter 9 (Anti-patterns), Appendix D Pattern Implementation
+
 ---
 
 ## Part 3 — Form Patterns
