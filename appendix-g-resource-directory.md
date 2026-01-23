@@ -416,7 +416,7 @@ Curated resources referenced in *MX-Bible: Designing the Web for AI Agents and E
 
 - JWT Best Practices (RFC 8725): <https://datatracker.ietf.org/doc/html/rfc8725>
 - OWASP JWT Guide: <https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html>
-- Critical for Identity Layer implementations
+- Critical for Entity Asset Layer (EAL) implementations
 
 ## Books and Further Reading
 

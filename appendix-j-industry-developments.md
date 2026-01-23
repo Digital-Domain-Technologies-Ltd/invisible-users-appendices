@@ -86,7 +86,7 @@ OpenAI and Stripe announced the Agentic Commerce Protocol (ACP), an open standar
 
 ### Significance for This Book
 
-**Particularly relevant:** ACP represents the first major open protocol for agent-mediated commerce, directly addressing the identity delegation and platform lock-in concerns discussed in Chapter 13.
+**Particularly relevant:** ACP represents the first major open protocol for agent-mediated commerce, directly addressing the EAL delegation and platform lock-in concerns discussed in Chapter 13.
 
 ### Technical Implementation Insights
 
@@ -127,21 +127,21 @@ ACP creates a strategic choice:
 
 1. **Integrate with closed platforms** (Microsoft Copilot Checkout) for immediate market access to platform-specific users
 2. **Adopt open protocol** (ACP) for portability across multiple AI agents
-3. **Support both** (Chapter 13's identity abstraction approach) for maximum reach
+3. **Support both** (Chapter 13's EAL abstraction approach) for maximum reach
 
 The "support both" approach requires building an abstraction layer that isolates platform-specific implementations behind a standard interface.
 
 ### What This Validates
 
-**From Chapter 13 - "The Missing Identity Layer" (lines 898-1000):**
+**From Chapter 13 - "The Missing Entity Asset Layer" (lines 898-1000):**
 
-Chapter 13 identified the lack of universal identity delegation as a critical gap: "What's missing: A universal identity delegation layer that works across platforms and agents." ACP provides exactly this - an open protocol for delegation that isn't locked to a single platform.
+Chapter 13 identified the lack of universal EAL delegation as a critical gap: "What's missing: A universal EAL delegation layer that works across platforms and agents." ACP provides exactly this - an open protocol for delegation that isn't locked to a single platform.
 
 The chapter argued platforms were "racing to establish first-mover advantages before standards emerge." ACP challenges this prediction by publishing an open standard immediately rather than building a proprietary system first.
 
 **From Chapter 13 - "Identity Abstraction" (lines 974-991):**
 
-The chapter recommended: "Build the identity layer as an abstraction. Support proprietary systems today (you need market access) but design the architecture to support open standards when they emerge."
+The chapter recommended: "Build the EAL as an abstraction. Support proprietary systems today (you need market access) but design the architecture to support open standards when they emerge."
 
 ACP makes this recommendation immediately actionable. Agent creators can now build abstraction layers that support both Microsoft's proprietary Copilot Checkout and OpenAI's open ACP protocol, positioning for eventual standardisation without sacrificing current market access.
 
@@ -172,7 +172,7 @@ This creates three strategic options for businesses:
 2. **Standards-first:** Adopt only ACP (portability, limited agent reach today)
 3. **Multi-platform:** Support both closed and open (maximum reach, highest implementation cost)
 
-Chapter 13's identity abstraction recommendation becomes even more critical - businesses need architecture that isolates platform differences behind a unified interface.
+Chapter 13's EAL abstraction recommendation becomes even more critical - businesses need architecture that isolates platform differences behind a unified interface.
 
 ### Architectural Insights
 
@@ -233,7 +233,7 @@ ACP provides the open standard Chapter 13 advocated for. If you're building agen
 
 **For Business Leaders (Chapter 4 audience):**
 
-Evaluate whether ACP adoption aligns with your agent commerce strategy. The protocol preserves customer relationships (merchant-of-record model) and enables portability (cross-platform tokens), addressing two major concerns from Chapter 4's identity delegation discussion.
+Evaluate whether ACP adoption aligns with your agent commerce strategy. The protocol preserves customer relationships (merchant-of-record model) and enables portability (cross-platform tokens), addressing two major concerns from Chapter 4's EAL delegation discussion.
 
 **Decision framework:**
 
@@ -248,7 +248,7 @@ Evaluate whether ACP adoption aligns with your agent commerce strategy. The prot
 
 - Chapter 4, lines 117-157: "E-Commerce - Where Incentives Align" - ACP provides infrastructure for transaction-based benefits
 - Chapter 4, lines 324-425: Identity delegation challenges - ACP addresses customer relationship preservation
-- Chapter 13, lines 898-1000: "The Missing Identity Layer" - ACP fills the gap Chapter 13 identified
+- Chapter 13, lines 898-1000: "The Missing Entity Asset Layer" - ACP fills the gap Chapter 13 identified
 - Chapter 13, lines 974-991: Identity abstraction recommendation - ACP enables the pattern Chapter 13 advocated
 
 **Related appendix entries:**
@@ -1301,11 +1301,11 @@ Copilot Checkout demonstrates several patterns discussed in this book:
 
 Chapter 12 predicted: "every major platform is building closed identity systems that lock users into their ecosystem. They're racing to establish first-mover advantages before standards emerge."
 
-Microsoft's implementation validates this prediction exactly. Copilot Checkout uses Microsoft's proprietary identity delegation system - not an open standard. Users who authorise Copilot for purchases store payment details, shipping addresses, and order history within Microsoft's ecosystem. Retailers who integrate with Microsoft's system create platform dependency. Competing agents face a cold-start problem rebuilding these authorisations.
+Microsoft's implementation validates this prediction exactly. Copilot Checkout uses Microsoft's proprietary EAL delegation system - not an open standard. Users who authorise Copilot for purchases store payment details, shipping addresses, and order history within Microsoft's ecosystem. Retailers who integrate with Microsoft's system create platform dependency. Competing agents face a cold-start problem rebuilding these authorisations.
 
 **Critical implication:** Multiple proprietary systems are emerging simultaneously (Microsoft Copilot, Amazon Alexa+, Google Business Agent all launched January 2026; Apple expected to follow). Businesses must decide which platforms to support, knowing each integration creates lock-in for their customers and dependency for themselves. The book advocates for open standards whilst correctly predicting platforms will pursue proprietary first-mover advantages.
 
-**Chapter 4 correlation - Identity Delegation:**
+**Chapter 4 correlation - EAL Delegation:**
 
 Despite being proprietary, Microsoft's implementation does preserve customer identity through transactions. Unlike anonymous agent purchases that sever customer relationships (see Chapter 4, "The Severed Customer Relationship"), Copilot Checkout maintains retailer-customer connections for warranty registration, loyalty programmes, and order history - albeit through Microsoft's controlled system.
 
@@ -1400,7 +1400,7 @@ Copilot Checkout demonstrates validation patterns in production - study their er
 ### Copilot Cross-References
 
 - **Chapter 4:** "E-Commerce - Where Incentives Align" - validates transaction-based benefit thesis
-- **Chapter 4:** "Identity Delegation Patterns" - proprietary solution vs. standards-based approaches
+- **Chapter 4:** "EAL Delegation Patterns" - proprietary solution vs. standards-based approaches
 - **Chapter 6:** "Session Inheritance Problem" - browser-based agent inherits authentication
 - **Chapter 9:** "Designing for Both" - partner retailers demonstrate universal patterns
 - **Chapter 10:** "Dual-Interface Architecture" - conversational + web fallback pattern
@@ -1591,7 +1591,7 @@ Chapter 9 expressed hope that OpenAI/Stripe and Google would merge ACP and UCP b
 **For Web Developers (Chapter 12 audience):**
 
 1. **Implement semantic HTML and structured data first** (Priority 1 patterns from Appendix F) - these work regardless of protocol choice
-2. **Build identity abstraction layer** - isolate protocol-specific implementations behind standard interface
+2. **Build EAL abstraction layer** - isolate protocol-specific implementations behind standard interface
 3. **Monitor for ACP/UCP convergence** - adjust integration strategy when platforms announce technical interoperability
 4. **Test with multiple agents** - Google Business Agent, ChatGPT, Copilot to verify cross-platform compatibility
 

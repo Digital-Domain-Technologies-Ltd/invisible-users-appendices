@@ -301,9 +301,9 @@ The home page is your digital storefront. It must immediately communicate what y
       </article>
 
       <article style="margin-bottom: 3rem;">
-        <h3 style="font-size: 1.5rem; color: #1f2937; margin-bottom: 1rem;">Identity Delegation</h3>
+        <h3 style="font-size: 1.5rem; color: #1f2937; margin-bottom: 1rem;">EAL Delegation</h3>
         <p style="color: #4b5563; margin-bottom: 1rem;">
-          When AI agents transact on behalf of customers, the business-customer relationship breaks down. The book discusses identity delegation patterns as one emerging solution, acknowledging multiple approaches without prescribing a specific implementation. The Universal Identity Delegation Infrastructure project is introduced as an open-source initiative addressing this challenge.
+          When AI agents transact on behalf of customers, the business-customer relationship breaks down. The book discusses EAL delegation patterns as one emerging solution, acknowledging multiple approaches without prescribing a specific implementation. The Universal EAL Delegation Infrastructure project is introduced as an open-source initiative addressing this challenge.
         </p>
       </article>
 
@@ -425,7 +425,7 @@ The about page explains who you are, what you do, and why it matters. For AI age
         "AI Agent Compatibility",
         "Accessibility",
         "Software Architecture",
-        "Identity Delegation"
+        "EAL Delegation"
       ]
     },
     "author": {
@@ -474,7 +474,7 @@ The about page explains who you are, what you do, and why it matters. For AI age
     <section data-section-type="author-background">
       <h2>The Author's Journey</h2>
       <p>
-        Tom Cranstoun is a software consultant who has spent decades building web systems. Whilst working on identity delegation infrastructure, he noticed a recurring pattern: modern websites were beautifully designed for human users but completely opaque to AI agents trying to act on users' behalf.
+        Tom Cranstoun is a software consultant who has spent decades building web systems. Whilst working on EAL delegation infrastructure, he noticed a recurring pattern: modern websites were beautifully designed for human users but completely opaque to AI agents trying to act on users' behalf.
       </p>
       <p>
         What started as debugging frustration evolved into systematic research. Every pattern that broke agents turned out to be a pattern that also degraded human accessibility. Forms that validated only on submission. Error messages that disappeared after three seconds. Authentication states visible only through CSS styling. Visual-only feedback with no semantic markup.
@@ -502,7 +502,7 @@ The about page explains who you are, what you do, and why it matters. For AI age
         <li><strong>10 Appendices</strong> — Freely accessible online with implementation cookbooks, battle-tested lessons, and real-world case studies</li>
         <li><strong>Web Audit Suite</strong> — A comprehensive Node.js tool implementing the patterns described in the book (available as separate purchase or professional service)</li>
         <li><strong>Code Examples</strong> — Production-ready implementations demonstrating AI-friendly patterns</li>
-        <li><strong>Identity Delegation Project</strong> — Open-source infrastructure for portable agent authorisations</li>
+        <li><strong>EAL Delegation Project</strong> — Open-source infrastructure for portable agent authorisations</li>
       </ul>
     </section>
 
@@ -566,7 +566,7 @@ The contact page provides explicit ways to reach you. For AI agents, it needs cl
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="Contact Tom Cranstoun about MX-Bible book, professional web audits, collaboration opportunities, or the identity delegation project.">
+  <meta name="description" content="Contact Tom Cranstoun about MX-Bible book, professional web audits, collaboration opportunities, or the EAL delegation project.">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
@@ -642,7 +642,7 @@ The contact page provides explicit ways to reach you. For AI agents, it needs cl
 
     <section data-section-type="introduction">
       <p style="font-size: 1.15rem; color: #4b5563; text-align: center; margin-bottom: 2rem;">
-        Whether you have questions about the book, need a professional web audit, want to discuss the identity delegation project, or explore collaboration opportunities, I'm happy to hear from you.
+        Whether you have questions about the book, need a professional web audit, want to discuss the EAL delegation project, or explore collaboration opportunities, I'm happy to hear from you.
       </p>
     </section>
 
@@ -672,7 +672,7 @@ The contact page provides explicit ways to reach you. For AI agents, it needs cl
         <li><strong>Book Questions</strong> — Implementation guidance, pattern clarifications, or content feedback</li>
         <li><strong>Professional Web Audits</strong> — Comprehensive AI agent compatibility analysis for your website</li>
         <li><strong>Web Audit Suite</strong> — Purchasing the tool or discussing the professional audit service</li>
-        <li><strong>Identity Delegation Project</strong> — Technical collaboration or implementation support</li>
+        <li><strong>EAL Delegation Project</strong> — Technical collaboration or implementation support</li>
         <li><strong>Speaking Engagements</strong> — Conference talks or workshop facilitation</li>
         <li><strong>Consulting Services</strong> — Architecture review, implementation support, or team training</li>
         <li><strong>Partnership Opportunities</strong> — Agencies offering audit services or integration partners</li>
@@ -2439,7 +2439,7 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tom Cranstoun">
-  <meta name="description" content="Frequently asked questions about MX-Bible book - AI agents, web design, implementation guidance, and identity delegation">
+  <meta name="description" content="Frequently asked questions about MX-Bible book - AI agents, web design, implementation guidance, and EAL delegation">
 
   <!-- AI-specific meta tags (PROPOSED - see Appendix L) -->
   <meta name="ai-preferred-access" content="html">
@@ -2456,7 +2456,7 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "name": "MX-Bible - Frequently Asked Questions",
-    "description": "Common questions about MX-Bible book, AI agent compatibility, implementation guidance, and identity delegation infrastructure",
+    "description": "Common questions about MX-Bible book, AI agent compatibility, implementation guidance, and EAL delegation infrastructure",
     "author": {
       "@type": "Person",
       "name": "Tom Cranstoun",
@@ -2468,7 +2468,7 @@ The FAQ page answers common questions in a structured format. For AI agents, it 
       "@type": "Thing",
       "name": "AI-friendly web design and implementation"
     },
-    "keywords": ["AI agents", "web design", "accessibility", "Schema.org", "semantic HTML", "llms.txt", "identity delegation", "agent-mediated commerce"],
+    "keywords": ["AI agents", "web design", "accessibility", "Schema.org", "semantic HTML", "llms.txt", "EAL delegation", "agent-mediated commerce"],
     "isPartOf": {
       "@type": "Book",
       "name": "MX-Bible",

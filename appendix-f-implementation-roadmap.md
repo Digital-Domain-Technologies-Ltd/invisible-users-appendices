@@ -306,9 +306,9 @@ Distinguish between:
 
 This enables measuring protocol-specific conversion rates and ROI.
 
-**Implement identity delegation patterns:**
+**Implement EAL delegation patterns:**
 
-When agents make purchases on users' behalf, preserve customer relationship data. See Chapter 6 for identity delegation patterns and security considerations.
+When agents make purchases on users' behalf, preserve customer relationship data. See Chapter 6 for EAL delegation patterns and security considerations.
 
 **Consider protocol convergence timelines:**
 
@@ -701,12 +701,12 @@ body.agent-mode [data-agent-visible] {
 
 ## Advanced Implementation
 
-### Identity Layer (for E-commerce)
+### Entity Asset Layer (EAL) for E-commerce
 
 If you sell products and want to preserve customer relationships when agents shop:
 
-- [ ] **Implement delegation token acceptance** - Accept tokens from identity repositories
-- [ ] **Query repository for customer identity** - Request verified customer data
+- [ ] **Implement EAL delegation token acceptance** - Accept tokens from EAL repositories
+- [ ] **Query EAL repository for customer data** - Request verified customer identity and asset data
 - [ ] **Support two-tier sharing** - Handle both "favourite supplier" and "general" levels
 - [ ] **Apply loyalty points correctly** - Credit to actual customer, not agent
 - [ ] **Register warranties properly** - Record customer as owner, not agent
@@ -776,7 +776,7 @@ If you're an ad-funded content site:
 - [ ] **Compare agent vs human conversion** - Are agents succeeding?
 - [ ] **Review competitive positioning** - Are competitors more agent-friendly?
 - [ ] **Update llms.txt** - Reflect any policy or access changes
-- [ ] **Assess identity layer adoption** - Should you integrate with identity repositories?
+- [ ] **Assess EAL adoption** - Should you integrate with EAL repositories?
 
 ---
 
