@@ -1022,6 +1022,6 @@ Start with type matching your core content. Complete implementation of one type 
 
 **Document Status:** v1.1 - Extended metadata index with testing methodologies, anti-patterns reference, and terminology framework.
 
-**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters. New sections integrate patterns from "MX-Don't Make the AI Think" practical guide.
+**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters. New sections integrate patterns from "MX-Handbook" practical guide.
 
 **Total Metadata Elements Cataloged:** 150+ distinct elements across 20 categories (expanded from 17 with testing, anti-patterns, and terminology sections).
