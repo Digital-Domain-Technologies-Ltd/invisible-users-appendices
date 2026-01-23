@@ -144,6 +144,33 @@
       margin-top: 2rem;
     }
 
+    .download-intro-text {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      color: #1f2937;
+    }
+
+    .download-book-container {
+      margin-bottom: 1rem;
+    }
+
+    .download-description {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+
+    .nda-agreement-text {
+      margin-top: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .closing-signature {
+      margin-top: 2rem;
+      font-weight: 600;
+    }
+
     .btn {
       display: inline-block;
       background: #2563eb;
@@ -154,6 +181,11 @@
       text-decoration: none;
       transition: background 0.2s;
       margin: 0.5rem;
+    }
+
+    .btn-large {
+      font-size: 1.125rem;
+      padding: 1.25rem 3rem;
     }
 
     .btn:hover {
@@ -357,7 +389,7 @@
     <p>Two Books Available for Review</p>
   </header>
 
-  <main class="container" role="main" data-load-state="complete">
+  <main class="container" data-load-state="complete">
     <article data-article-type="reviewer-information">
 
       <section data-section-type="introduction">
@@ -443,37 +475,35 @@
           <p>
             If someone outside your organisation wants to review the book, please direct them to contact me directly at <a href="mailto:tom.cranstoun@gmail.com">tom.cranstoun@gmail.com</a>.
           </p>
-          <p style="margin-top: 1.5rem; font-weight: 600; text-align: center;">
+          <p class="nda-agreement-text">
             <strong>By downloading this manuscript, you agree to these terms.</strong>
           </p>
         </div>
-        <div class="download-section" data-download-type="review-copies" style="text-align: center; margin-top: 2rem;">
-          <p style="font-size: 1.125rem; margin-bottom: 1.5rem; color: #1f2937;">
+        <div class="download-section" data-download-type="review-copies">
+          <p class="download-intro-text">
             If you agree to the terms above, you may download one or both review copies:
           </p>
 
-          <div data-download-book="mx-bible" style="margin-bottom: 1rem;">
+          <div class="download-book-container" data-download-book="mx-bible">
             <a href="https://allabout.network/invisible-users/the-invisible-users.pdf"
-               class="btn"
+               class="btn btn-large"
                data-action="download"
-               aria-label="Download MX-Bible comprehensive guide review copy"
-               style="font-size: 1.125rem; padding: 1.25rem 3rem;">
+               aria-label="Download MX-Bible comprehensive guide review copy">
               Download MX-Bible Review Copy (PDF)
             </a>
-            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">
+            <p class="download-description">
               Comprehensive 13-chapter guide (~78,000 words)
             </p>
           </div>
 
-          <div data-download-book="mx-handbook" style="margin-bottom: 1rem;">
+          <div class="download-book-container" data-download-book="mx-handbook">
             <a href="https://allabout.network/invisible-users/mx-handbook.pdf"
-               class="btn"
+               class="btn btn-large"
                data-action="download"
-               aria-label="Download MX-Handbook practical implementation guide review copy"
-               style="font-size: 1.125rem; padding: 1.25rem 3rem;">
+               aria-label="Download MX-Handbook practical implementation guide review copy">
               Download MX-Handbook Review Copy (PDF)
             </a>
-            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">
+            <p class="download-description">
               Practical 11-chapter implementation guide
             </p>
           </div>
@@ -488,7 +518,7 @@
         <p>
           If you have any questions about the review process, feedback expectations, or the NDA terms, please don't hesitate to contact me.
         </p>
-        <p style="margin-top: 2rem; font-weight: 600;">
+        <p class="closing-signature">
           Thank you again,<br>
           Tom Cranstoun
         </p>
@@ -496,8 +526,8 @@
 
     </article>
 
-    <div class="contact-info" style="margin-top: 3rem; padding: 2rem; background: #f9fafb; border-radius: 8px; border-left: 4px solid #3b82f6;">
-      <h3 style="margin-top: 0; color: #1e40af;">Contact Information</h3>
+    <div class="contact-info">
+      <h3>Contact Information</h3>
       <p><strong>Email:</strong> <a href="mailto:tom.cranstoun@gmail.com">tom.cranstoun@gmail.com</a></p>
       <p><strong>Website:</strong> <a href="https://allabout.network">allabout.network</a></p>
       <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tom-cranstoun/">linkedin.com/in/tom-cranstoun</a></p>
@@ -505,7 +535,7 @@
 
   </main>
 
-  <footer role="contentinfo">
+  <footer>
     <div class="contact-links">
       <a href="mailto:tom.cranstoun@gmail.com">Email</a>
       <a href="https://allabout.network">Website</a>
