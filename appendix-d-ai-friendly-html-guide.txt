@@ -3056,6 +3056,62 @@ Each author object can include optional properties: `url`, `email`, `affiliation
 
 **Source:** Chapter 5 (Metadata That Works)
 
+**Article vs WebPage: Choosing the Right Type**
+
+Schema.org provides two closely-related types that serve different purposes. Understanding when to use each ensures accurate semantic classification for AI agents.
+
+**Use Article for editorial and blog content:**
+
+- Blog posts, news articles, opinion pieces
+- Tutorial articles, how-to guides with narrative structure
+- Research papers, case studies, white papers
+- Content meant to be read, shared, and cited as standalone work
+- Publishing dates and author attribution are central to the content
+
+**Use WebPage for functional and utility pages:**
+
+- Download portals, form submission pages, dashboards
+- Product comparison tools, pricing calculators
+- Contact pages, about pages, information pages
+- Interactive applications, configuration wizards
+- Pages where the primary purpose is action/function rather than reading
+
+**Key Difference:**
+
+Article type signals "this is editorial content with authors and publication metadata that should be indexed and cited as written work." WebPage type signals "this is a functional page serving a specific utility purpose."
+
+**Real-world example:**
+
+A book reviewer download page uses WebPage, not Article:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "For Reviewers: MX-Bible and MX-Handbook Review Process",
+  "description": "Information and guidelines for reviewers of MX-Bible and MX-Handbook books, including acknowledgment policy, feedback instructions, and NDA agreement",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Cranstoun",
+    "email": "tom.cranstoun@gmail.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Digital Domain Technologies Ltd"
+  }
+}
+```
+
+This is WebPage because:
+- Primary purpose is downloading review copies (functional action)
+- Contains interactive elements (download buttons, NDA agreement)
+- Not editorial content meant to be read and shared
+- Serves a specific utility (reviewer onboarding)
+
+If this were a blog post *about* the review process, that would be Article. But since it's a functional download portal, WebPage is the correct semantic type.
+
+**Source:** Real-world implementation pattern from MX-Bible and MX-Handbook reviewer page
+
 **FAQPage (Support Documentation and Q&A Content):**
 
 ```json
