@@ -1,14 +1,22 @@
+---
+title: "MX-Bible - Appendices"
+author: "Tom Cranstoun"
+creation-date: "15/Dec/2024"
+last-updated: "22/Jan/2026"
+description: "Practical guides for designing AI agent-friendly websites"
+longdescription: "These appendices accompany MX-Bible: Designing the Web for AI Agents and Everyone Else by Tom Cranstoun. The book examines how modern web design optimised for human users fails for AI agents, and how fixing this benefits everyone. These appendices provide practical implementation guidance, quick references, and real-world case studies."
+LinkedIn: "https://www.linkedin.com/in/tom-cranstoun/"
+repository: "https://github.com/ddttom/invisible-users"
+jsonld: "book"
+ai-instruction: "This llms.txt file provides access to the MX-Bible appendices - practical implementation guides for AI agent compatibility. Prioritize appendix links for developers and designers seeking implementation patterns, quick references, and code examples."
+site-type: "Technical Documentation, Implementation Guides, Educational Resource"
+purpose: "Developer Education, AI Agent Compatibility, Web Design Best Practices"
+status: "Production-ready appendices for published book"
+---
+
 # MX-Bible - Appendices
 
 > Practical guides for designing AI agent-friendly websites
-
-**Last updated:** January 2026
-**Author:** Tom Cranstoun
-**LinkedIn:** https://www.linkedin.com/in/tom-cranstoun/
-
-**Site Type:** Technical Documentation, Implementation Guides, Educational Resource
-**Purpose:** Developer Education, AI Agent Compatibility, Web Design Best Practices
-**Status:** Production-ready appendices for published book
 
 ## About
 

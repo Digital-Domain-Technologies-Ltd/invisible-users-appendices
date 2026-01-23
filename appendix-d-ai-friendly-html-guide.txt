@@ -333,6 +333,121 @@ Always prefer linked external files for production websites.
 
 **Real-world example:** This book's product page demonstrates proper separation. View source at <https://allabout.network/invisible-users/book-product-page.html> - all styling is in book-product-page.css, keeping the HTML clean and focused on content structure.
 
+### Reduce Inline CSS Ratio
+
+High inline CSS usage (style attributes on HTML elements) creates maintenance complexity and parsing overhead. Target: less than 5% of elements should have inline styles.
+
+**Why this matters:**
+
+- **Maintenance burden** - Style changes require editing multiple HTML templates instead of one CSS file
+- **Caching inefficiency** - Inline styles cannot be cached separately from page content
+- **Parsing overhead** - Agents must parse style declarations mixed with content structure
+- **Consistency risk** - Harder to maintain visual consistency across pages
+- **Performance** - Larger HTML payloads, slower parsing, no parallel CSS loading
+
+**Measuring inline CSS ratio:**
+
+```javascript
+// Calculate inline CSS ratio
+const totalElements = document.querySelectorAll('*').length;
+const inlineStyleElements = document.querySelectorAll('[style]').length;
+const ratio = (inlineStyleElements / totalElements * 100).toFixed(1);
+console.log(`Inline CSS ratio: ${ratio}% (${inlineStyleElements}/${totalElements})`);
+```
+
+**Bad — High inline CSS usage (23% ratio):**
+
+```html
+<article class="blog-post">
+  <h1 style="font-size: 2.5rem; color: #1e40af; margin-bottom: 1rem;">Article Title</h1>
+  <p style="line-height: 1.6; color: #4b5563; margin-bottom: 1rem;">
+    First paragraph with inline text styling...
+  </p>
+  <div style="padding: 1.5rem; background: #f3f4f6; border-left: 4px solid #0066cc;">
+    <p style="margin: 0; font-weight: 600;">Important callout</p>
+  </div>
+  <p style="line-height: 1.6; color: #4b5563; margin-bottom: 1rem;">
+    Another paragraph with repeated inline styling...
+  </p>
+</article>
+```
+
+Problems:
+
+- 79 elements with inline styles out of 338 total (23.4%)
+- Style changes require editing every element
+- Repeated style declarations (line-height, color, margin)
+- No caching benefit
+- Difficult to enforce brand consistency
+
+**Good — Component-based CSS (< 5% ratio):**
+
+```html
+<article class="blog-post">
+  <h1 class="post-title">Article Title</h1>
+  <p class="post-text">
+    First paragraph with component-based styling...
+  </p>
+  <div class="callout callout-info">
+    <p class="callout-text">Important callout</p>
+  </div>
+  <p class="post-text">
+    Another paragraph using same component class...
+  </p>
+</article>
+```
+
+CSS in external file:
+
+```css
+/* blog.css */
+.post-title {
+  font-size: 2.5rem;
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+.post-text {
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.callout {
+  padding: 1.5rem;
+  background: #f3f4f6;
+}
+
+.callout-info {
+  border-left: 4px solid #0066cc;
+}
+
+.callout-text {
+  margin: 0;
+  font-weight: 600;
+}
+```
+
+**Migration strategy:**
+
+1. Identify common inline style patterns across pages
+2. Create component CSS classes for repeated patterns
+3. Replace inline styles with class names
+4. Move styles to external CSS file
+5. Verify visual consistency after migration
+
+**Acceptable inline CSS use cases:**
+
+- Dynamic styles set by JavaScript based on user interaction
+- Email HTML templates (external CSS not supported)
+- A/B testing variations requiring programmatic style injection
+
+**Target ratio:** < 5% of elements with inline styles
+
+**Real-world example:** Blog template with 23% inline CSS ratio (79/338 elements) typically indicates template uses inline styling instead of component-based CSS. After migration to component classes, ratio drops to 2-3% (only dynamic JavaScript-driven styles remain).
+
+**Source:** Boye & Company web audit case study (2026-01-23)
+
 ### Preserve Rich HTML Rather Than Pre-Converting to Markdown
 
 URL-to-markdown converters (like converturltomd.com) became popular in 2022-2024 for feeding websites to chatbots. They strip HTML decoration to create plain text that's easier to process. This worked when the primary use case was answering questions.
@@ -401,6 +516,86 @@ Agents can extract the same text content while also getting structured signals a
 - **Format flexibility** - If platforms need markdown, they can extract it from rich HTML; you can't add structure back to stripped markdown
 
 **Design principle:** Provide the richest possible source material. If an AI platform needs simpler formats, let them convert from your structured HTML rather than pre-converting to stripped markdown yourself.
+
+### Internal vs External Link Patterns
+
+Links should behave according to UX best practices: internal links (same site) open in the same tab, external links (different domains) can optionally open in new tabs with security attributes.
+
+**Why this matters:**
+
+- **User expectation** - Users expect internal navigation to stay within the current browsing context
+- **Browser history** - Opening internal links in new tabs clutters the user's tab bar and breaks the back button
+- **Accessibility** - Screen reader users and keyboard navigators prefer predictable navigation behaviour
+- **AI agents** - Consistent link patterns help agents understand site structure and navigation flows
+
+**Bad — Internal links opening in new tabs:**
+
+```html
+<nav>
+  <a href="/products" target="_blank">Products</a>
+  <a href="/services" target="_blank">Services</a>
+  <a href="/about" target="_blank">About</a>
+</nav>
+
+<article>
+  <p>Read more about <a href="/blog/machine-experience" target="_blank">Machine Experience (MX)</a>.</p>
+</article>
+```
+
+Problems:
+- Breaks user expectation (internal site navigation should stay in same tab)
+- Creates tab clutter (every internal click opens new tab)
+- Breaks browser back button (no history in new tabs)
+- Confuses keyboard users (unexpected context changes)
+
+**Good — Internal links in same tab, external links with security:**
+
+```html
+<nav>
+  <a href="/products">Products</a>
+  <a href="/services">Services</a>
+  <a href="/about">About</a>
+</nav>
+
+<article>
+  <p>Read more about <a href="/blog/machine-experience">Machine Experience (MX)</a>.</p>
+  <p>Learn from the <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener">WCAG 2.1 guidelines</a>.</p>
+</article>
+```
+
+**Link attribute patterns:**
+
+- **Internal links** (same domain): No `target` attribute, opens in same tab
+- **External links** (different domain): Optional `target="_blank"` with `rel="noopener"` for security
+
+**Security note on external links:**
+
+When using `target="_blank"`, always include `rel="noopener"` to prevent the opened page from accessing the `window.opener` object (security vulnerability). Modern browsers handle this automatically, but explicit `rel="noopener"` ensures compatibility.
+
+```html
+<!-- Good: External link with security -->
+<a href="https://external-site.com" target="_blank" rel="noopener">Visit external site</a>
+
+<!-- Also good: External link with additional context -->
+<a href="https://external-site.com" target="_blank" rel="noopener external">Visit external site (opens in new tab)</a>
+```
+
+**Exception — When to open internal links in new tabs:**
+
+Rare cases where new tabs are acceptable:
+- PDFs and downloadable documents (user wants to keep their place)
+- Video or media players that shouldn't interrupt reading flow
+- Print-friendly versions of current page
+
+Always inform the user when links open in new tabs:
+
+```html
+<a href="/product-brochure.pdf" target="_blank" rel="noopener">
+  Product brochure (PDF, opens in new tab)
+</a>
+```
+
+**Real-world example:** The blog posts in this project (`outputs/bible/blogs/mx/`) implement this pattern correctly. Internal cross-references between blog posts open in the same tab, whilst external citation links include `target="_blank" rel="noopener"`.
 
 ### Extend llms.txt with Metadata (Proposed Pattern)
 
@@ -723,6 +918,216 @@ Agents process sidebar advertisements before reaching the article content. Token
 Agents encounter primary content immediately. CSS positions sidebar visually without affecting reading order.
 
 **Key principle:** DOM order is reading order. Put important content first in HTML, use CSS for visual layout.
+
+### The `<main>` Element - Primary Content Landmark
+
+The `<main>` element identifies the primary content of a page, distinguishing it from repeated elements like navigation, sidebars, and footers. Without it, AI agents must guess which content is important.
+
+**Why this matters:**
+
+AI agents process all HTML content with equal weight unless explicitly told otherwise. When agents visit pages without a `<main>` element, they cannot distinguish between:
+
+- Primary content (the product description you want them to extract)
+- Navigation menus (repeated on every page)
+- Sidebar advertisements (peripheral information)
+- Footer content (copyright notices, site policies)
+
+This wastes token budget on peripheral information and reduces citation accuracy.
+
+**Bad — No content landmark:**
+
+```html
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/about">About</a>
+      <!-- 50+ navigation links -->
+    </nav>
+  </header>
+
+  <article>
+    <h1>Wireless Headphones WH-1000</h1>
+    <p>Premium over-ear headphones with active noise cancellation...</p>
+    <!-- Product details agents need to extract -->
+  </article>
+
+  <aside>
+    <!-- Sidebar with ads, related products -->
+  </aside>
+
+  <footer>
+    <!-- Footer with policies, contact info -->
+  </footer>
+</body>
+```
+
+Agent processes: Navigation (200 words) + Article (800 words) + Sidebar (300 words) + Footer (150 words) = 1,450 words with equal weight. Primary content buried in noise.
+
+**Good — Explicit `<main>` landmark:**
+
+```html
+<body>
+  <header>
+    <nav aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/about">About</a>
+      <!-- 50+ navigation links -->
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <article>
+      <h1>Wireless Headphones WH-1000</h1>
+      <p>Premium over-ear headphones with active noise cancellation...</p>
+      <!-- Product details agents need to extract -->
+    </article>
+  </main>
+
+  <aside aria-label="Related products">
+    <!-- Sidebar with ads, related products -->
+  </aside>
+
+  <footer>
+    <!-- Footer with policies, contact info -->
+  </footer>
+</body>
+```
+
+Agent prioritises: Main content (800 words) = Primary extraction target. Everything else = Secondary context.
+
+**Business impact:**
+
+- **Poor content extraction** - Agents cannot reliably extract product details, conference dates, or article content
+- **Reduced citations** - Without clear content boundaries, agents are less confident citing your material
+- **SEO impact** - Search engines cannot definitively identify page purpose
+- **Wasted token budget** - Agents process navigation and footer text before reaching primary content
+
+**Key requirements:**
+
+- One `<main>` per page (WCAG 2.1 requirement)
+- Contains primary page content, excluding repeated elements
+- Add `id="main"` and `tabindex="-1"` for skip link compatibility
+- Never nest `<main>` inside `<article>`, `<aside>`, or `<nav>`
+
+**Real-world impact:** Sites with missing `<main>` elements score 56-78/100 for AI agent suitability. Adding `<main>` typically pushes scores to 90-100/100 range (Web Audit Suite analysis, January 2026).
+
+**Source:** Boye & Company web audit case study (2026-01-23)
+
+### Image Optimization - Loading and Responsiveness
+
+Images are often the largest page assets but many sites fail to optimize for performance and accessibility. Three critical attributes affect both human users and AI agent parsing efficiency.
+
+**Why this matters:**
+
+- **Lazy loading** - Defers off-screen image loading, reducing initial page weight
+- **Responsive images** - Serves appropriate resolutions for different devices
+- **Dimensions** - Prevents layout shifts during page load (CLS metric)
+- **Alt text** - Provides text alternative for accessibility and AI understanding
+
+**Bad — No optimization:**
+
+```html
+<article class="product">
+  <img src="headphones-large.jpg">
+  <h2>Wireless Headphones</h2>
+  <p>Premium audio experience...</p>
+</article>
+
+<article class="product">
+  <img src="speakers-large.jpg">
+  <h2>Portable Speaker</h2>
+</article>
+```
+
+Problems:
+
+- All images load immediately (wasting bandwidth for off-screen images)
+- No responsive sizing (mobile users download desktop-sized images)
+- No dimensions (causes layout shift when images load)
+- No alt text (fails accessibility, agents cannot understand image content)
+
+**Good — Comprehensive optimization:**
+
+```html
+<article class="product">
+  <img src="headphones-800w.jpg"
+       srcset="headphones-400w.jpg 400w,
+               headphones-800w.jpg 800w,
+               headphones-1200w.jpg 1200w"
+       sizes="(max-width: 600px) 400px,
+              (max-width: 1200px) 800px,
+              1200px"
+       alt="Over-ear wireless headphones with black cushioned earcups"
+       width="800"
+       height="600"
+       loading="lazy">
+  <h2>Wireless Headphones</h2>
+  <p>Premium audio experience...</p>
+</article>
+
+<article class="product">
+  <img src="speakers-800w.jpg"
+       srcset="speakers-400w.jpg 400w,
+               speakers-800w.jpg 800w,
+               speakers-1200w.jpg 1200w"
+       sizes="(max-width: 600px) 400px,
+              (max-width: 1200px) 800px,
+              1200px"
+       alt="Portable Bluetooth speaker with mesh grille and control buttons"
+       width="800"
+       height="600"
+       loading="lazy">
+  <h2>Portable Speaker</h2>
+</article>
+```
+
+**Attribute breakdown:**
+
+- `srcset` - Multiple image resolutions for responsive delivery
+- `sizes` - Tells browser which image size to use at different viewport widths
+- `width` and `height` - Dimensions prevent layout shift (CLS metric)
+- `loading="lazy"` - Defers loading for off-screen images
+- `alt` - Descriptive text for accessibility and AI agents
+
+**When NOT to lazy load:**
+
+- Hero images above the fold (always load immediately)
+- First 2-3 images in content (visible on initial render)
+- Logo images in header
+
+**Exception - Above the fold images:**
+
+```html
+<header class="hero">
+  <img src="hero-image-1200w.jpg"
+       srcset="hero-image-600w.jpg 600w,
+               hero-image-1200w.jpg 1200w,
+               hero-image-1800w.jpg 1800w"
+       sizes="100vw"
+       alt="Conference attendees collaborating in modern venue"
+       width="1200"
+       height="800"
+       fetchpriority="high">
+  <!-- No loading="lazy" for hero image -->
+</header>
+```
+
+Use `fetchpriority="high"` for critical above-the-fold images instead of lazy loading.
+
+**Business impact:**
+
+- **Mobile experience** - 50-70% bandwidth reduction on initial load
+- **Core Web Vitals** - Prevents layout shift (CLS), improves LCP
+- **Accessibility** - Screen readers announce image descriptions
+- **SEO** - Image alt text improves search discoverability
+- **Agent extraction** - AI agents understand image content without visual parsing
+
+**Real-world example:** Sites with 0% lazy loading and 0% width/height attributes score 45-75/100 for image optimization. Comprehensive optimization pushes scores to 90-100/100 (Web Audit Suite analysis, January 2026).
+
+**Source:** Boye & Company web audit case study (2026-01-23)
 
 ### Skeleton Content for Loading States
 
@@ -3134,6 +3539,151 @@ Sitemap: https://example.com/sitemap.xml
 ```
 
 Note: robots.txt controls access, not usage rights. An AI agent respecting robots.txt may still be blocked from pages you'd want it to access. Use llms.txt for nuanced guidance.
+
+**AI Agent Blocking - Business Impact:**
+
+Many sites block all AI agents through robots.txt without considering the business consequences. This prevents AI assistants from discovering, citing, or recommending your content.
+
+**Common AI agent user-agents to consider:**
+
+**Discovery and recommendation bots** (consider allowing):
+
+- `GPTBot` - ChatGPT training and live responses
+- `anthropic-ai`, `ClaudeBot` - Claude AI assistant
+- `Amazonbot` - Alexa and Amazon AI services
+- `GoogleOther` - Gemini and Google AI products
+- `cohere-ai` - Cohere AI models
+
+**Training data scrapers** (consider selective blocking):
+
+- `ChatGPT-User` - ChatGPT browsing mode
+- `Google-Extended` - Google AI training (separate from search)
+- `CCBot` - Common Crawl dataset
+- `PerplexityBot` - Perplexity AI search
+- `Omgilibot` - Data aggregation
+- `FacebookBot` - Meta AI training
+- `Applebot-Extended` - Apple Intelligence training
+- `YouBot` - You.com search
+- `Bytespider` - TikTok/ByteDance crawler
+
+**Example business impact:**
+
+```text
+User prompt to ChatGPT: "What are the best CMS conferences in 2026?"
+
+If your robots.txt blocks GPTBot:
+- ChatGPT CANNOT recommend your conference
+- Your event is invisible to AI-assisted discovery
+- Competitors without bot restrictions gain visibility
+
+If your robots.txt allows GPTBot:
+- ChatGPT can recommend: "CMS Kickoff 26 in St. Petersburg, Florida"
+- AI agents cite your blog posts and thought leadership
+- Prospective attendees discover your events through AI assistants
+```
+
+**Recommended approach:**
+
+```text
+# robots.txt - Balanced AI agent access
+
+User-agent: *
+Disallow: /admin/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+
+# Allow discovery bots (ChatGPT, Claude, Amazon, Google AI)
+User-agent: GPTBot
+Allow: /blog/
+Allow: /products/
+Allow: /conferences/
+Disallow: /admin/
+Disallow: /account/
+
+User-agent: ClaudeBot
+Allow: /blog/
+Allow: /products/
+Allow: /conferences/
+Disallow: /admin/
+Disallow: /account/
+
+User-agent: Amazonbot
+Allow: /blog/
+Allow: /products/
+Disallow: /admin/
+
+User-agent: GoogleOther
+Allow: /blog/
+Allow: /products/
+Allow: /conferences/
+Disallow: /admin/
+
+# Block training scrapers if data protection is a concern
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+Sitemap: https://example.com/sitemap.xml
+```
+
+**Decision framework:**
+
+**Allow discovery bots if:**
+- You want AI assistants to recommend your products/services
+- Content discovery and citations benefit your business
+- You publish thought leadership or educational content
+- Your revenue model depends on organic discovery
+
+**Block training scrapers if:**
+- Your content is proprietary or competitive intelligence
+- You have copyright concerns about AI training datasets
+- Your business model requires subscription or paywall access
+- Data protection regulations restrict bulk data collection
+
+**Blanket blocking (not recommended):**
+
+```text
+# robots.txt - Blocks ALL AI agents
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: GoogleOther
+Disallow: /
+```
+
+**Business consequences:**
+
+- Zero conference discovery via AI assistants
+- No blog citation capability
+- Competitive disadvantage (competitors gain AI-mediated visibility)
+- Thought leadership contradiction (teaching best practices whilst blocking discovery)
+
+**Testing recommendation:**
+
+After optimizing robots.txt, test agent responses:
+
+```text
+Prompt: "Find information about [your product/service]"
+Expected: Agent can discover and cite your content
+Failure: Agent responds "I cannot access that site" or omits your content
+```
+
+**Real-world example:** Conference organization with robots.txt blocking 34 AI agents saw zero citations in AI-assisted searches. After allowing discovery bots (GPTBot, ClaudeBot, Amazonbot, GoogleOther), AI assistants could recommend events and cite blog posts within 7 days of deployment.
+
+**Source:** Boye & Company web audit case study (2026-01-23)
 
 **sitemap.xml — Content Discovery:**
 
