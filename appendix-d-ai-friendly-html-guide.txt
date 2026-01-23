@@ -20,6 +20,12 @@ Build web pages where state is explicit, information is complete, and structure 
 
 The patterns in this guide progress from quick fixes you can apply in minutes to architectural decisions that require more planning. Start wherever makes sense for your situation.
 
+## Why Machine Experience Matters
+
+For a deeper understanding of why Machine Experience is important, read the blog post [Data Sovereignty and the Web We're Building](https://allabout.network/blogs/mx/data-sovereignty.html). The article demonstrates that when you structure content for AI agents to understand, you're simultaneously making your data portable, accessible, and truly yours.
+
+Key insight: Data sovereignty and Machine Experience aren't separate concerns—they're two aspects of building systems that work well in a world where both humans and AI agents interact with your content. Structure is freedom. Make it machine-readable and you make it portable.
+
 ## Standards vs Proposed Patterns
 
 This guide presents both established standards and proposed patterns:

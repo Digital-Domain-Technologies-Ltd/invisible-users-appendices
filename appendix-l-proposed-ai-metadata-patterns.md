@@ -156,6 +156,50 @@ Attribution requirements with specific attribution text.
 
 **Rationale:** Explicit statement of attribution expectations with precise text to use, ensuring consistent attribution across all AI-generated content.
 
+#### ai-jurisdiction-restriction
+
+Indicates content was created, published, or ingested from a jurisdiction with content restrictions, allowing agents to understand potential legal and content limitations.
+
+**Values:**
+
+- ISO 3166-1 alpha-2 country codes: `CN` (China), `RU` (Russia), `IR` (Iran), `KP` (North Korea), etc.
+- EU member states with GDPR: `EU` (general), or specific codes like `DE` (Germany), `FR` (France)
+- Or `none` if no jurisdictional restrictions apply
+
+**Attributes:**
+
+- `content`: Jurisdiction code (required)
+- `reason`: Brief explanation of restriction type (optional but recommended)
+
+**Example:**
+
+```html
+<meta name="ai-jurisdiction-restriction" content="CN" reason="Content sourced from jurisdiction with government content controls">
+
+<meta name="ai-jurisdiction-restriction" content="EU" reason="GDPR right-to-be-forgotten applies to training data">
+
+<meta name="ai-jurisdiction-restriction" content="RU" reason="Content subject to Russian information restrictions">
+
+<meta name="ai-jurisdiction-restriction" content="none">
+```
+
+**Rationale:** When LLMs ingest training data from restricted jurisdictions, this meta tag signals potential legal constraints that may persist when the model operates in unrestricted jurisdictions. Content creators could use robots.txt directives or the `noindex` meta tag to prevent AI ingestion entirely, but this is an all-or-nothing approach that excludes content from all search engines, all AI agents, and all automated discovery mechanisms. The `ai-jurisdiction-restriction` meta tag offers a more nuanced solution: content remains discoverable and accessible whilst signaling jurisdictional constraints that might affect how agents use it. Helps agents:
+
+- Understand jurisdictional origin of training data
+- Flag content that may be subject to GDPR "right to be forgotten"
+- Identify material from jurisdictions with content controls (China, Russia, Iran)
+- Determine whether jurisdictional restrictions apply to model outputs
+- Assess legal risk when using information from restricted sources
+
+**Use Cases:**
+
+1. **GDPR Compliance:** EU-sourced content signals that right-to-be-forgotten requests may apply
+2. **Restricted Jurisdiction Content:** China/Russia-sourced material may be subject to home jurisdiction controls
+3. **Legal Disclosure:** Agents can warn users when information comes from jurisdictionally-restricted sources
+4. **Regulatory Compliance:** Helps AI platforms document training data provenance
+
+**Related:** See Chapter 7 "Data Ingestion in Restricted Jurisdictions" section for detailed legal and practical implications.
+
 #### llms-txt Reference
 
 Points to site-wide llms.txt file.
@@ -180,6 +224,7 @@ Points to site-wide llms.txt file.
   <meta name="ai-freshness" content="hourly">
   <meta name="ai-structured-data" content="json-ld">
   <meta name="ai-attribution" content="required" text="Source: Example Store, https://example.com">
+  <meta name="ai-jurisdiction-restriction" content="none">
   <meta name="llms-txt" content="/llms.txt">
 
   <!-- Established standards -->
@@ -983,7 +1028,7 @@ If you implement these patterns:
 
 ### Proposed Patterns Consolidated
 
-1. **AI Meta Tag Namespace** (6 tags) — Page-level agent guidance
+1. **AI Meta Tag Namespace** (7 tags) — Page-level agent guidance
 2. **data-agent-visible Attribute** — Hidden machine-readable instructions
 3. **Common Data Attributes** (25+ attributes) — Explicit state management and e-commerce data
 4. **Pandoc YAML Frontmatter** — Universal markdown metadata standard
