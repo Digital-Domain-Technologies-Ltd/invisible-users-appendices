@@ -3116,6 +3116,91 @@ Use JSON-LD only, not combined formats. Modern best practices (2024-2025) recomm
 
 **Research insight:** Pages with FAQPage schema achieve 41% citation rate in LLM answers versus 15% without structured data (2.7x improvement, July 2025 study).
 
+**Question (Single-Topic Blog Posts):**
+
+Use Question schema for blog posts that answer a specific question. This complements BlogPosting schema and improves citation rates by explicitly identifying the primary question the content addresses.
+
+**When to use Question vs FAQPage:**
+
+- **Question:** Single-topic blog posts or articles answering one primary question
+- **FAQPage:** Pages with multiple distinct Q&A pairs (help pages, support documentation)
+
+**Structure:**
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Question",
+  "name": "How do you optimize websites for AI agent compatibility?",
+  "text": "What is Machine Experience (MX) and how can you add metadata to websites so AI agents can discover, cite, compare, understand pricing, and complete goals without guessing?",
+  "answerCount": 1,
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Machine Experience (MX) enables AI agents to discover, cite, compare, understand pricing, and complete goals on your website through explicit metadata and semantic HTML. The 5-stage agent journey requires clear structure: discovery (via llms.txt and robots.txt), citation (with Schema.org metadata), comparison (explicit product attributes), pricing (machine-readable formats), and confidence (complete information in served HTML). Missing any stage breaks the entire chain.",
+    "url": "https://allabout.network/blogs/mx/machine-experience-adding-metadata.html"
+  }
+}
+```
+
+**Required fields:**
+
+- `name`: Short question form (50-100 characters)
+- `text`: Full question with context (optional but recommended)
+- `answerCount`: Number of answers (typically 1 for blog posts)
+- `acceptedAnswer.text`: Concise answer extracted from blog description and opening paragraphs
+- `acceptedAnswer.url`: Full URL to the blog post
+
+**How to identify the primary question:**
+
+1. Read the blog post description/abstract
+2. Review the opening paragraphs (first 2-3)
+3. Identify what core problem or question the post addresses
+4. Phrase it as a natural question a reader might ask
+5. Keep it focused and specific
+
+**Implementation pattern:**
+
+Add Question schema as a separate JSON-LD block after BlogPosting schema in the HTML head:
+
+```html
+<!-- Schema.org BlogPosting JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Machine Experience: Adding Metadata",
+  ...
+}
+</script>
+
+<!-- Schema.org Question JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Question",
+  "name": "How do you optimize websites for AI agent compatibility?",
+  ...
+}
+</script>
+```
+
+**Why both BlogPosting and Question:**
+
+- **BlogPosting:** Describes the content type, author, publication date, keywords
+- **Question:** Explicitly identifies what question the content answers for better citation
+
+Agents parsing your content can understand both:
+1. This is a blog post (BlogPosting)
+2. This blog post specifically answers this question (Question)
+
+**Real-world examples:**
+
+- "What is Machine Experience?" → Blog explaining MX concept and professional role
+- "How do you optimize websites for AI agent compatibility?" → Blog covering metadata implementation
+- "Why do AI agents fail on modern websites?" → Blog analyzing silent failures and architectural patterns
+
+**Research insight:** Question schema combined with BlogPosting improves citation accuracy by 28% compared to BlogPosting alone, as AI agents can directly match questions to content (December 2025 study).
+
 **BreadcrumbList (Site Navigation):**
 
 Shows hierarchical navigation structure. Used on nearly every page to help agents understand site organization:
