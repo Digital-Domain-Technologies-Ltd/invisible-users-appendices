@@ -81,6 +81,13 @@ strong {
   font-weight: 600;
 }
 
+.tagline {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #0066cc;
+  margin-top: 1rem;
+}
+
 .highlight-box {
   background: #f9fafb;
   border-left: 4px solid #3b82f6;
