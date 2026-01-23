@@ -45,6 +45,29 @@ This guide presents both established standards and proposed patterns:
 
 All patterns shown are designed to be forward-compatible — they won't break anything if agents don't recognise them. Think of them as progressive enhancement for AI.
 
+## Language and Spelling Conventions
+
+**Prose text**: British English throughout this guide (organise, colour, whilst, recognised, optimise).
+
+**Code, JSON, and metadata**: Follow international standards and established conventions:
+
+- Schema.org vocabulary: `"@type": "Organization"` (not "Organisation")
+- HTML attributes: `lang="en-GB"` (ISO standard)
+- JSON property names: `streetAddress`, `postalCode` (camelCase convention)
+- HTTP headers: `Content-Type`, `Authorization` (established standards)
+
+**Rationale**: Technical standards define specific spelling for interoperability. Prose explanations use British English, whilst code examples preserve standard-compliant syntax.
+
+**Example**:
+
+```html
+<!-- Prose: "The organisation uses Schema.org markup" (British English) -->
+<!-- Code: Follows Schema.org standard exactly -->
+<div itemscope itemtype="https://schema.org/Organization">
+  <span itemprop="name">Digital Domain Technologies</span>
+</div>
+```
+
 ---
 
 ## Part 1 — Quick Reference Tables
