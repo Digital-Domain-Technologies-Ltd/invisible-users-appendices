@@ -2139,6 +2139,257 @@ a:focus {
 
 This pattern demonstrates the convergence principle: implementing for the most demanding users (keyboard, screen reader, reduced motion) creates structure that benefits everyone including AI agents.
 
+### Heading Anchor IDs for Deep Linking
+
+All section headings (H2-H6) should include unique ID attributes to enable deep linking, table of contents navigation, and skip-to-section functionality. This pattern benefits both human users and AI agents by creating stable reference points within content.
+
+**Why this matters:**
+
+- **Deep linking** - Users can link directly to specific sections (e.g., `example.com/article#key-findings`)
+- **Table of contents** - Enables automatic generation of clickable navigation
+- **Skip navigation** - Allows jumping directly to relevant sections without scrolling
+- **AI agent citation** - Agents can reference specific sections with precise URLs
+- **Accessibility** - Screen reader users can navigate by headings and jump to specific sections
+- **URL fragments** - Browser "find in page" and URL fragments work predictably
+
+**Bad - Headings without IDs:**
+
+```html
+<article>
+  <h1>Machine Experience: A Comprehensive Guide</h1>
+
+  <h2>What is Machine Experience?</h2>
+  <p>Machine Experience (MX) describes the practice...</p>
+
+  <h2>Core Principles</h2>
+  <p>The convergence principle states...</p>
+
+  <h3>Semantic Clarity</h3>
+  <p>Structure precedes presentation...</p>
+
+  <h3>Explicit State</h3>
+  <p>Make system state machine-readable...</p>
+</article>
+```
+
+Problems:
+- Cannot link to specific sections
+- Table of contents requires manual anchor creation
+- Screen reader users must scroll through content
+- AI agents cannot provide precise section references
+
+**Good - All headings with semantic IDs:**
+
+```html
+<article>
+  <h1>Machine Experience: A Comprehensive Guide</h1>
+
+  <h2 id="what-is-machine-experience">What is Machine Experience?</h2>
+  <p>Machine Experience (MX) describes the practice...</p>
+
+  <h2 id="core-principles">Core Principles</h2>
+  <p>The convergence principle states...</p>
+
+  <h3 id="semantic-clarity">Semantic Clarity</h3>
+  <p>Structure precedes presentation...</p>
+
+  <h3 id="explicit-state">Explicit State</h3>
+  <p>Make system state machine-readable...</p>
+</article>
+
+<!-- Table of contents can reference these IDs -->
+<nav aria-label="Table of contents">
+  <ul>
+    <li><a href="#what-is-machine-experience">What is Machine Experience?</a></li>
+    <li><a href="#core-principles">Core Principles</a>
+      <ul>
+        <li><a href="#semantic-clarity">Semantic Clarity</a></li>
+        <li><a href="#explicit-state">Explicit State</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+```
+
+**ID generation rules:**
+
+1. **Slugify heading text** - Convert to lowercase, replace spaces with hyphens, remove special characters
+2. **Keep it readable** - `#semantic-clarity` not `#sc` or `#section-2-3`
+3. **Ensure uniqueness** - If duplicate headings exist, append context (e.g., `#installation-requirements`, `#installation-windows`)
+4. **Avoid date/version numbers** - IDs should remain stable across content updates
+5. **Use English** - Even for internationalized content, English IDs provide consistency
+
+**Example ID generation:**
+
+| Heading Text | Generated ID |
+| ------------ | ------------ |
+| What is Machine Experience? | what-is-machine-experience |
+| Core Principles | core-principles |
+| Installation: Prerequisites | installation-prerequisites |
+| FAQ (Frequently Asked Questions) | faq |
+| Step 1: Configure Your Environment | step-1-configure-your-environment |
+
+**Benefits across audiences:**
+
+- **Human users** - Shareable links to specific sections, easier navigation
+- **Screen reader users** - Quick navigation between headings with keyboard shortcuts
+- **Mobile users** - Jumping to relevant content without excessive scrolling
+- **AI agents** - Precise citation references with section-level granularity
+- **Search engines** - Featured snippets can link directly to answer sections
+
+**Implementation notes:**
+
+- Apply to H2-H6 headings (H1 is typically the page title, doesn't need ID)
+- IDs must be unique within the document
+- Test links work correctly (clicking TOC entry scrolls to heading)
+- Consider adding `tabindex="-1"` to headings for programmatic focus management
+
+### Social Media Card Meta Tags
+
+Social media platforms (Facebook, Twitter/X, LinkedIn) display rich previews when URLs are shared. These previews are generated from Open Graph and Twitter Card meta tags. Providing these tags ensures your content appears correctly when shared, benefiting both human discovery and AI agent content analysis.
+
+**Why this matters:**
+
+- **Shareability** - Rich previews increase click-through rates by 2-3x vs plain URLs
+- **Brand control** - You specify exactly how your content appears when shared
+- **Discovery** - AI platforms and social media indexers use these tags for content classification
+- **Consistency** - Prevents platforms from guessing preview content incorrectly
+- **Professional appearance** - Proper previews signal content quality and legitimacy
+
+**Required Open Graph meta tags:**
+
+```html
+<head>
+  <!-- Primary Open Graph tags (required) -->
+  <meta property="og:title" content="Machine Experience: Design for Machines, Benefit Humans">
+  <meta property="og:description" content="Learn how optimizing interfaces for AI agents creates better experiences for all users through the convergence principle.">
+  <meta property="og:image" content="https://example.com/images/mx-social-card.png">
+  <meta property="og:url" content="https://example.com/blog/machine-experience">
+  <meta property="og:type" content="article">
+
+  <!-- Additional Open Graph tags (recommended) -->
+  <meta property="og:site_name" content="AllAbout Network">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- For articles (optional but valuable) -->
+  <meta property="article:published_time" content="2026-01-24T10:00:00Z">
+  <meta property="article:author" content="Tom Cranstoun">
+  <meta property="article:section" content="Technology">
+  <meta property="article:tag" content="AI">
+  <meta property="article:tag" content="User Experience">
+  <meta property="article:tag" content="Web Development">
+</head>
+```
+
+**Twitter/X Card meta tags:**
+
+```html
+<head>
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@yourhandle">
+  <meta name="twitter:creator" content="@authorhandle">
+  <meta name="twitter:title" content="Machine Experience: Design for Machines, Benefit Humans">
+  <meta name="twitter:description" content="Learn how optimizing interfaces for AI agents creates better experiences for all users through the convergence principle.">
+  <meta name="twitter:image" content="https://example.com/images/mx-social-card.png">
+  <meta name="twitter:image:alt" content="Diagram showing convergence between human and machine experience">
+</head>
+```
+
+**Image specifications:**
+
+- **Recommended size:** 1200 × 630 pixels (1.91:1 aspect ratio)
+- **Minimum size:** 600 × 314 pixels
+- **Maximum file size:** 8 MB (prefer < 1 MB for fast loading)
+- **Format:** PNG, JPG, or WebP (PNG recommended for diagrams/text)
+- **Safe zone:** Keep important content 40px from edges (platforms may crop)
+- **Text legibility:** Use 60pt+ font size for any text in image
+- **Absolute URLs:** Always use full URLs (e.g., `https://example.com/image.png`)
+
+**Complete example (blog post):**
+
+```html
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary meta tags -->
+  <title>Machine Experience: Design for Machines, Benefit Humans</title>
+  <meta name="description" content="Learn how optimizing interfaces for AI agents creates better experiences for all users through the convergence principle.">
+  <meta name="author" content="Tom Cranstoun">
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:title" content="Machine Experience: Design for Machines, Benefit Humans">
+  <meta property="og:description" content="Learn how optimizing interfaces for AI agents creates better experiences for all users through the convergence principle.">
+  <meta property="og:image" content="https://allabout.network/blogs/mx/machine-experience-social.png">
+  <meta property="og:url" content="https://allabout.network/blogs/mx/machine-experience">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="AllAbout Network">
+  <meta property="og:locale" content="en_GB">
+  <meta property="article:published_time" content="2026-01-24T10:00:00Z">
+  <meta property="article:author" content="Tom Cranstoun">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Machine Experience: Design for Machines, Benefit Humans">
+  <meta name="twitter:description" content="Learn how optimizing interfaces for AI agents creates better experiences for all users.">
+  <meta name="twitter:image" content="https://allabout.network/blogs/mx/machine-experience-social.png">
+  <meta name="twitter:image:alt" content="Venn diagram showing overlap between human UX and machine experience">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://allabout.network/blogs/mx/machine-experience">
+</head>
+<body>
+  <article>
+    <h1>Machine Experience: Design for Machines, Benefit Humans</h1>
+    <!-- Content -->
+  </article>
+</body>
+</html>
+```
+
+**Testing social media cards:**
+
+- **Facebook Sharing Debugger:** `https://developers.facebook.com/tools/debug/`
+- **Twitter Card Validator:** `https://cards-dev.twitter.com/validator`
+- **LinkedIn Post Inspector:** `https://www.linkedin.com/post-inspector/`
+- **Open Graph Debugger:** `https://www.opengraph.xyz/`
+
+**Common mistakes to avoid:**
+
+1. **Relative URLs for images** - Always use absolute URLs (https://)
+2. **Missing og:image** - Results in no preview image
+3. **Wrong image size** - Too small images appear blurry
+4. **Forgetting image alt text** - Twitter requires `twitter:image:alt` for accessibility
+5. **Title/description too long** - Facebook truncates at ~60 chars (title), ~200 chars (description)
+6. **Not testing before sharing** - Use validators to check rendering
+
+**Benefits across audiences:**
+
+- **Social media users** - Rich previews with images increase engagement
+- **Content creators** - Control exactly how content appears when shared
+- **SEO** - Search engines use Open Graph data for featured snippets
+- **AI agents** - Meta tags provide structured content summaries for classification
+- **Brand consistency** - Professional appearance across all sharing platforms
+
+**Priority ranking:**
+
+| Priority | Tag | Required? | Impact |
+| -------- | --- | --------- | ------ |
+| 1 | og:title | Yes | Displayed as preview headline |
+| 1 | og:description | Yes | Displayed as preview text |
+| 1 | og:image | Yes | Visual preview (highest engagement driver) |
+| 1 | og:url | Yes | Canonical link for sharing |
+| 1 | og:type | Yes | Content classification (article, website, product) |
+| 2 | twitter:card | Recommended | Controls Twitter preview format |
+| 2 | twitter:image:alt | Recommended | Accessibility for Twitter users |
+| 3 | article:published_time | Optional | Freshness signal for articles |
+| 3 | og:site_name | Optional | Branding across all shared content |
+
+Start with priority 1 tags (all pages), add priority 2 for social sharing optimization, add priority 3 for articles and blog posts.
+
 ### Navigation and Breadcrumbs
 
 Make site structure explicit so agents understand where they are and where they can go.
