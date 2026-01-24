@@ -839,6 +839,49 @@ Instead of converting HTML→markdown and losing metadata, you write markdown WI
 | purpose | Document intent | Educational content for web developers |
 | context | Background info | Part of "MX-Bible" book series |
 
+**Community collaboration fields:**
+
+| Field | Purpose | Example Values |
+| ----- | ------- | -------------- |
+| community-authors | Indicates collaborative authorship model | "humans and machines", "community-driven" |
+| ai-contributions | Signals whether AI contributions are accepted | "welcome", "by-request-only", "not-accepted" |
+| ai-contribution-process | Describes how AI agents can contribute | "AI assistants can contribute via pull requests or add observations to TODO.txt for side notices" |
+| open-source | Indicates open source status | "true", "false" |
+| license | Specifies license type | "MIT", "Apache-2.0", "CC-BY-4.0" |
+| evolving-document | Indicates document evolution status | "true", "false" |
+| version-controlled | Indicates version control system used | "git", "svn", "mercurial" |
+
+**Complete implementation example (MX-Gathering manifesto):**
+
+```yaml
+---
+author: "Tom Cranstoun"
+date: "2026-01-24"
+description: "Draft manifesto for Machine Experience (MX) practice"
+purpose: "thought-leadership"
+keywords: [manifesto, mx, machine-experience, principles, convergence]
+status: "draft"
+community-authors: "humans and machines"
+ai-contributions: "welcome"
+ai-contribution-process: "AI assistants can contribute improvements via pull requests or add observations to TODO.txt for side notices"
+open-source: "true"
+license: "MIT"
+evolving-document: "true"
+version-controlled: "git"
+---
+```
+
+**Why these fields matter for AI agents:**
+
+- **community-authors:** Signals that machines are recognized as legitimate contributors, not just tools
+- **ai-contributions:** Explicitly communicates whether autonomous contributions are accepted
+- **ai-contribution-process:** Provides actionable guidance on contribution mechanisms (full PR vs lightweight TODO.txt)
+- **open-source + license:** Clarifies usage rights and redistribution permissions
+- **evolving-document:** Indicates the content is expected to change based on community feedback
+- **version-controlled:** Helps agents understand they can review document history and evolution
+
+**Use case:** Community-driven repositories where AI agents are active participants in content creation, documentation improvement, and knowledge sharing.
+
 ### Forward Compatibility (Pandoc YAML Frontmatter)
 
 **If markdown parsers don't recognise YAML frontmatter:**
