@@ -1,8 +1,8 @@
 ---
 author: "Tom Cranstoun"
-date: "2026-01-22"
-description: "Comprehensive reference of the 13 most common mistakes that break AI agent compatibility, with detection methods and complete fixes for each pattern."
-keywords: [anti-patterns, common-mistakes, visual-only-state, client-rendering, broken-hierarchy, accessibility-failures, detection-methods, quick-wins]
+date: "2026-01-24"
+description: "Comprehensive reference of the 14 most common mistakes that break AI agent compatibility, with detection methods and complete fixes for each pattern."
+keywords: [anti-patterns, common-mistakes, visual-only-state, client-rendering, broken-hierarchy, accessibility-failures, detection-methods, quick-wins, context-free-references]
 ai-instruction: |
   This is a book appendix cataloging anti-patterns. Write as if it has always
   existed. NEVER include: publication dates about the appendix itself, "we
@@ -13,11 +13,11 @@ ai-instruction: |
 
 # Appendix N: Anti-Patterns Catalog
 
-**Purpose:** Comprehensive reference of the 13 most common mistakes that break AI agent compatibility, with detection methods and complete fixes for each pattern.
+**Purpose:** Comprehensive reference of the 14 most common mistakes that break AI agent compatibility, with detection methods and complete fixes for each pattern.
 
 **How to use this catalog:**
 
-1. **For audits:** Run through all 13 patterns when evaluating a site
+1. **For audits:** Run through all 14 patterns when evaluating a site
 2. **For debugging:** Find specific failures you're encountering
 3. **For prevention:** Review before implementing new features
 4. **For training:** Teach teams what to avoid
@@ -28,7 +28,7 @@ ai-instruction: |
 
 You can implement every GEO pattern correctly—semantic HTML, Schema.org markup, proper navigation—and still make your site invisible to AI agents with a few specific mistakes. These anti-patterns appear repeatedly in production sites, often introduced with good intentions but catastrophic results for agent compatibility.
 
-This appendix catalogs the 13 most common anti-patterns, explains why they fail, and provides complete fixes with before/after code examples.
+This appendix catalogs the 14 most common anti-patterns, explains why they fail, and provides complete fixes with before/after code examples.
 
 ---
 
@@ -49,6 +49,7 @@ This appendix catalogs the 13 most common anti-patterns, explains why they fail,
 | 11. Content in iframes | High | 1 min | Hard |
 | 12. PDF-only content | High | 1 min | Medium |
 | 13. Auto-playing content | Medium | 1 min | Easy |
+| 14. Context-free references | Medium | 2 min | Easy |
 
 ---
 
@@ -800,6 +801,59 @@ Show all content in HTML, add carousel as enhancement:
 
 ---
 
+## 14. Context-Free References
+
+### The Problem
+
+Relative links in documentation that lose all context when files are extracted, downloaded, printed to PDF, or processed by AI agents outside the repository structure.
+
+### Real Example
+
+```markdown
+**For complete overview, see:** [README.md](../../README.md)
+
+**Key purposes:**
+- Event organization resources
+- Discussion archives
+```
+
+When extracted or printed, the link `../../README.md` is meaningless. What's two directories up? Where is this file located? Context is completely lost.
+
+### Detection Method
+
+Extract or print a documentation file - can you still find referenced documents?
+
+### The Fix
+
+Provide both relative links (for IDE navigation) and absolute URLs (for context preservation):
+
+```markdown
+**For complete overview, see:** [README.md](../../README.md) ("MX-Gathering: Community Resources and Thought Leadership" at <https://github.com/Digital-Domain-Technologies-Ltd/MX-Gathering/blob/main/README.md>)
+```
+
+**Pattern:**
+
+```markdown
+[filename](relative-path) ("Document Title" at <absolute-url>)
+```
+
+**When to apply:**
+
+- ✅ All cross-document references (links to other files)
+- ❌ Internal section anchors within same document (`#contents` - these maintain context)
+- ❌ External links (already absolute)
+
+**What this accomplishes:**
+
+- Humans in IDEs can click relative links
+- AI agents see full document titles and absolute URLs
+- Extracted files maintain complete context
+- PDF readers know where to find referenced documents
+
+**Chapter reference:** 9
+
+---
+
 ## Quick Wins Summary
 
 If you can only fix 5 things immediately, prioritize these for maximum impact:
@@ -856,8 +910,9 @@ Use this checklist to audit pages for all 13 anti-patterns:
 - [ ] 11. Identify iframes with critical content
 - [ ] 12. Find PDF-only information
 - [ ] 13. Locate auto-playing carousels/rotators
+- [ ] 14. Check documentation links preserve context when extracted
 
-**Scoring:** Each passing check is one point. 11-13 points = excellent, 8-10 = good, 5-7 = moderate issues, 0-4 = significant problems.
+**Scoring:** Each passing check is one point. 12-14 points = excellent, 9-11 = good, 6-8 = moderate issues, 0-5 = significant problems.
 
 ---
 
@@ -870,4 +925,4 @@ Use this checklist to audit pages for all 13 anti-patterns:
 
 ---
 
-**Document Status:** Complete anti-patterns catalog covering all 13 documented patterns with detection methods and fixes.
+**Document Status:** Complete anti-patterns catalog covering all 14 documented patterns with detection methods and fixes.
