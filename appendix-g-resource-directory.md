@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
 date: "2026-01-22"
 description: "Curated directory of standards, specifications, tools, and resources for building AI-friendly websites."
@@ -7,6 +8,7 @@ book: "Shared"
 appendix: "G"
 wordcount: 2257
 ai-instruction: |
+  This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
   "this update", or any meta-commentary about the book's development.

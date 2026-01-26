@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
 date: "2026-01-22"
 description: "Priority-based implementation roadmap for AI agent compatibility, from critical quick wins to advanced patterns."
@@ -7,6 +8,7 @@ book: "Shared"
 appendix: "F"
 wordcount: 4432
 ai-instruction: |
+  This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
   "this update", or any meta-commentary about the book's development.

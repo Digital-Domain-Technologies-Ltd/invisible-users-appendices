@@ -1,12 +1,14 @@
 ---
+copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
-description: "Production-ready HTML templates for 20 common page types with semantic structure, Schema.org data, and AI-friendly patterns."
-keywords: [page-patterns, html-templates, schema-org, semantic-html, production-ready, page-types]
+date: "2026-01-26"
+description: "Production-ready HTML templates for 20 common page types plus comprehensive reference sections: Schema.org JSON-LD templates (K.3), call-to-action patterns (K.4), and machine-parsable list structures (K.5). Complete implementations with semantic HTML, WCAG 2.1 AA compliance, and AI-friendly patterns."
+keywords: [page-patterns, html-templates, schema-org, semantic-html, production-ready, page-types, json-ld, cta-patterns, resource-lists, navigation-patterns]
 book: "Shared"
 appendix: "K"
-wordcount: 12517
+wordcount: 17078
 ai-instruction: |
+  This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
   "this update", or any meta-commentary about the book's development.
@@ -3372,5 +3374,1659 @@ The author or profile page establishes personal identity and expertise. For AI a
 </html>
 
 ```
+
+---
+
+## K.3 JSON-LD Schema.org Templates
+
+The page patterns above demonstrate JSON-LD structured data embedded within complete HTML documents. This section extracts the core Schema.org types as reusable templates, showing the essential properties for each type.
+
+### Purpose of This Reference
+
+When implementing a new page, you need to know which Schema.org type to use and what properties are required. This reference provides:
+
+- **Minimal valid examples** - The minimum properties needed for each type
+- **Common optional properties** - Frequently used properties that enhance agent understanding
+- **Type selection guidance** - When to use each Schema.org type
+- **Cross-references** - Links to full page implementations above
+
+### How to Use JSON-LD Templates
+
+1. **Select your Schema.org type** based on the page purpose
+2. **Copy the minimal template** as your starting point
+3. **Add optional properties** that match your content
+4. **Validate the JSON-LD** using Schema.org validator
+5. **Embed in your page's `<head>`** section within `<script type="application/ld+json">`
+
+### Template Format
+
+Each template shows:
+
+- **@type**: The Schema.org type name
+- **Required properties**: Marked with ⚠️ (validation will fail without these)
+- **Recommended properties**: Marked with ✓ (agents expect these)
+- **Optional properties**: Unmarked (enhance discoverability)
+
+---
+
+### WebSite + Organization (Home Pages)
+
+**When to use:** Home pages, site landing pages, organization homepages
+
+**Reference implementation:** [Section 1: Home Page](#1-home-page-digital-storefront)
+
+**WebSite Schema:**
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "Site Name", // ⚠️ Required
+  "url": "https://example.com", // ⚠️ Required
+  "description": "Brief site description", // ✓ Recommended
+  "publisher": {
+    "@type": "Organization",
+    "name": "Organization Name", // ⚠️ Required
+    "url": "https://example.com"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://example.com/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+```
+
+**Organization Schema (companion):**
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "Organization",
+  "name": "Organization Name", // ⚠️ Required
+  "url": "https://example.com", // ⚠️ Required
+  "logo": "https://example.com/logo.png", // ✓ Recommended
+  "description": "What the organization does",
+  "email": "contact@example.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "City",
+    "addressCountry": "GB"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/example",
+    "https://github.com/example"
+  ]
+}
+```
+
+---
+
+### Book (Product Pages for Books)
+
+**When to use:** Book sales pages, book landing pages, author portfolio showing books
+
+**Reference implementation:** [Section 4: Sales Page](#4-sales-page-book-purchase-landing-page)
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "Book",
+  "name": "Book Title", // ⚠️ Required
+  "author": {
+    "@type": "Person",
+    "name": "Author Name", // ⚠️ Required
+    "url": "https://example.com/author"
+  },
+  "description": "Book description (200-300 words)", // ✓ Recommended
+  "isbn": "978-1-234567-89-0", // ✓ Recommended (if available)
+  "numberOfPages": 320,
+  "bookFormat": "https://schema.org/Paperback", // Or EBook, Hardcover
+  "inLanguage": "en-GB",
+  "datePublished": "2026-03-31", // ✓ Recommended
+  "publisher": {
+    "@type": "Organization",
+    "name": "Publisher Name"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "24.99", // ⚠️ Required for commerce
+    "priceCurrency": "GBP", // ⚠️ Required
+    "availability": "https://schema.org/InStock", // ⚠️ Required
+    "url": "https://example.com/book/buy"
+  },
+  "image": "https://example.com/book-cover.jpg" // ✓ Recommended
+}
+```
+
+---
+
+### Article / BlogPosting (Blog Posts & Articles)
+
+**When to use:** Blog posts, news articles, thought leadership content, technical articles
+
+**Reference implementation:** [Section 7: Blog Post Page](#7-blog-post-page-thought-leadership-content), [Section 8: Article Page](#8-article-page-long-form-technical-content)
+
+**BlogPosting (for blog posts):**
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "BlogPosting",
+  "headline": "Blog Post Title", // ⚠️ Required
+  "author": {
+    "@type": "Person",
+    "name": "Author Name", // ⚠️ Required
+    "url": "https://example.com/author"
+  },
+  "datePublished": "2026-01-26", // ⚠️ Required
+  "dateModified": "2026-01-26", // ✓ Recommended (update when content changes)
+  "description": "Brief post summary (150-200 characters)", // ✓ Recommended
+  "articleBody": "Full post content (optional, can be omitted if large)",
+  "image": "https://example.com/post-image.jpg", // ✓ Recommended
+  "publisher": {
+    "@type": "Organization",
+    "name": "Publisher/Site Name", // ⚠️ Required
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.com/blog/post-slug"
+  }
+}
+```
+
+**Article (for long-form content):**
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "Article",
+  "headline": "Article Title", // ⚠️ Required
+  "author": {
+    "@type": "Person",
+    "name": "Author Name", // ⚠️ Required
+    "jobTitle": "Software Consultant"
+  },
+  "datePublished": "2026-01-26", // ⚠️ Required
+  "dateModified": "2026-01-26",
+  "description": "Article summary",
+  "wordCount": 3500,
+  "articleSection": "Technology", // Category/section
+  "keywords": ["keyword1", "keyword2", "keyword3"],
+  "image": "https://example.com/article-hero.jpg",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Publisher Name", // ⚠️ Required
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/logo.png"
+    }
+  }
+}
+```
+
+---
+
+### Service (Consulting/Professional Services)
+
+**When to use:** Service pages, consulting offerings, professional services descriptions
+
+**Reference implementation:** [Section 6: Consulting Service Page](#6-consulting-service-page-professional-web-audits)
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "Service",
+  "name": "Service Name", // ⚠️ Required
+  "description": "Detailed service description", // ✓ Recommended
+  "provider": {
+    "@type": "Organization",
+    "name": "Provider Name", // ⚠️ Required
+    "url": "https://example.com"
+  },
+  "serviceType": "Web Development Consulting",
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Kingdom"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "Starting at £2,500", // Can be text for variable pricing
+    "priceCurrency": "GBP",
+    "description": "Custom pricing based on project scope"
+  }
+}
+```
+
+---
+
+### Person (Author/Profile Pages)
+
+**When to use:** Author pages, team member profiles, about pages for individuals
+
+**Reference implementation:** [Section 12: Author/Profile Page](#12-authorprofile-page-personal-biography)
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "Person",
+  "name": "Person Name", // ⚠️ Required
+  "givenName": "First Name",
+  "familyName": "Last Name",
+  "jobTitle": "Job Title", // ✓ Recommended
+  "description": "Professional bio (100-200 words)",
+  "url": "https://example.com/author", // ✓ Recommended
+  "image": "https://example.com/photo.jpg",
+  "email": "person@example.com",
+  "telephone": "+44-20-1234-5678",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "London",
+    "addressCountry": "GB"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/person",
+    "https://github.com/person"
+  ],
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "University Name"
+    }
+  ],
+  "knowsLanguage": [
+    {
+      "@type": "Language",
+      "name": "English",
+      "alternateName": "en"
+    }
+  ]
+}
+```
+
+---
+
+### FAQPage (FAQ/Q&A Content)
+
+**When to use:** FAQ pages, help pages, knowledge base articles with question-answer format
+
+**Reference implementation:** [Section 9: FAQ Page](#9-faq-page-frequently-asked-questions)
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "FAQPage",
+  "mainEntity": [ // ⚠️ Required (array of questions)
+    {
+      "@type": "Question",
+      "name": "Question text as users would ask it?", // ⚠️ Required
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Complete answer in plain text or HTML" // ⚠️ Required
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Second question?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Second answer with full details"
+      }
+    }
+  ]
+}
+```
+
+---
+
+### ItemList + ListItem (Resource Directories, Collections)
+
+**When to use:** Resource lists, tool directories, link collections, curated lists
+
+**Reference implementation:** [Section 5: Collection Page](#5-collection-page-resource-directory)
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "ItemList",
+  "name": "List Title", // ⚠️ Required
+  "description": "What this list contains",
+  "numberOfItems": 5, // ✓ Recommended
+  "itemListElement": [ // ⚠️ Required
+    {
+      "@type": "ListItem",
+      "position": 1, // ⚠️ Required
+      "name": "Resource Name", // ⚠️ Required
+      "url": "https://example.com/resource", // ✓ Recommended
+      "description": "What this resource provides"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Second Resource",
+      "url": "https://example.com/resource-2"
+    }
+  ]
+}
+```
+
+---
+
+### BreadcrumbList (Navigation Breadcrumbs)
+
+**When to use:** Every page except home (shows navigation path)
+
+**Reference implementation:** Used in multiple examples above
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "BreadcrumbList",
+  "itemListElement": [ // ⚠️ Required
+    {
+      "@type": "ListItem",
+      "position": 1, // ⚠️ Required
+      "name": "Home", // ⚠️ Required
+      "item": "https://example.com" // ⚠️ Required
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Category",
+      "item": "https://example.com/category"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Current Page",
+      "item": "https://example.com/category/page"
+    }
+  ]
+}
+```
+
+---
+
+### Additional Schema.org Types
+
+The page patterns above also demonstrate these types:
+
+- **Event** - [Section 14: Event/Webinar Page](#14-eventwebinar-page-live-presentation-registration)
+- **Product + Offer** - [Section 16: Checkout Page](#16-checkout-page-e-commerce-transaction), [Section 12: Pricing Page](#12-pricing-page-service-tiers-comparison)
+- **SearchResultsPage** - [Section 17: Search Results Page](#17-search-results-page-query-results-display)
+- **Review + AggregateRating** - [Section 20: Testimonials Page](#20-testimonials-page-customer-reviews)
+
+### Combining Multiple Types
+
+Many pages benefit from multiple Schema.org types. For example:
+
+**Article + Person (blog post with author details):**
+
+```json
+[
+  {
+    "@context": "https://schema.org/",
+    "@type": "BlogPosting",
+    "headline": "Post Title",
+    "author": {
+      "@id": "#author"
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "@id": "#author",
+    "name": "Author Name",
+    "jobTitle": "Consultant"
+  }
+]
+```
+
+**Product + Service (service sold as product):**
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": ["Product", "Service"],
+  "name": "Professional Web Audit",
+  "description": "Comprehensive agent compatibility assessment",
+  "offers": {
+    "@type": "Offer",
+    "price": "2500",
+    "priceCurrency": "GBP"
+  }
+}
+```
+
+### Validation Workflow
+
+**After creating JSON-LD:**
+
+1. **Format check**: Paste into [JSONLint](https://jsonlint.com/) to verify JSON syntax
+2. **Schema validation**: Use [Schema.org Validator](https://validator.schema.org/) to check property names and structure
+3. **Google validation**: Run through [Google Rich Results Test](https://search.google.com/test/rich-results) to see what Google extracts
+4. **Manual review**: Check that all required properties (⚠️) are present and accurate
+
+### Common Mistakes
+
+**1. Missing required properties:**
+
+```json
+{
+  "@type": "Book",
+  "name": "Book Title"
+  // ❌ Missing author, datePublished, offers
+}
+```
+
+**2. Incorrect URLs (relative instead of absolute):**
+
+```json
+{
+  "@type": "Article",
+  "url": "/blog/post" // ❌ Should be "https://example.com/blog/post"
+}
+```
+
+**3. Wrong property names:**
+
+```json
+{
+  "@type": "Person",
+  "firstName": "John" // ❌ Should be "givenName"
+}
+```
+
+**4. Mismatched visible content:**
+
+```json
+{
+  "@type": "Product",
+  "price": "24.99" // But visible HTML shows "£29.99" - creates trust issues
+}
+```
+
+### Cross-References for K.3
+
+- **Pattern 27: Schema.org Type Prioritization** (Chapter 10) - Focus on six high-impact types
+- **Pattern 28: Strategic Redundancy for Discovery** (Chapter 10) - Duplicate critical info across formats
+- **Appendix M: Index of Metadata** - Complete Schema.org property reference
+
+---
+
+## K.4 Call-to-Action (CTA) Patterns
+
+Call-to-action elements guide users and agents towards desired actions - purchasing products, booking consultations, downloading resources, subscribing to newsletters. This section provides production-ready CTA patterns that work for both humans and AI agents.
+
+### CTA Design Principles
+
+**For humans:**
+
+- Clear, action-oriented text ("Get Started", not "Click Here")
+- Sufficient contrast ratios (WCAG AA: 4.5:1 minimum)
+- Obvious affordances (buttons look clickable)
+- Appropriate sizing for touch targets (minimum 44×44px)
+
+**For agents:**
+
+- Descriptive link text (semantic meaning without context)
+- Explicit data attributes indicating action type
+- Clear form/action associations
+- Structured data linking to target pages
+
+### Pattern 1: Primary Action Button
+
+**Use for:** Main conversion actions, primary user goals, critical business objectives
+
+```html
+<a
+  href="https://example.com/buy"
+  class="btn btn-primary"
+  data-action="purchase"
+  data-product-id="book-mx-bible"
+  aria-label="Purchase MX-Bible book (£24.99)">
+  Buy Now - £24.99
+</a>
+```
+
+**CSS (excerpt from styles.css):**
+
+```css
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+```
+
+**Accessibility features:**
+
+- `aria-label` provides context (price included)
+- Clear contrast (4.5:1 against white background)
+- Focus indicator (3px outline)
+- Keyboard accessible via Tab navigation
+
+**Agent-friendly features:**
+
+- `data-action` explicitly states purpose
+- `data-product-id` links to product data
+- Descriptive href (not javascript:void(0))
+- Price visible in text
+
+---
+
+### Pattern 2: Secondary Action Button
+
+**Use for:** Alternative actions, lower-priority CTAs, supporting options
+
+```html
+<a
+  href="https://example.com/learn-more"
+  class="btn btn-secondary"
+  data-action="learn-more"
+  aria-label="Learn more about MX-Bible">
+  Learn More
+</a>
+```
+
+**CSS (excerpt from styles.css):**
+
+```css
+.btn-secondary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: white;
+  color: #2563eb;
+  border: 2px solid #3b82f6;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
+
+.btn-secondary:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+```
+
+**Visual hierarchy:** Secondary buttons use outline style to visually subordinate to primary CTAs whilst remaining clearly actionable.
+
+---
+
+### Pattern 3: Email CTA
+
+**Use for:** Contact links, newsletter signups, direct communication
+
+```html
+<a
+  href="mailto:tom.cranstoun@gmail.com?subject=MX-Bible%20Enquiry"
+  class="btn btn-primary"
+  data-action="contact"
+  data-contact-type="email"
+  aria-label="Email Tom Cranstoun about MX-Bible">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
+    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+  </svg>
+  Email Me
+</a>
+```
+
+**Features:**
+
+- Pre-filled subject line via query parameter
+- Icon improves scannability for humans
+- `data-contact-type` indicates communication method
+- `currentColor` in SVG inherits text colour
+
+**Agent parsing:** Agents recognise `mailto:` protocol and extract email address directly from href attribute.
+
+---
+
+### Pattern 4: Download CTA
+
+**Use for:** File downloads, resource access, asset delivery
+
+```html
+<a
+  href="https://example.com/downloads/mx-bible-sample.pdf"
+  class="btn btn-primary"
+  download="mx-bible-sample-chapter.pdf"
+  data-action="download"
+  data-file-type="pdf"
+  data-file-size="2.5MB"
+  aria-label="Download MX-Bible sample chapter (PDF, 2.5MB)">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
+    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+  </svg>
+  Download Sample (2.5MB PDF)
+</a>
+```
+
+**Features:**
+
+- `download` attribute triggers download instead of navigation
+- File type and size visible in text and data attributes
+- Download icon provides visual affordance
+- Clear expectations set before interaction
+
+**Agent behaviour:** Agents can extract file metadata (type, size) before downloading, enabling bandwidth-conscious decisions.
+
+---
+
+### Pattern 5: Form Submit Button
+
+**Use for:** Form submissions, data collection, user input processing
+
+```html
+<button
+  type="submit"
+  class="btn btn-primary"
+  data-action="submit-form"
+  data-form-type="contact"
+  aria-label="Submit contact form">
+  Send Message
+</button>
+```
+
+**With loading state:**
+
+```html
+<button
+  type="submit"
+  class="btn btn-primary"
+  data-action="submit-form"
+  data-form-type="contact"
+  aria-busy="false"
+  aria-live="polite">
+  <span class="btn-text">Send Message</span>
+  <span class="btn-spinner" hidden aria-label="Sending...">
+    <svg class="spinner" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="50.265" stroke-dashoffset="25"/>
+    </svg>
+  </span>
+</button>
+```
+
+**JavaScript (excerpt):**
+
+```javascript
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const button = form.querySelector('button[type="submit"]');
+  const buttonText = button.querySelector('.btn-text');
+  const buttonSpinner = button.querySelector('.btn-spinner');
+
+  // Show loading state
+  button.setAttribute('aria-busy', 'true');
+  button.disabled = true;
+  buttonText.hidden = true;
+  buttonSpinner.hidden = false;
+
+  try {
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      // Success handling
+      button.textContent = 'Sent!';
+    }
+  } finally {
+    // Reset state
+    button.setAttribute('aria-busy', 'false');
+    button.disabled = false;
+    buttonText.hidden = false;
+    buttonSpinner.hidden = true;
+  }
+});
+```
+
+**Accessibility features:**
+
+- `aria-busy` announces loading state to screen readers
+- `aria-live="polite"` region announces state changes
+- Button disabled during submission prevents double-submit
+- Visual spinner provides loading feedback
+
+---
+
+### Pattern 6: Multi-Action Button Group
+
+**Use for:** Multiple related actions, choice between options, tiered CTAs
+
+```html
+<div class="btn-group" role="group" aria-label="Book purchase options">
+  <a
+    href="https://example.com/buy-paperback"
+    class="btn btn-primary"
+    data-action="purchase"
+    data-product-variant="paperback"
+    data-price="24.99"
+    aria-label="Buy paperback edition (£24.99)">
+    Buy Paperback - £24.99
+  </a>
+  <a
+    href="https://example.com/buy-ebook"
+    class="btn btn-secondary"
+    data-action="purchase"
+    data-product-variant="ebook"
+    data-price="14.99"
+    aria-label="Buy ebook edition (£14.99)">
+    Buy eBook - £14.99
+  </a>
+  <a
+    href="https://example.com/preview"
+    class="btn btn-secondary"
+    data-action="preview"
+    aria-label="Read free sample chapter">
+    Free Sample
+  </a>
+</div>
+```
+
+**CSS:**
+
+```css
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+}
+```
+
+**Features:**
+
+- Responsive layout (row on desktop, column on mobile)
+- Clear hierarchy (primary vs secondary styling)
+- Individual aria-label for each button
+- Shared `role="group"` with descriptive `aria-label`
+
+---
+
+### Pattern 7: Sticky Footer CTA
+
+**Use for:** Persistent CTAs on long pages, mobile-optimized conversion
+
+```html
+<div class="sticky-cta" role="banner" aria-label="Purchase options">
+  <div class="sticky-cta-content">
+    <span class="sticky-cta-text">Ready to improve your website for AI agents?</span>
+    <a
+      href="https://example.com/buy"
+      class="btn btn-primary"
+      data-action="purchase"
+      data-cta-position="sticky-footer">
+      Buy Now - £24.99
+    </a>
+  </div>
+</div>
+```
+
+**CSS:**
+
+```css
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 2px solid #e5e7eb;
+  padding: 1rem;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none; /* Show via JavaScript when user scrolls */
+}
+
+.sticky-cta-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .sticky-cta-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+```
+
+**JavaScript (excerpt):**
+
+```javascript
+let stickyCTA = document.querySelector('.sticky-cta');
+let heroSection = document.querySelector('.hero-section');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > heroSection.offsetHeight) {
+    stickyCTA.style.display = 'block';
+  } else {
+    stickyCTA.style.display = 'none';
+  }
+});
+```
+
+**Features:**
+
+- Appears after user scrolls past hero section
+- Persistent across page scroll (fixed positioning)
+- Mobile-responsive layout
+- `data-cta-position` tracks CTA placement for analytics
+
+---
+
+### Pattern 8: Ghost/Text Link CTA
+
+**Use for:** Low-priority actions, subtle navigation, tertiary options
+
+```html
+<a
+  href="https://example.com/about"
+  class="btn-text"
+  data-action="navigate"
+  aria-label="Learn about the author">
+  About the Author →
+</a>
+```
+
+**CSS:**
+
+```css
+.btn-text {
+  display: inline-block;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.btn-text:hover {
+  color: #1e40af;
+  border-bottom-color: #3b82f6;
+}
+
+.btn-text:focus {
+  outline: 2px solid #93c5fd;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+```
+
+**Features:**
+
+- Minimal visual weight
+- Arrow indicates navigation
+- Underline on hover provides feedback
+- Clear focus indicator for keyboard users
+
+---
+
+### CTA Best Practices Summary
+
+**Text guidelines:**
+
+- Use action verbs: "Buy", "Download", "Get Started", "Learn More"
+- Include value or benefit: "Download Free Sample", "Start 14-Day Trial"
+- Specify outcomes: "Buy Now - £24.99" (price visible)
+- Avoid generic text: Never "Click Here" or "Read More"
+
+**Accessibility checklist:**
+
+- [ ] Minimum 44×44px touch target (mobile)
+- [ ] 4.5:1 contrast ratio (WCAG AA)
+- [ ] Descriptive aria-label when context needed
+- [ ] Keyboard accessible (Tab navigation)
+- [ ] Visible focus indicator (3px outline minimum)
+- [ ] Loading states announced (aria-busy, aria-live)
+
+**Agent-friendly attributes:**
+
+- [ ] data-action indicates purpose
+- [ ] data-product-id links to product (if applicable)
+- [ ] data-price shows cost (if applicable)
+- [ ] href is meaningful URL (not javascript:void(0))
+- [ ] Descriptive link text (works out of context)
+
+**Performance considerations:**
+
+- Use CSS transforms for hover effects (GPU-accelerated)
+- Avoid heavy animations on mobile
+- Preload critical CTA destination pages
+- Minimize button JavaScript for fast interaction
+
+### Cross-References for K.4
+
+- **Pattern 1: Explicit State Attributes** (Chapter 12) - Button state management
+- **Pattern 2: Disabled Buttons That Explain Themselves** (Chapter 12) - Accessible button states
+- **Chapter 11: Convergence Principle** - How accessible CTAs also benefit agents
+
+---
+
+## K.5 Resource Lists & Machine-Parsable Structures
+
+Collections of resources—navigation menus, tool directories, article lists, team rosters—form the connective tissue of websites. This section provides patterns for structuring lists so both humans and AI agents can parse, navigate, and extract information efficiently.
+
+### List Structure Principles
+
+**For humans:**
+
+- Clear visual hierarchy (headings, spacing, grouping)
+- Scannable layout (consistent formatting, adequate whitespace)
+- Contextual information (descriptions, metadata, categories)
+- Obvious navigation affordances (links, buttons, breadcrumbs)
+
+**For agents:**
+
+- Semantic HTML elements (`<nav>`, `<ul>`, `<ol>`, `<dl>`)
+- Explicit list structure (Schema.org ItemList)
+- Data attributes indicating item type and relationships
+- Consistent patterns across similar collections
+
+---
+
+### Pattern 1: Primary Navigation Menu
+
+**Use for:** Site-wide navigation, main menu, header links
+
+```html
+<nav role="navigation" aria-label="Primary navigation" data-nav-type="primary">
+  <ul class="nav-menu">
+    <li><a href="/" data-nav-item="home" aria-current="page">Home</a></li>
+    <li><a href="/about" data-nav-item="about">About</a></li>
+    <li><a href="/blog" data-nav-item="blog">Blog</a></li>
+    <li><a href="/contact" data-nav-item="contact">Contact</a></li>
+  </ul>
+</nav>
+```
+
+**With Schema.org SiteNavigationElement:**
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "SiteNavigationElement",
+  "name": "Primary Navigation",
+  "url": [
+    "https://example.com/",
+    "https://example.com/about",
+    "https://example.com/blog",
+    "https://example.com/contact"
+  ]
+}
+</script>
+```
+
+**CSS (excerpt):**
+
+```css
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  color: #1f2937;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.nav-menu a:hover {
+  background: #f3f4f6;
+}
+
+.nav-menu a[aria-current="page"] {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+```
+
+**Features:**
+
+- `role="navigation"` explicitly marks navigation region
+- `aria-label` distinguishes from other navigation areas
+- `aria-current="page"` indicates current location
+- `data-nav-item` enables tracking and agent parsing
+
+---
+
+### Pattern 2: Resource Directory with Descriptions
+
+**Use for:** Tool lists, resource collections, curated directories
+
+```html
+<section aria-labelledby="resources-heading">
+  <h2 id="resources-heading">AI Agent Development Resources</h2>
+
+  <ul class="resource-list" data-list-type="resources">
+    <li class="resource-item" data-resource-type="tool">
+      <h3>
+        <a href="https://example.com/tool1" data-resource-id="playwright">Playwright</a>
+      </h3>
+      <p class="resource-description">
+        Browser automation framework for testing and scraping with full JavaScript execution support.
+      </p>
+      <dl class="resource-metadata">
+        <dt>Category</dt>
+        <dd data-category="automation">Browser Automation</dd>
+        <dt>Language</dt>
+        <dd data-language="javascript">JavaScript/TypeScript</dd>
+        <dt>License</dt>
+        <dd data-license="apache">Apache 2.0</dd>
+      </dl>
+    </li>
+
+    <li class="resource-item" data-resource-type="tool">
+      <h3>
+        <a href="https://example.com/tool2" data-resource-id="puppeteer">Puppeteer</a>
+      </h3>
+      <p class="resource-description">
+        Headless Chrome automation library with simple API for common browser tasks.
+      </p>
+      <dl class="resource-metadata">
+        <dt>Category</dt>
+        <dd data-category="automation">Browser Automation</dd>
+        <dt>Language</dt>
+        <dd data-language="javascript">JavaScript/TypeScript</dd>
+        <dt>License</dt>
+        <dd data-license="apache">Apache 2.0</dd>
+      </dl>
+    </li>
+  </ul>
+</section>
+```
+
+**With Schema.org ItemList:**
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ItemList",
+  "name": "AI Agent Development Resources",
+  "description": "Curated tools for building and testing AI agents",
+  "numberOfItems": 2,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Playwright",
+        "url": "https://example.com/tool1",
+        "applicationCategory": "Browser Automation",
+        "operatingSystem": "Windows, macOS, Linux"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Puppeteer",
+        "url": "https://example.com/tool2",
+        "applicationCategory": "Browser Automation"
+      }
+    }
+  ]
+}
+</script>
+```
+
+**Features:**
+
+- Semantic `<dl>` for metadata (definition lists)
+- `data-*` attributes enable filtering and extraction
+- Hierarchical structure (section > list > item > metadata)
+- Schema.org provides machine-readable list structure
+
+---
+
+### Pattern 3: Blog Post Archive with Metadata
+
+**Use for:** Article lists, blog archives, content collections
+
+```html
+<section aria-labelledby="blog-heading">
+  <h2 id="blog-heading">Recent Articles</h2>
+
+  <ol class="article-list" data-list-type="blog-posts">
+    <li class="article-item">
+      <article data-article-id="post-1">
+        <h3>
+          <a href="/blog/ai-agent-compatibility">Making Websites Work for AI Agents</a>
+        </h3>
+        <p class="article-meta">
+          <time datetime="2026-01-20" data-published="2026-01-20">20 January 2026</time>
+          <span class="article-author" data-author="tom-cranstoun">by Tom Cranstoun</span>
+          <span class="article-readtime" data-minutes="8">8 min read</span>
+        </p>
+        <p class="article-excerpt">
+          Three patterns that improve both AI agent compatibility and human accessibility, demonstrating the convergence principle in practice.
+        </p>
+        <ul class="article-tags" aria-label="Article topics">
+          <li><a href="/tags/ai-agents" data-tag="ai-agents">AI Agents</a></li>
+          <li><a href="/tags/accessibility" data-tag="accessibility">Accessibility</a></li>
+        </ul>
+      </article>
+    </li>
+
+    <li class="article-item">
+      <article data-article-id="post-2">
+        <h3>
+          <a href="/blog/schema-org-practical-guide">Schema.org: A Practical Implementation Guide</a>
+        </h3>
+        <p class="article-meta">
+          <time datetime="2026-01-15" data-published="2026-01-15">15 January 2026</time>
+          <span class="article-author" data-author="tom-cranstoun">by Tom Cranstoun</span>
+          <span class="article-readtime" data-minutes="12">12 min read</span>
+        </p>
+        <p class="article-excerpt">
+          How to implement Schema.org structured data without overwhelming complexity - focus on six high-impact types.
+        </p>
+        <ul class="article-tags" aria-label="Article topics">
+          <li><a href="/tags/schema-org" data-tag="schema-org">Schema.org</a></li>
+          <li><a href="/tags/seo" data-tag="seo">SEO</a></li>
+        </ul>
+      </article>
+    </li>
+  </ol>
+</section>
+```
+
+**Features:**
+
+- `<time>` element with machine-readable datetime attribute
+- `data-published`, `data-author`, `data-minutes` enable extraction
+- Semantic `<article>` for each post
+- `<ol>` (ordered list) indicates sequence matters
+- Tag links with `data-tag` for filtering
+
+---
+
+### Pattern 4: Team Directory with Contact Information
+
+**Use for:** Team pages, staff rosters, contributor lists
+
+```html
+<section aria-labelledby="team-heading">
+  <h2 id="team-heading">Our Team</h2>
+
+  <ul class="team-list" data-list-type="team-members">
+    <li class="team-member" data-member-id="tom-cranstoun" data-role="founder">
+      <article>
+        <img
+          src="https://example.com/team/tom.jpg"
+          alt="Tom Cranstoun"
+          class="team-photo"
+          width="200"
+          height="200"
+        >
+        <h3>Tom Cranstoun</h3>
+        <p class="team-title" data-job-title="founder-ceo">Founder & CEO</p>
+        <p class="team-bio">
+          Software consultant with 15+ years building web systems for humans and machines.
+          Author of MX-Bible.
+        </p>
+        <ul class="team-contact" aria-label="Contact information for Tom Cranstoun">
+          <li>
+            <a href="mailto:tom.cranstoun@example.com" data-contact-type="email">
+              Email
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/tom-cranstoun/" data-contact-type="linkedin">
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tomcranstoun" data-contact-type="github">
+              GitHub
+            </a>
+          </li>
+        </ul>
+      </article>
+    </li>
+  </ul>
+</section>
+```
+
+**With Schema.org Person markup for each member:**
+
+```html
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": "Tom Cranstoun",
+    "jobTitle": "Founder & CEO",
+    "description": "Software consultant with 15+ years building web systems",
+    "email": "tom.cranstoun@example.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/tom-cranstoun/",
+      "https://github.com/tomcranstoun"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Example Company"
+    }
+  }
+]
+</script>
+```
+
+**Features:**
+
+- `data-member-id` provides unique identifier
+- `data-role` enables filtering (founders, engineers, designers)
+- `data-contact-type` categorizes links
+- Schema.org Person connects to Organization
+
+---
+
+### Pattern 5: Hierarchical Navigation with Breadcrumbs
+
+**Use for:** Multi-level navigation, category structures, site architecture
+
+```html
+<nav aria-label="Breadcrumb navigation">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/" data-breadcrumb-level="1">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1">
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/blog" data-breadcrumb-level="2">
+        <span itemprop="name">Blog</span>
+      </a>
+      <meta itemprop="position" content="2">
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/blog/category/ai-agents" data-breadcrumb-level="3">
+        <span itemprop="name">AI Agents</span>
+      </a>
+      <meta itemprop="position" content="3">
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+      <span itemprop="name">Making Websites Work for AI Agents</span>
+      <meta itemprop="position" content="4">
+    </li>
+  </ol>
+</nav>
+```
+
+**CSS (excerpt):**
+
+```css
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: "›";
+  margin: 0 0.5rem;
+  color: #9ca3af;
+}
+
+.breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb [aria-current="page"] {
+  color: #4b5563;
+  font-weight: 500;
+}
+```
+
+**Features:**
+
+- Microdata format (itemscope, itemprop) for inline Schema.org
+- `data-breadcrumb-level` indicates depth
+- `aria-current="page"` marks current location
+- Visual separators (›) added via CSS ::after
+
+---
+
+### Pattern 6: Filterable Resource Grid
+
+**Use for:** Product catalogs, portfolio items, case studies
+
+```html
+<section aria-labelledby="portfolio-heading">
+  <h2 id="portfolio-heading">Case Studies</h2>
+
+  <!-- Filter controls -->
+  <div class="filter-controls" role="group" aria-label="Filter case studies">
+    <button
+      class="filter-btn active"
+      data-filter="all"
+      aria-pressed="true"
+      aria-label="Show all case studies">
+      All
+    </button>
+    <button
+      class="filter-btn"
+      data-filter="ecommerce"
+      aria-pressed="false"
+      aria-label="Show ecommerce case studies">
+      E-commerce
+    </button>
+    <button
+      class="filter-btn"
+      data-filter="saas"
+      aria-pressed="false"
+      aria-label="Show SaaS case studies">
+      SaaS
+    </button>
+  </div>
+
+  <!-- Resource grid -->
+  <ul class="portfolio-grid" data-list-type="case-studies">
+    <li class="portfolio-item" data-category="ecommerce" data-project-id="case-1">
+      <article>
+        <img
+          src="https://example.com/portfolio/case1.jpg"
+          alt="E-commerce website redesign"
+          class="portfolio-image"
+          width="400"
+          height="300"
+        >
+        <h3>
+          <a href="/portfolio/ecommerce-redesign">E-commerce Platform Redesign</a>
+        </h3>
+        <p class="portfolio-description">
+          Improved conversion rates by 35% through agent-friendly product pages and simplified checkout.
+        </p>
+        <ul class="portfolio-tags" aria-label="Project technologies">
+          <li data-tech="html">HTML5</li>
+          <li data-tech="schema-org">Schema.org</li>
+          <li data-tech="accessibility">WCAG AA</li>
+        </ul>
+      </article>
+    </li>
+
+    <li class="portfolio-item" data-category="saas" data-project-id="case-2">
+      <article>
+        <img
+          src="https://example.com/portfolio/case2.jpg"
+          alt="SaaS dashboard optimization"
+          class="portfolio-image"
+          width="400"
+          height="300"
+        >
+        <h3>
+          <a href="/portfolio/saas-dashboard">SaaS Dashboard Optimization</a>
+        </h3>
+        <p class="portfolio-description">
+          Reduced support tickets by 40% with clear state management and explicit error messages.
+        </p>
+        <ul class="portfolio-tags" aria-label="Project technologies">
+          <li data-tech="react">React</li>
+          <li data-tech="typescript">TypeScript</li>
+          <li data-tech="accessibility">WCAG AA</li>
+        </ul>
+      </article>
+    </li>
+  </ul>
+</section>
+```
+
+**JavaScript (excerpt):**
+
+```javascript
+const filterButtons = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+
+    // Update button states
+    filterButtons.forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+
+    // Filter items
+    portfolioItems.forEach(item => {
+      if (filter === 'all' || item.dataset.category === filter) {
+        item.style.display = '';
+        item.removeAttribute('aria-hidden');
+      } else {
+        item.style.display = 'none';
+        item.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+});
+```
+
+**Features:**
+
+- `aria-pressed` indicates filter button state
+- `aria-hidden` hides filtered-out items from screen readers
+- `data-category` and `data-filter` enable filtering
+- Grid layout adapts to filtered results
+
+---
+
+### Pattern 7: Definition List for Structured Data
+
+**Use for:** Specifications, FAQs, glossaries, metadata display
+
+```html
+<section aria-labelledby="specifications-heading">
+  <h2 id="specifications-heading">Product Specifications</h2>
+
+  <dl class="specifications" data-list-type="product-specs">
+    <dt data-spec-key="format">Format</dt>
+    <dd data-spec-value="paperback">Paperback & Digital</dd>
+
+    <dt data-spec-key="pages">Pages</dt>
+    <dd data-spec-value="320">320 pages</dd>
+
+    <dt data-spec-key="dimensions">Dimensions</dt>
+    <dd data-spec-value="6x9">6" × 9" (15.24 × 22.86 cm)</dd>
+
+    <dt data-spec-key="language">Language</dt>
+    <dd data-spec-value="en-GB">English (British)</dd>
+
+    <dt data-spec-key="isbn">ISBN</dt>
+    <dd data-spec-value="978-1-234567-89-0">978-1-234567-89-0</dd>
+
+    <dt data-spec-key="published">Published</dt>
+    <dd data-spec-value="2026-03-31">
+      <time datetime="2026-03-31">31 March 2026</time>
+    </dd>
+  </dl>
+</section>
+```
+
+**CSS (excerpt):**
+
+```css
+.specifications {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) 2fr;
+  gap: 1rem;
+  max-width: 800px;
+}
+
+.specifications dt {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.specifications dd {
+  color: #4b5563;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .specifications {
+    grid-template-columns: 1fr;
+  }
+
+  .specifications dt {
+    margin-top: 1rem;
+  }
+}
+```
+
+**Features:**
+
+- Semantic `<dl>` structure (definition list)
+- `data-spec-key` and `data-spec-value` enable extraction
+- Grid layout for clean two-column display
+- Responsive design (stacks on mobile)
+
+---
+
+### List Pattern Best Practices
+
+**Semantic HTML selection:**
+
+- **`<nav>`**: Navigation menus, site structure
+- **`<ul>`**: Unordered collections (resources, team members)
+- **`<ol>`**: Ordered sequences (articles by date, rankings, steps)
+- **`<dl>`**: Key-value pairs (specifications, FAQs, metadata)
+
+**Accessibility requirements:**
+
+- [ ] Appropriate list element for content type
+- [ ] `aria-label` or `aria-labelledby` for context
+- [ ] `aria-current` indicates current location (navigation)
+- [ ] Keyboard navigation works (Tab, Arrow keys where appropriate)
+- [ ] Screen reader announces list type and item count
+
+**Agent-friendly attributes:**
+
+- [ ] `data-list-type` indicates collection purpose
+- [ ] `data-*-id` provides unique identifiers
+- [ ] Consistent naming across similar lists
+- [ ] Schema.org ItemList for important collections
+- [ ] BreadcrumbList for navigation paths
+
+**Performance considerations:**
+
+- Use CSS Grid or Flexbox for layouts (not tables)
+- Lazy-load images in long lists
+- Implement pagination or infinite scroll for large datasets
+- Cache filtered/sorted results client-side
+
+### Cross-References for K.5
+
+- **Pattern 30: Skip Links for Universal Navigation** (Chapter 10) - Navigation accessibility
+- **Pattern 5: Semantic HTML Structure** (Chapter 12) - Semantic element selection
+- **Section 5: Collection Page** (this appendix) - Complete resource directory implementation
+- **Appendix M: Index of Metadata** - Schema.org list types reference
+
+---
+
+## Appendix K Summary
+
+This appendix provides production-ready HTML patterns for 20 common page types plus specialized reference sections:
+
+- **Sections 1-20**: Complete page implementations with Schema.org data
+- **K.3**: JSON-LD Schema.org templates for rapid implementation
+- **K.4**: Call-to-action patterns for conversion-focused interfaces
+- **K.5**: Resource lists and machine-parsable collection structures
+
+All patterns demonstrate:
+
+- Semantic HTML for universal compatibility
+- Schema.org structured data for agent discovery
+- WCAG 2.1 AA accessibility compliance
+- Professional code organization (external CSS/JS)
+- Explicit state attributes and data annotations
+- Real-world content (not lorem ipsum)
+
+**Using these patterns:** Copy, adapt, validate, deploy. Maintain semantic structure and Schema.org markup whilst customizing visual design and content for your specific needs.
+
+**Further reading:**
+
+- **Appendix D**: AI-Friendly HTML Guide (comprehensive technical reference)
+- **Appendix M**: Index of Metadata (complete Schema.org property reference)
+- **Chapter 10**: Generative Engine Optimization (discovery patterns)
+- **Chapter 11**: Designing for Both (convergence principle and pattern philosophy)
+- **Chapter 12**: Technical Advice (implementation patterns and Quick Start Cards)
 
 ---
