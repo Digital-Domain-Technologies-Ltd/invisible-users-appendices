@@ -707,6 +707,6 @@ Patterns progress through maturity stages:
 
 **MX Pattern Documentation:**
 
-- [Plan 1: Extract patterns to MX-Bible](../../docs/structure/plan-1-extract-patterns-to-bible.md)
-- [Plan 2: MX Patterns book structure](../../docs/structure/plan-2-mx-patterns-book-structure.md)
-- [Project Roadmap](../../docs/structure/project-roadmap-mx-patterns.md)
+- [Plan 1: Extract patterns to MX-Bible](../../structure/plan-1-extract-patterns-to-bible.md)
+- [Plan 2: MX Patterns book structure](../../structure/plan-2-mx-patterns-book-structure.md)
+- [Project Roadmap](../../structure/project-roadmap-mx-patterns.md)

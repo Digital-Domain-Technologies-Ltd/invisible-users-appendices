@@ -212,8 +212,8 @@ The workflow defines four distinct states that content passes through from draft
 
 **File Location:**
 
-- `docs/structure/` (top-level drafts)
-- `docs/structure/blog-drafts/` (organized drafts)
+- `structure/` (top-level drafts)
+- `structure/blog-drafts/` (organized drafts)
 
 **Required Metadata:**
 
@@ -432,7 +432,7 @@ State transitions must follow specific rules to maintain metadata consistency:
 The workflow separates draft content from generated HTML using clear directory boundaries:
 
 ```text
-docs/structure/
+structure/
 ├── *.md                              # Top-level draft blogs (blog-state: "draft")
 └── blog-drafts/                      # Organized draft workspace
     ├── *.md                          # Draft markdown files
