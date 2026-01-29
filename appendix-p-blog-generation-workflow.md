@@ -982,7 +982,7 @@ if (data.blogState === 'ready-for-publication') {
 [Blog Metadata Schema and State Tracking](https://github.com/ddttom/invisible-users/blob/main/docs/structure/blog-metadata-schema.md)
 
 **Repository Architecture:**
-[doc-architecture.md](https://github.com/ddttom/invisible-users/blob/main/docs/architecture/doc-architecture.md#blog-content-workflow)
+[doc-architecture.md](https://github.com/ddttom/invisible-users/blob/main/config/system/doc-architecture.md#blog-content-workflow)
 
 **AI-Friendly HTML Patterns:**
 Appendix D - AI-Friendly HTML Guide
