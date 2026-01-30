@@ -613,8 +613,8 @@ Curated resources referenced in *MX-Bible: Designing the Web for AI Agents and E
 
 See also:
 
-- [Implementation Checklist](implementation-checklist.md) - Step-by-step guide (**Repository file**)
-- [Glossary](Glossary.md) - Terms and definitions (includes OAuth2, JWT, DPoP, PKCE) (**Repository file**)
+- [Implementation Checklist](implementation-checklist.md) ("Implementation Checklist" at <https://github.com/Digital-Domain-Technologies-Ltd/invisible-users-appendices/blob/main/implementation-checklist.md>) - Step-by-step guide (**Repository file**)
+- [Glossary](Glossary.md) ("Glossary" at <https://github.com/Digital-Domain-Technologies-Ltd/invisible-users-appendices/blob/main/Glossary.md>) - Terms and definitions (includes OAuth2, JWT, DPoP, PKCE) (**Repository file**)
 - [Agent-Friendly Starter Kit](agent-friendly-starter-kit/) - Good vs Bad implementation examples (**Repository directory**)
 
 ---

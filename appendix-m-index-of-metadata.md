@@ -934,7 +934,7 @@ Metadata terms defined in main Glossary.md:
 
 **Chapter References:** 11, 12, Appendix N
 
-**Complete catalog:** See [Appendix N - Anti-Patterns Catalog](appendix-n-anti-patterns-catalog.md) for detailed descriptions, code examples, and fixes for all 13 patterns.
+**Complete catalog:** See [Appendix N - Anti-Patterns Catalog](appendix-n-anti-patterns-catalog.md) ("Anti-Patterns Catalog" at <https://github.com/Digital-Domain-Technologies-Ltd/invisible-users-appendices/blob/main/appendix-n-anti-patterns-catalog.md>) for detailed descriptions, code examples, and fixes for all 13 patterns.
 
 ---
 
@@ -1017,8 +1017,8 @@ Start with type matching your core content. Complete implementation of one type 
 
 ## Appendix Navigation
 
-- **Previous:** [Appendix L - Proposed AI Metadata Patterns](appendix-l-proposed-ai-metadata-patterns.md)
-- **Next:** [Appendix N - Anti-Patterns Catalog](appendix-n-anti-patterns-catalog.md)
+- **Previous:** [Appendix L - Proposed AI Metadata Patterns](appendix-l-proposed-ai-metadata-patterns.md) ("Proposed AI Metadata Patterns" at <https://github.com/Digital-Domain-Technologies-Ltd/invisible-users-appendices/blob/main/appendix-l-proposed-ai-metadata-patterns.md>)
+- **Next:** [Appendix N - Anti-Patterns Catalog](appendix-n-anti-patterns-catalog.md) ("Anti-Patterns Catalog" at <https://github.com/Digital-Domain-Technologies-Ltd/invisible-users-appendices/blob/main/appendix-n-anti-patterns-catalog.md>)
 
 ---
 
