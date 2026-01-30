@@ -31,7 +31,7 @@ To work with this content:
 2. Edit content directly in this submodule
 3. Commit changes here first, then update the parent repository pointer
 
-See the parent repository's [CLAUDE.md](../../CLAUDE.md) and [config/system/GIT-README.md](../../config/system/GIT-README.md) for comprehensive guidance.
+See the parent repository's [CLAUDE.md](../../CLAUDE.md) ("CLAUDE.md" at <https://github.com/ddttom/invisible-users/blob/main/CLAUDE.md>) and [config/system/GIT-README.md](../../config/system/GIT-README.md) ("Git Workflow Guide for AI Agents" at <https://github.com/ddttom/invisible-users/blob/main/config/system/GIT-README.md>) for comprehensive guidance.
 
 ## Overview
 
@@ -111,7 +111,7 @@ npm run pdf:appendix
 - **Code-first approach** - working examples over theory
 - **Self-contained sections** - each appendix stands alone
 
-See [docs/for-ai/writing-style.md](../../docs/for-ai/writing-style.md) for complete guidelines.
+See [docs/for-ai/writing-style.md](../../docs/for-ai/writing-style.md) ("Writing Style Guide: MX Series" at <https://github.com/ddttom/invisible-users/blob/main/docs/for-ai/writing-style.md>) for complete guidelines.
 
 ## Usage Across Books
 

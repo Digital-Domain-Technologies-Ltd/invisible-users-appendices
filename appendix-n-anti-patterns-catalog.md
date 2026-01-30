@@ -2622,7 +2622,7 @@ It's typically introduced when:
 
 Relative links in documentation that lose all context when files are extracted, downloaded, printed to PDF, or processed by AI agents outside the repository structure.
 
-When AI agents fetch individual documentation files (via API, web scraping, or direct download), they receive files without repository context. A link like `[README.md](../../README.md)` becomes meaningless - what's two directories up from a standalone file? Where does the path resolve to? Which repository? What branch? The link destination cannot be determined without the original file system structure.
+When AI agents fetch individual documentation files (via API, web scraping, or direct download), they receive files without repository context. A link like `[README.md](../../README.md) ("The Invisible Users" at <https://github.com/ddttom/invisible-users/blob/main/README.md>) ("The Invisible Users" at <https://github.com/ddttom/invisible-users/blob/main/README.md>) ("The Invisible Users" at <https://github.com/ddttom/invisible-users/blob/main/README.md>)` becomes meaningless - what's two directories up from a standalone file? Where does the path resolve to? Which repository? What branch? The link destination cannot be determined without the original file system structure.
 
 **Impact:**
 
