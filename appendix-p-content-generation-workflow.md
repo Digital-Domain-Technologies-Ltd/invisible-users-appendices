@@ -2,8 +2,8 @@
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
 date: "2026-01-26"
-description: "Complete blog generation workflow demonstrating Machine Experience principles through metadata-driven content management, state tracking, and WCAG 2.1 AA compliance."
-keywords: [blog-workflow, metadata-schema, yaml-frontmatter, html-generation, wcag-compliance, state-tracking, content-management, ai-friendly-html]
+description: "Complete content generation workflow demonstrating Machine Experience principles through metadata-driven content management, state tracking, and WCAG 2.1 AA compliance."
+keywords: [content-workflow, metadata-schema, yaml-frontmatter, html-generation, wcag-compliance, state-tracking, content-management, ai-friendly-html]
 book: "MX-Bible"
 appendix: "P"
 wordcount: 5800
@@ -18,13 +18,13 @@ ai-instruction: |
 
 \newpage
 
-# Appendix P - Blog Generation Workflow
+# Appendix P - Content Generation Workflow
 
 A practical demonstration of Machine Experience principles through metadata-driven content management.
 
 ## Overview
 
-This appendix documents a complete blog generation workflow that embodies the Machine Experience principles discussed throughout this book. The workflow transforms markdown drafts into WCAG 2.1 AA compliant HTML with comprehensive metadata, state tracking, and AI-friendly semantic structure.
+This appendix documents a complete content generation workflow that embodies the Machine Experience principles discussed throughout this book. The workflow transforms markdown drafts into WCAG 2.1 AA compliant HTML with comprehensive metadata, state tracking, and AI-friendly semantic structure.
 
 **Why this workflow matters:** Most content management systems treat metadata as optional decorations added after content creation. This workflow inverts that relationship - metadata drives the process from draft to publication, ensuring both humans and AI agents can understand content state, relationships, and context at every stage.
 
@@ -36,13 +36,13 @@ This appendix documents a complete blog generation workflow that embodies the Ma
 - WCAG 2.1 AA compliance verification patterns
 - File organization strategies that work across tools
 
-This workflow runs in production for all Machine Experience blog content. Every pattern shown has been tested with real AI agents, screen readers, and human visitors.
+This workflow runs in production for all Machine Experience content. Every pattern shown has been tested with real AI agents, screen readers, and human visitors.
 
 ## Metadata Schema Design
 
 ### Core Principle: Metadata as First-Class Content
 
-Traditional blogging platforms add metadata after writing. This workflow requires metadata before generation. The metadata schema serves three audiences:
+Traditional content platforms add metadata after writing. This workflow requires metadata before generation. The metadata schema serves three audiences:
 
 1. **Content creators** - Track draft state, target filenames, publication status
 2. **AI agents** - Understand content purpose, keywords, parsing instructions
@@ -50,17 +50,17 @@ Traditional blogging platforms add metadata after writing. This workflow require
 
 ### Markdown YAML Frontmatter
 
-Every blog markdown file must include YAML frontmatter with mandatory fields:
+Every content markdown file must include YAML frontmatter with mandatory fields:
 
 ```yaml
 ---
-title: "Blog Post Title"
+title: "Content Title"
 author: "Tom Cranstoun"
-date: "2026-01-26"                    # Last modified date (ISO format)
-blog-state: "draft"                   # Current state in workflow
-blog-filename: "url-friendly-name"    # Target filename (no extension)
-blog-url: ""                          # Full URL (empty until published)
-publication-date: ""                  # Publication date (empty until published)
+date: "2026-01-26"                      # Last modified date (ISO format)
+content-state: "draft"                  # Current state in workflow
+content-filename: "url-friendly-name"   # Target filename (no extension)
+content-url: ""                         # Full URL (empty until published)
+publication-date: ""                    # Publication date (empty until published)
 description: "Brief summary for meta description and social cards (1-2 sentences)"
 keywords: [keyword1, keyword2, keyword3]  # 3-5 relevant keywords
 ai-instruction: "Context for AI agents parsing this content"
@@ -71,7 +71,7 @@ ai-instruction: "Context for AI agents parsing this content"
 
 **title** (required, string)
 
-- The blog post title as it appears in H1 and HTML `<title>`
+- The content title as it appears in H1 and HTML `<title>`
 - Maximum recommended length: 60 characters (SEO best practice)
 - Must not contain special characters that break URLs
 
@@ -86,20 +86,20 @@ ai-instruction: "Context for AI agents parsing this content"
 - Must be valid ISO 8601 date format
 - Updates with every significant content revision
 
-**blog-state** (required, enum)
+**content-state** (required, enum)
 
 - Current position in content lifecycle
 - Valid values: `draft`, `in-review`, `published`, `archived`
 - Drives file location and processing rules
 
-**blog-filename** (required, string)
+**content-filename** (required, string)
 
 - URL-friendly target filename without extension
 - Pattern: lowercase, hyphens only, no special characters
 - Example: "machine-experience-adding-metadata"
 - Becomes base for HTML, CSS, and SVG filenames
 
-**blog-url** (optional, URL string)
+**content-url** (optional, URL string)
 
 - Full canonical URL after publication
 - Empty string until content is live on web
@@ -127,7 +127,7 @@ ai-instruction: "Context for AI agents parsing this content"
 
 - Guidance for AI agents parsing the content
 - Explains document purpose, special considerations
-- Example: "This blog post compares two architectural approaches. Pay attention to the trade-offs section."
+- Example: "This content compares two architectural approaches. Pay attention to the trade-offs section."
 
 ### HTML Meta Tags
 
@@ -135,16 +135,16 @@ Generated HTML files include comprehensive meta tags in the `<head>` section. Th
 
 ```html
 <head>
-  <!-- Blog State Tracking (generated from frontmatter) -->
-  <meta name="blog-state" content="in-review">
-  <meta name="blog-draft-date" content="2026-01-20">
-  <meta name="blog-review-date" content="2026-01-25">
-  <meta name="blog-publication-date" content="">
-  <meta name="blog-last-modified" content="2026-01-26">
-  <meta name="blog-review-status" content="final-committee-review">
+  <!-- Content State Tracking (generated from frontmatter) -->
+  <meta name="content-state" content="in-review">
+  <meta name="content-draft-date" content="2026-01-20">
+  <meta name="content-review-date" content="2026-01-25">
+  <meta name="content-publication-date" content="">
+  <meta name="content-last-modified" content="2026-01-26">
+  <meta name="content-review-status" content="final-committee-review">
 
   <!-- Standard SEO metadata -->
-  <title>Blog Post Title</title>
+  <title>Content Title</title>
   <meta name="description" content="Brief summary from frontmatter">
   <meta name="keywords" content="keyword1, keyword2, keyword3">
   <meta name="author" content="Tom Cranstoun">
@@ -153,7 +153,7 @@ Generated HTML files include comprehensive meta tags in the `<head>` section. Th
   <link rel="canonical" href="">
 
   <!-- Open Graph for social sharing -->
-  <meta property="og:title" content="Blog Post Title">
+  <meta property="og:title" content="Content Title">
   <meta property="og:description" content="Brief summary">
   <meta property="og:type" content="article">
   <meta property="og:url" content="">
@@ -164,7 +164,7 @@ Generated HTML files include comprehensive meta tags in the `<head>` section. Th
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Blog Post Title",
+    "headline": "Content Title",
     "description": "Brief summary",
     "author": {
       "@type": "Person",
@@ -343,7 +343,7 @@ State transitions must follow specific rules to maintain metadata consistency:
 **Process:**
 
 1. Verify markdown has `blog-state: "draft"`
-2. Run generation script: `node scripts/generate-blog-html.js [markdown-file]`
+2. Run generation script: `node scripts/generate-content-html.js [markdown-file]`
 3. Script generates HTML, CSS, SVG files in `outputs/bible/blogs/mx/`
 4. Update markdown frontmatter:
 
@@ -480,14 +480,14 @@ machine-experience-adding-metadata-human-vs-agent-behavior.svg
 
 ## Generation Workflow
 
-### Script: generate-blog-html.js
+### Script: generate-content-html.js
 
 The generation script transforms markdown drafts into complete HTML packages with all required assets.
 
 **Command:**
 
 ```bash
-node scripts/generate-blog-html.js <markdown-file> [custom-filename]
+node scripts/generate-content-html.js <markdown-file> [custom-filename]
 ```
 
 **Input:**
@@ -945,7 +945,7 @@ The blog workflow integrates with standard publishing tools through file-based i
 
 ### Extending the Workflow
 
-Add custom generation steps by modifying `scripts/generate-blog-html.js`:
+Add custom generation steps by modifying `scripts/generate-content-html.js`:
 
 **Add custom metadata fields:**
 
