@@ -168,6 +168,7 @@ Describe how to verify the pattern is correctly implemented:
 - External documentation
 - Tool documentation
 - Research papers
+
 ```
 
 ### Field Descriptions
@@ -344,40 +345,50 @@ card:
 ```
 
 **Prerequisites:**
+
 - Prerequisite 1
 - Prerequisite 2
 
 **Implementation Steps:**
 
 1. **[Action 1]**
+
    ```bash
    # Command or code
    ```
+
    Brief explanation
 
 2. **[Action 2]**
+
    ```bash
    # Command or code
    ```
+
    Brief explanation
 
 3. **[Action 3]**
+
    ```bash
    # Command or code
    ```
+
    Brief explanation
 
 **Expected Outcome:**
+
 - Outcome 1: What you should see
 - Outcome 2: What should work
 - Outcome 3: How to verify success
 
 **Validation:**
+
 - [ ] Check 1: How to verify
 - [ ] Check 2: How to verify
 - [ ] Check 3: How to verify
 
 **Troubleshooting:**
+
 - **Issue:** Common problem
   **Solution:** How to fix
 
@@ -385,11 +396,14 @@ card:
   **Solution:** How to fix
 
 **Related Patterns:**
+
 - Pattern name ([mx.pattern.id](link)) - Relationship
 
 **References:**
+
 - [MX-Bible Chapter X](link)
 - [Tool Documentation](link)
+
 ```
 
 ### Quick Start Card Guidelines
@@ -512,7 +526,7 @@ Use this checklist before publishing any pattern documentation.
 
 ```bash
 # Markdown linting
-markdownlint -c config/.markdownlint.json [file.md]
+markdownlint -c mx-config/.markdownlint.json [file.md]
 
 # YAML validation
 yamllint [file.md]
@@ -553,7 +567,7 @@ grep -q "### Solution" "$FILE" || { echo "✗ Missing Solution"; exit 1; }
 
 # Run markdownlint
 echo "✓ Running markdown linter..."
-markdownlint -c config/.markdownlint.json "$FILE"
+markdownlint -c mx-config/.markdownlint.json "$FILE"
 
 echo "✓ Validation complete"
 ```
@@ -592,24 +606,28 @@ echo "✓ Validation complete"
 ### When to Use Each Template
 
 **Pattern Intent Template:**
+
 - New pattern documentation
 - Comprehensive pattern descriptions
 - Patterns requiring detailed context
 - Patterns with complex implementations
 
 **ADR Format Template:**
+
 - Anti-pattern documentation
 - Architectural decision records
 - Problem-focused documentation
 - Refactoring guidance
 
 **Quick Start Card Template:**
+
 - Rapid implementation guides
 - Getting started tutorials
 - Common pattern applications
 - Reference cards for developers
 
 **Validation Checklist:**
+
 - Before pattern publication
 - During pattern review
 - For pattern quality assurance
@@ -620,17 +638,20 @@ echo "✓ Validation complete"
 Templates can be adapted for specific contexts:
 
 **For Short Patterns:**
+
 - Combine Related Patterns and References sections
 - Reduce number of Forces to 3
 - Simplify Consequences to essential trade-offs
 
 **For Complex Patterns:**
+
 - Add Architecture Diagram section
 - Expand Implementation Steps with subsections
 - Include Performance Considerations section
 - Add Security Implications section
 
 **For Multi-Platform Patterns:**
+
 - Add Platform Variants section
 - Include platform-specific notes in Implementation
 - Create separate Quick Start Cards per platform

@@ -2874,7 +2874,7 @@ project/
 |-- core/                     # AI: Never modify
 |   |-- framework/           # Protected framework files
 |   +-- vendor/              # Third-party dependencies
-|-- config/                   # AI: Modify with caution
+|-- mx-config/                   # AI: Modify with caution
 |   |-- environment.yml      # Review required
 |   +-- deployment.yml       # Staging only
 +-- application/             # AI: Safe to modify
@@ -2955,7 +2955,7 @@ Never debug or modify generated files directly — always trace back to source.
 - Solution: Modify template, run `npm run generate`
 
 ### Dynamic Route Generation
-- Source: `config/routes.yml`
+- Source: `mx-config/routes.yml`
 - Runtime: Express middleware registration
 - Transformation: YAML → Express route handlers
 - AI Pitfall: Route debugging requires checking both config and middleware logs
