@@ -23,7 +23,7 @@ Complete guide to auditing your website for AI agent compatibility using Web Aud
 ## Installation
 
 ```bash
-git clone https://github.com/ddttom/invisible-users.git
+git clone https://github.com/Digital-Domain-Technologies-Ltd/MX-hub.git
 cd invisible-users/packages/web-audit-suite
 npm install
 ```
@@ -1200,7 +1200,7 @@ jobs:
 
       - name: Install Web Audit Suite
         run: |
-          git clone https://github.com/ddttom/invisible-users.git
+          git clone https://github.com/Digital-Domain-Technologies-Ltd/MX-hub.git
           cd invisible-users/packages/web-audit-suite
           npm install
 
@@ -1465,8 +1465,8 @@ If any pattern matches rendered HTML but NOT served HTML, pricing is JavaScript-
 
 ## Getting Help
 
-- **Documentation:** <https://github.com/ddttom/invisible-users/blob/main/web-audit-suite/README.md>
-- **Issues:** <https://github.com/ddttom/invisible-users/issues>
+- **Documentation:** <https://github.com/Digital-Domain-Technologies-Ltd/MX-hub/blob/main/web-audit-suite/README.md>
+- **Issues:** <https://github.com/Digital-Domain-Technologies-Ltd/MX-hub/issues>
 - **Examples:** See `web-audit-suite/examples` directory in repository
 
 ## Summary Workflow

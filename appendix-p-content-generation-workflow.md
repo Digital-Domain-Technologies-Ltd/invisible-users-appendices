@@ -979,10 +979,10 @@ if (data.blogState === 'ready-for-publication') {
 ## Related Documentation
 
 **Complete Metadata Schema:**
-[Blog Metadata Schema and State Tracking](https://github.com/ddttom/invisible-users/blob/main/docs/structure/blog-metadata-schema.md)
+[Blog Metadata Schema and State Tracking](https://github.com/Digital-Domain-Technologies-Ltd/MX-hub/blob/main/docs/structure/blog-metadata-schema.md)
 
 **Repository Architecture:**
-[doc-architecture.md](https://github.com/ddttom/invisible-users/blob/main/mx-config/system/doc-architecture.md#blog-content-workflow)
+[doc-architecture.md](https://github.com/Digital-Domain-Technologies-Ltd/MX-hub/blob/main/mx-config/system/doc-architecture.md#blog-content-workflow)
 
 **AI-Friendly HTML Patterns:**
 Appendix D - AI-Friendly HTML Guide

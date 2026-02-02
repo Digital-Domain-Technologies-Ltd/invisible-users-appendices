@@ -728,6 +728,6 @@ Patterns progress through maturity stages:
 
 **MX Pattern Documentation:**
 
-- [Plan 1: Extract patterns to MX-Bible](../../docs/structure/plan-1-extract-patterns-to-bible.md) ("Plan 1: Extract Pattern Content into MX-Bible" at <https://github.com/ddttom/invisible-users-appendices/blob/main/docs/structure/plan-1-extract-patterns-to-bible.md>)
-- [Plan 2: MX Patterns book structure](../../docs/structure/plan-2-mx-patterns-book-structure.md) ("Plan 2: Structure for MX: The Patterns of Machine Experience" at <https://github.com/ddttom/invisible-users-appendices/blob/main/docs/structure/plan-2-mx-patterns-book-structure.md>)
-- [Project Roadmap](../../docs/structure/project-roadmap-mx-patterns.md) ("MX Patterns Project Roadmap" at <https://github.com/ddttom/invisible-users-appendices/blob/main/docs/structure/project-roadmap-mx-patterns.md>)
+- [Plan 1: Extract patterns to MX-Bible](../../docs/structure/plan-1-extract-patterns-to-bible.md) ("Plan 1: Extract Pattern Content into MX-Bible" at <https://github.com/Digital-Domain-Technologies-Ltd/MX-hub-appendices/blob/main/docs/structure/plan-1-extract-patterns-to-bible.md>)
+- [Plan 2: MX Patterns book structure](../../docs/structure/plan-2-mx-patterns-book-structure.md) ("Plan 2: Structure for MX: The Patterns of Machine Experience" at <https://github.com/Digital-Domain-Technologies-Ltd/MX-hub-appendices/blob/main/docs/structure/plan-2-mx-patterns-book-structure.md>)
+- [Project Roadmap](../../docs/structure/project-roadmap-mx-patterns.md) ("MX Patterns Project Roadmap" at <https://github.com/Digital-Domain-Technologies-Ltd/MX-hub-appendices/blob/main/docs/structure/project-roadmap-mx-patterns.md>)
