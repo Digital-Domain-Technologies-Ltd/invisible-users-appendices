@@ -7,7 +7,8 @@ keywords: [llms-txt, content-curation, ai-discovery, metadata, extended-format]
 book: "Shared"
 appendix: "H"
 wordcount: 1253
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
@@ -146,7 +147,8 @@ date: "2026-01-17"
 description: "AI agents are visiting your website right now"
 abstract: "Extended context about invisible users and AI agent traffic patterns"
 keywords: [ai-agents, web-accessibility, seo, metadata]
-ai-instruction: "This article introduces AI agents as website visitors"
+mx:
+  promptingInstruction: "This article introduces AI agents as website visitors"
 purpose: "Educational content for web developers"
 ---
 ```

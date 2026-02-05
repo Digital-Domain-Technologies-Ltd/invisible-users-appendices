@@ -7,7 +7,8 @@ keywords: [proposed-patterns, ai-metadata, experimental-standards, forward-compa
 book: "Shared"
 appendix: "L"
 wordcount: 4235
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
@@ -51,7 +52,7 @@ See Appendix D for comprehensive guide to all patterns (established + proposed).
 
 ---
 
-## Pattern 1: AI-Specific Meta Tag Namespace
+## Pattern 1: MX Framework Meta Tag Namespace
 
 ### Status
 
@@ -68,6 +69,321 @@ Page-specific AI agent guidance needs to override site-wide defaults from llms.t
 - Machine-readable without parsing content
 - Browser-agnostic (works in served HTML)
 
+---
+
+## Part 1: MX Operating System (MX OS) Philosophy
+
+### What is MX OS?
+
+The MX documentation is the **MX Operating System (MX OS)**. When we document patterns here, we define how Machine Experience works.
+
+**MX OS is:**
+
+- Documentation that specifies behavior
+- Patterns that practitioners follow
+- Standards that machines implement
+- A living system that evolves through practice
+
+**Key principle:** Documentation as specification. By documenting how MX should work, we create the operating system that defines machine experience.
+
+### How MX OS Evolves
+
+- **Version-controlled principles** — All changes tracked in git history
+- **LEARNINGS.md captures failures** — Document what went wrong and how to prevent it
+- **Community contributions** — Both human and machine contributors
+- **Evidence trumps theory** — Real-world implementation guides evolution
+- **No principle is sacred** — If practice proves a principle wrong, we change it
+
+For detailed documentation of how MX OS is built collaboratively, see Appendix M: Building the MX Operating System.
+
+---
+
+## Part 2: MX Namespace Architecture
+
+### Overview
+
+MX Framework uses a hierarchical namespace system to organize machine-readable metadata. This namespace architecture is documented here as part of the MX Operating System.
+
+### Namespace Hierarchy
+
+**Top-level namespace:** `mx:`
+
+**Sub-namespaces:**
+
+- `mx.ai:` — AI-specific metadata (agent behavior, prompting instructions, content editability)
+- `mx.co:` — Content operations metadata (workflow, publishing, lifecycle)
+- `mx.ho:` — Hosting metadata (deployment, caching, infrastructure)
+
+**Example YAML:**
+
+```yaml
+mx:
+  contentType: "specification"
+  promptingInstruction: "Focus on technical accuracy"
+  ai:
+    editable: cautious
+    preferredAccess: html
+  co:
+    workflow: draft
+    reviewRequired: true
+  ho:
+    cacheStrategy: aggressive
+    cdn: cloudflare
+```
+
+### ASCII Diagram of Namespace Structure
+
+```
+mx: (top-level namespace)
+├── mx.ai: (AI-specific)
+│   ├── editable
+│   ├── preferredAccess
+│   └── promptingInstruction
+├── mx.co: (content operations)
+│   ├── workflow
+│   ├── contentType
+│   └── reviewRequired
+└── mx.ho: (hosting)
+    ├── cacheStrategy
+    └── cdn
+```
+
+### HTML Meta Tags: Flat Prefix Pattern
+
+**In HTML, we use a flat `mx-` prefix** (not nested namespaces):
+
+```html
+<meta name="mx-preferred-access" content="html">
+<meta name="mx-content-policy" content="extract-with-attribution">
+<meta name="mx-freshness" content="monthly">
+```
+
+**Why flat prefix?**
+
+HTML meta tags don't support nested structures like YAML. The `mx-` prefix follows established web patterns:
+
+- `twitter:` for Twitter Cards
+- `og:` for Open Graph
+- `mx-` for Machine Experience
+
+### Framework Identity
+
+Like `twitter:` and `og:`, the `mx-` prefix:
+
+- ✅ **Establishes MX brand and presence**
+- ✅ **Aids discoverability**: Developers search "mx meta tags" and find MX Framework
+- ✅ **Aligns with MX namespace architecture**: Flat HTML prefix maps to nested YAML structure
+- ✅ **Designed for MX practitioners**: MX-Ready websites built by MX community
+
+### Extension Pattern
+
+The namespace architecture is extensible. Future namespaces might include:
+
+- `mx.sec:` — Security metadata
+- `mx.perf:` — Performance optimization hints
+- `mx.a11y:` — Accessibility enhancements beyond WCAG
+
+**Guidelines for extension:**
+
+- New namespaces should serve distinct, non-overlapping purposes
+- Follow camelCase naming convention for attributes
+- Document in this appendix before widespread use
+- Community discussion required for new top-level namespaces
+
+---
+
+## Part 3: MX Attributes by Namespace
+
+This section consolidates MX attributes organized by namespace. For complete Registry with all attributes, see mx-config/mx-attributes-registry.md (deprecated - refer to this appendix).
+
+### 3.1 mx.ai: AI-Specific Metadata
+
+Attributes that control AI agent behavior and content interpretation.
+
+**promptingInstruction**
+
+- **Type:** string
+- **Purpose:** Instructions for AI agents on how to interpret or handle content
+- **Example:** `mx: { promptingInstruction: "This is copyrighted material. No part may be reproduced without permission." }`
+
+**editable**
+
+- **Type:** enum (`strict`, `cautious`, `flexible`)
+- **Purpose:** Indicates how freely AI agents may edit or adapt content
+- **Example:** `mx: { ai: { editable: cautious } }`
+
+**preferredAccess**
+
+- **Type:** enum (`html`, `api`, `both`)
+- **Purpose:** How agents should access content
+- **Example:** `mx: { ai: { preferredAccess: html } }`
+
+**createOutputPrompt**
+
+- **Type:** string
+- **Purpose:** Instructions for generating output based on this content
+- **Example:** `mx: { ai: { createOutputPrompt: "Generate slide deck from this content" } }`
+
+### 3.2 mx.co: Content Operations Metadata
+
+Attributes for content workflow, lifecycle, and publishing.
+
+**contentType**
+
+- **Type:** string
+- **Purpose:** Classification of content type
+- **Example:** `mx: { contentType: "specification" }`
+- **Values:** `specification`, `tutorial`, `reference`, `guide`, `article`
+
+**workflow**
+
+- **Type:** enum (`draft`, `review`, `published`, `archived`)
+- **Purpose:** Current state in content lifecycle
+- **Example:** `mx: { co: { workflow: draft } }`
+
+**reviewRequired**
+
+- **Type:** boolean
+- **Purpose:** Whether content requires review before publication
+- **Example:** `mx: { co: { reviewRequired: true } }`
+
+**publishingState**
+
+- **Type:** string
+- **Purpose:** Detailed publishing status
+- **Example:** `mx: { co: { publishingState: "pending-approval" } }`
+
+### 3.3 mx.ho: Hosting Metadata
+
+Attributes for deployment, caching, and infrastructure.
+
+**cacheStrategy**
+
+- **Type:** enum (`aggressive`, `moderate`, `minimal`, `none`)
+- **Purpose:** How aggressively to cache content
+- **Example:** `mx: { ho: { cacheStrategy: aggressive } }`
+
+**cdn**
+
+- **Type:** string
+- **Purpose:** CDN provider or configuration
+- **Example:** `mx: { ho: { cdn: "cloudflare" } }`
+
+**deploymentTarget**
+
+- **Type:** string
+- **Purpose:** Target deployment environment
+- **Example:** `mx: { ho: { deploymentTarget: "production" } }`
+
+### 3.4 Cross-Namespace Attributes
+
+Some attributes work across multiple namespaces or don't fit neatly into one category.
+
+**All attributes follow:**
+
+- **Namespace:** Nested under `mx:` key
+- **CamelCase:** Multi-word attributes use camelCase
+- **No hyphens:** Never use kebab-case
+- **Consistent:** Follow MX Code Metadata Specification
+
+---
+
+## Part 5: JSON-LD Structured Data
+
+### Integration with Schema.org
+
+MX Framework recommends Schema.org JSON-LD as the primary method for structured data. This complements (not replaces) HTML meta tags.
+
+### When to Use JSON-LD vs HTML Meta Tags
+
+**Use JSON-LD for:**
+
+- Rich structured data (BlogPosting, Article, Product, Event)
+- Data that search engines and AI agents should extract
+- Complex nested data structures
+- Organization and author information
+
+**Use HTML meta tags (mx-) for:**
+
+- Page-specific agent behavior overrides
+- Content policies and permissions
+- Freshness indicators
+- Access preferences
+
+### JSON-LD Format Decision
+
+**Use JSON-LD only** - do not combine with microdata or RDFa.
+
+**Rationale:**
+
+- Google recommends JSON-LD as primary format
+- Cleaner separation of content and metadata
+- Easier to maintain and validate
+- Better tool support
+
+### BlogPosting Example
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Understanding MX Metadata Patterns",
+  "description": "A comprehensive guide to machine-readable metadata",
+  "datePublished": "2026-01-22",
+  "dateModified": "2026-01-22",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Cranstoun",
+    "url": "https://allabout.network"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Digital Domain Technologies Ltd",
+    "url": "https://ddt.technology"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://allabout.network/blogs/mx/metadata-patterns.html"
+  },
+  "articleSection": "Machine Experience",
+  "keywords": ["metadata", "machine-experience", "mx", "structured-data"],
+  "wordCount": 4235,
+  "inLanguage": "en-GB"
+}
+</script>
+```
+
+### Article vs BlogPosting
+
+- **BlogPosting:** Personal or editorial blog content
+- **Article:** News articles or authoritative content
+- **NewsArticle:** Time-sensitive news reporting
+
+Choose the most specific type that applies.
+
+### Required vs Recommended Properties
+
+**Required:**
+
+- `@context` and `@type`
+- `headline`
+- `datePublished`
+- `author`
+
+**Recommended:**
+
+- `description`
+- `dateModified`
+- `publisher`
+- `mainEntityOfPage`
+- `keywords`
+- `wordCount`
+
+---
+
+## Pattern Specifications
+
 ### Use Cases
 
 1. **Product Pages:** Specify API endpoints for current product
@@ -77,7 +393,7 @@ Page-specific AI agent guidance needs to override site-wide defaults from llms.t
 
 ### Proposed Meta Tags
 
-#### ai-preferred-access
+#### mx-preferred-access
 
 Indicates how agents should access content.
 
@@ -86,12 +402,12 @@ Indicates how agents should access content.
 **Example:**
 
 ```html
-<meta name="ai-preferred-access" content="api">
+<meta name="mx-preferred-access" content="api">
 ```
 
 **Rationale:** Some pages (like product catalogues) are better consumed via API. Others (like blog posts) work better as HTML.
 
-#### ai-content-policy
+#### mx-content-policy
 
 What agents are permitted to do with content.
 
@@ -104,12 +420,12 @@ What agents are permitted to do with content.
 **Example:**
 
 ```html
-<meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
+<meta name="mx-content-policy" content="summaries-allowed, full-extraction-allowed">
 ```
 
 **Rationale:** More granular than robots.txt `noindex`. Allows summaries whilst restricting full extraction.
 
-#### ai-freshness
+#### mx-freshness
 
 How often content changes.
 
@@ -118,12 +434,12 @@ How often content changes.
 **Example:**
 
 ```html
-<meta name="ai-freshness" content="hourly">
+<meta name="mx-freshness" content="hourly">
 ```
 
 **Rationale:** Helps agents decide cache duration. Stock prices need hourly updates, documentation can be cached monthly.
 
-#### ai-structured-data
+#### mx-structured-data
 
 Where to find structured data.
 
@@ -132,14 +448,14 @@ Where to find structured data.
 **Example:**
 
 ```html
-<meta name="ai-structured-data" content="json-ld">
+<meta name="mx-structured-data" content="json-ld">
 <!-- OR more specific: -->
-<meta name="ai-structured-data" content="schema.org-jsonld">
+<meta name="mx-structured-data" content="schema.org-jsonld">
 ```
 
 **Rationale:** Tells agents which structured data format to parse, avoiding guessing. The value `schema.org-jsonld` is more specific (explicitly indicates Schema.org vocabulary within JSON-LD format), while `json-ld` is simpler and sufficient since the JSON-LD script already declares `"@context": "https://schema.org"`. Both are valid; choose based on preference for specificity vs simplicity.
 
-#### ai-attribution
+#### mx-attribution
 
 Attribution requirements with specific attribution text.
 
@@ -153,12 +469,12 @@ Attribution requirements with specific attribution text.
 **Example:**
 
 ```html
-<meta name="ai-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
+<meta name="mx-attribution" content="required" text="Source: MX-Bible by Tom Cranstoun, https://allabout.network/invisible-users/">
 ```
 
 **Rationale:** Explicit statement of attribution expectations with precise text to use, ensuring consistent attribution across all AI-generated content.
 
-#### ai-jurisdiction-restriction
+#### mx-jurisdiction-restriction
 
 Indicates content was created, published, or ingested from a jurisdiction with content restrictions, allowing agents to understand potential legal and content limitations.
 
@@ -176,16 +492,16 @@ Indicates content was created, published, or ingested from a jurisdiction with c
 **Example:**
 
 ```html
-<meta name="ai-jurisdiction-restriction" content="CN" reason="Content sourced from jurisdiction with government content controls">
+<meta name="mx-jurisdiction-restriction" content="CN" reason="Content sourced from jurisdiction with government content controls">
 
-<meta name="ai-jurisdiction-restriction" content="EU" reason="GDPR right-to-be-forgotten applies to training data">
+<meta name="mx-jurisdiction-restriction" content="EU" reason="GDPR right-to-be-forgotten applies to training data">
 
-<meta name="ai-jurisdiction-restriction" content="RU" reason="Content subject to Russian information restrictions">
+<meta name="mx-jurisdiction-restriction" content="RU" reason="Content subject to Russian information restrictions">
 
-<meta name="ai-jurisdiction-restriction" content="none">
+<meta name="mx-jurisdiction-restriction" content="none">
 ```
 
-**Rationale:** When LLMs ingest training data from restricted jurisdictions, this meta tag signals potential legal constraints that may persist when the model operates in unrestricted jurisdictions. Content creators could use robots.txt directives or the `noindex` meta tag to prevent AI ingestion entirely, but this is an all-or-nothing approach that excludes content from all search engines, all AI agents, and all automated discovery mechanisms. The `ai-jurisdiction-restriction` meta tag offers a more nuanced solution: content remains discoverable and accessible whilst signaling jurisdictional constraints that might affect how agents use it. Helps agents:
+**Rationale:** When LLMs ingest training data from restricted jurisdictions, this meta tag signals potential legal constraints that may persist when the model operates in unrestricted jurisdictions. Content creators could use robots.txt directives or the `noindex` meta tag to prevent AI ingestion entirely, but this is an all-or-nothing approach that excludes content from all search engines, all AI agents, and all automated discovery mechanisms. The `mx-jurisdiction-restriction` meta tag offers a more nuanced solution: content remains discoverable and accessible whilst signaling jurisdictional constraints that might affect how agents use it. Helps agents:
 
 - Understand jurisdictional origin of training data
 - Flag content that may be subject to GDPR "right to be forgotten"
@@ -221,12 +537,12 @@ Points to site-wide llms.txt file.
   <title>Wireless Headphones — £149.99</title>
 
   <!-- Proposed AI meta tags -->
-  <meta name="ai-preferred-access" content="html">
-  <meta name="ai-content-policy" content="summaries-allowed, full-extraction-allowed">
-  <meta name="ai-freshness" content="hourly">
-  <meta name="ai-structured-data" content="json-ld">
-  <meta name="ai-attribution" content="required" text="Source: Example Store, https://example.com">
-  <meta name="ai-jurisdiction-restriction" content="none">
+  <meta name="mx-preferred-access" content="html">
+  <meta name="mx-content-policy" content="summaries-allowed, full-extraction-allowed">
+  <meta name="mx-freshness" content="hourly">
+  <meta name="mx-structured-data" content="json-ld">
+  <meta name="mx-attribution" content="required" text="Source: Example Store, https://example.com">
+  <meta name="mx-jurisdiction-restriction" content="none">
   <meta name="llms-txt" content="/llms.txt">
 
   <!-- Established standards -->
@@ -722,7 +1038,8 @@ date: "2026-01-17"
 description: "AI agents are visiting your website right now"
 abstract: "Extended context about invisible users and AI agent traffic patterns"
 keywords: [ai-agents, web-accessibility, seo, metadata]
-ai-instruction: "This article introduces AI agents as website visitors"
+mx:
+  promptingInstruction: "This article introduces AI agents as website visitors"
 purpose: "Educational content for web developers"
 ---
 
@@ -1098,6 +1415,404 @@ If you implement these patterns:
 - **Appendix D:** AI-Friendly HTML Guide (comprehensive patterns)
 - **Appendix E:** AI Patterns Quick Reference (data attributes)
 - **Appendix F:** Implementation Roadmap (priority-based adoption)
+
+---
+
+## Part 6: Integration Guidelines
+
+### Using MX Patterns with Existing Standards
+
+MX Framework is designed to complement, not replace, existing web standards. This section explains how to integrate MX patterns into your existing infrastructure.
+
+#### Integration with Schema.org
+
+**MX meta tags + Schema.org JSON-LD work together:**
+
+```html
+<head>
+  <!-- MX meta tags for agent behavior -->
+  <meta name="mx-preferred-access" content="html">
+  <meta name="mx-content-policy" content="extract-with-attribution">
+  <meta name="mx-freshness" content="monthly">
+
+  <!-- Schema.org for structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Understanding MX Patterns",
+    "author": {"@type": "Person", "name": "Tom Cranstoun"}
+  }
+  </script>
+</head>
+```
+
+**Division of responsibility:**
+
+- **Schema.org:** What the content IS (article, product, event)
+- **MX meta tags:** How agents should ACCESS it (permissions, freshness, attribution)
+
+#### Integration with Open Graph and Twitter Cards
+
+**MX complements social media metadata:**
+
+```html
+<head>
+  <!-- Open Graph for social sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Understanding MX Patterns">
+  <meta property="og:url" content="https://example.com/article">
+
+  <!-- Twitter Cards for Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Understanding MX Patterns">
+
+  <!-- MX for AI agent behavior -->
+  <meta name="mx-preferred-access" content="html">
+  <meta name="mx-attribution" content="required" text="Source: Example.com">
+</head>
+```
+
+**Why all three?**
+
+- **Open Graph:** Social media platforms (Facebook, LinkedIn)
+- **Twitter Cards:** Twitter-specific presentation
+- **MX meta tags:** AI agent behavior and permissions
+
+#### Integration with robots.txt and robots Meta Tags
+
+**MX meta tags provide finer-grained control than robots.txt:**
+
+```
+# robots.txt (site-wide)
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Disallow: /private/
+```
+
+```html
+<!-- Page-level override with MX meta tags -->
+<meta name="robots" content="index, follow">
+<meta name="mx-content-policy" content="summaries-allowed">
+<meta name="mx-attribution" content="required" text="Source: Example.com">
+```
+
+**Hierarchy of control:**
+
+1. **robots.txt:** Site-wide policies
+2. **robots meta tags:** Page-level indexing control
+3. **MX meta tags:** Page-level agent behavior and permissions
+
+#### Integration with llms.txt
+
+**llms.txt provides site-wide defaults, MX meta tags provide page overrides:**
+
+```
+# /llms.txt
+# Site-wide defaults
+> Preferred Access: API
+> Content Policy: summaries-allowed
+> Freshness: daily
+```
+
+```html
+<!-- Page overrides site-wide defaults -->
+<meta name="mx-preferred-access" content="html">
+<meta name="mx-freshness" content="hourly">
+```
+
+**Pattern:** Site-wide defaults in llms.txt, page-specific overrides in HTML meta tags.
+
+#### Integration with WCAG Accessibility Standards
+
+**MX convergence principle: Accessibility patterns benefit machines:**
+
+```html
+<!-- ARIA for screen readers -->
+<button aria-label="Add to cart" aria-describedby="cart-status">
+  <span class="icon">🛒</span>
+</button>
+<div id="cart-status" role="status" aria-live="polite">
+  2 items in cart
+</div>
+
+<!-- Data attributes for AI agents -->
+<button data-action="add-to-cart"
+        data-product-id="WH-1000">
+  <span class="icon">🛒</span>
+</button>
+<div data-item-count="2">
+  2 items in cart
+</div>
+```
+
+**Both patterns serve similar goals:**
+
+- **ARIA:** Explicit semantics for assistive technology
+- **Data attributes:** Explicit state for AI agents
+- **Convergence:** Both benefit from explicit, semantic markup
+
+#### Integration with Existing CMS Platforms
+
+**WordPress example:**
+
+```php
+// Add MX meta tags to WordPress head
+add_action('wp_head', function() {
+  if (is_single()) {
+    $post_age_days = (time() - get_post_time('U')) / DAY_IN_SECONDS;
+    $freshness = $post_age_days < 7 ? 'daily' : 'monthly';
+
+    echo '<meta name="mx-preferred-access" content="html">' . "\n";
+    echo '<meta name="mx-content-policy" content="extract-with-attribution">' . "\n";
+    echo '<meta name="mx-freshness" content="' . esc_attr($freshness) . '">' . "\n";
+  }
+});
+```
+
+**Next.js example:**
+
+```jsx
+export default function BlogPost({ post }) {
+  return (
+    <>
+      <Head>
+        <meta name="mx-preferred-access" content="html" />
+        <meta name="mx-content-policy" content="extract-with-attribution" />
+        <meta name="mx-freshness" content={post.freshness} />
+      </Head>
+      <article>{post.content}</article>
+    </>
+  );
+}
+```
+
+#### Migration Path from Generic ai- Prefix
+
+**If you previously used ai- prefix, migrate to mx-:**
+
+```html
+<!-- OLD (generic ai- prefix) -->
+<meta name="ai-preferred-access" content="html">
+<meta name="ai-content-policy" content="extract-with-attribution">
+
+<!-- NEW (MX Framework) -->
+<meta name="mx-preferred-access" content="html">
+<meta name="mx-content-policy" content="extract-with-attribution">
+```
+
+**Rationale:** `mx-` establishes MX brand identity, aids discoverability, and aligns with namespace architecture. For complete explanation, see Part 2: MX Namespace Architecture.
+
+**Migration strategy:**
+
+1. Update meta tags from `ai-` to `mx-` in templates
+2. Update documentation and examples
+3. Both prefixes can coexist during transition (agents ignore unrecognized tags)
+4. No breaking changes (forward-compatible pattern)
+
+### Implementation Checklist
+
+**Phase 1: Foundations (Week 1)**
+
+- ✓ Add MX meta tags to `<head>` template
+- ✓ Implement Schema.org JSON-LD for key content types
+- ✓ Ensure semantic HTML elements (`<main>`, `<nav>`, `<article>`)
+- ✓ Test with HTML validators
+
+**Phase 2: Data Attributes (Week 2)**
+
+- ✓ Add common data attributes to products (data-price, data-currency, data-product-id)
+- ✓ Add state management attributes to forms (data-state, data-validation-state)
+- ✓ Add pagination attributes (data-page, data-total-pages)
+- ✓ Ensure consistency across all pages
+
+**Phase 3: Dynamic Patterns (Week 3-4)**
+
+- ✓ Implement data-agent-visible for hidden instructions
+- ✓ Add JavaScript state updates for dynamic content
+- ✓ Test with CLI tools (curl, wget)
+- ✓ Verify agent behavior with logs
+
+**Phase 4: Monitoring (Ongoing)**
+
+- ✓ Track agent user-agents in server logs
+- ✓ Monitor agent error rates
+- ✓ Measure conversion rates for agent purchases
+- ✓ Gather feedback and iterate
+
+---
+
+## Part 7: Relationship to Web Standards
+
+### Standards Landscape
+
+MX Framework operates within the broader web standards ecosystem. Understanding where MX fits helps clarify when to use which pattern.
+
+#### Established Standards (Universal Adoption)
+
+**W3C and WHATWG Standards:**
+
+- **HTML5 semantic elements** — `<nav>`, `<main>`, `<article>`, `<aside>`, `<section>`
+- **ARIA attributes** — `aria-label`, `aria-describedby`, `role`, `aria-live`
+- **HTML5 data attributes** — `data-*` custom attributes
+- **HTTP status codes** — 200, 303, 400, 401, 404, 422, 503
+- **`<meta>` tags** — `robots`, `viewport`, `description`, `canonical`
+
+**IETF Standards:**
+
+- **robots.txt** (RFC 9309) — Site-wide crawling policies
+- **HTTP headers** — Cache-Control, Content-Type, Status codes
+
+**De Facto Standards:**
+
+- **Schema.org** — Structured data vocabulary (Google, Microsoft, Yahoo, Yandex)
+- **Open Graph** — Social media metadata (Facebook)
+- **Twitter Cards** — Twitter-specific metadata
+
+**MX position:** Builds on these foundations, never replaces them.
+
+#### Emerging Standards (Early Adoption Phase)
+
+**llms.txt:**
+
+- **Status:** Community proposal gaining traction
+- **Purpose:** Site-wide AI agent guidance
+- **Analogy:** Like robots.txt but for LLMs
+- **Adoption:** Growing adoption across MX community
+- **MX relationship:** MX meta tags override llms.txt on per-page basis
+
+**Web Standards Process:**
+
+1. Individual experiments → 2. Community proposals → 3. Vendor consensus → 4. Formal standardization
+
+**llms.txt is at stage 2-3.** MX Framework supports and extends it.
+
+#### Proposed Patterns (MX Framework Specific)
+
+**MX meta tag namespace:**
+
+- **Status:** Proposed by MX Framework, not yet standardized
+- **Pattern:** Framework-specific metadata (like `twitter:` and `og:`)
+- **Rationale:** Establishes MX brand, aids discoverability, provides granular control
+- **Adoption path:** Community adoption → vendor recognition → potential standardization
+
+**data-agent-visible attribute:**
+
+- **Status:** Proposed by MX Framework, experimental
+- **Pattern:** Extends HTML5 `data-*` convention
+- **Rationale:** Hidden machine-readable instructions (like ARIA for agents)
+- **Forward-compatible:** Gracefully ignored if not recognized
+
+**Common data attributes:**
+
+- **Status:** Proposed conventions building on HTML5 `data-*`
+- **Pattern:** Standardized attribute names for consistent state management
+- **Rationale:** Agents parse state more reliably with consistent naming
+- **Relationship:** Extends established HTML5 data attribute convention
+
+### How MX Relates to Standards Bodies
+
+**MX is not a standards body.** MX Framework:
+
+- ✅ Proposes patterns following established conventions
+- ✅ Documents practical implementations
+- ✅ Builds on W3C/WHATWG/IETF standards
+- ✅ Shares learnings with community
+- ❌ Does not create formal specifications
+- ❌ Does not replace existing standards
+- ❌ Does not require vendor consensus before proposing
+
+**MX role:** Practitioner community documenting patterns that work in production.
+
+### Path to Standardization
+
+**If MX patterns prove valuable, they might standardize through:**
+
+1. **Multiple agent adoption** — Different AI systems recognize patterns
+2. **Production validation** — Measurable benefits in real deployments
+3. **Community refinement** — Usage reveals improvements
+4. **Vendor support** — Platforms include MX patterns by default
+5. **Formal proposal** — Community brings patterns to standards bodies
+
+**Examples of similar evolution:**
+
+- **viewport meta tag** — Apple proprietary → universal standard
+- **robots meta tag** — Community convention → universal recognition
+- **Open Graph** — Facebook proposal → widely adopted
+- **Schema.org** — Vendor consortium → established standard
+
+**MX follows this trajectory:** Start with practical patterns, refine through use, formalize if proven valuable.
+
+### Web Standards Research (2025-2026)
+
+**Research conducted:** January 2026 web standards search
+
+**Finding:** NO established `ai-` prefix standard exists in:
+
+- W3C specifications
+- WHATWG standards
+- IETF RFCs
+- Major vendor proposals (Google, Microsoft, Meta, Apple)
+- Community standards (Microformats, Schema.org)
+
+**Implication:** `ai-` prefix was not following any established pattern. MX Framework chose `mx-` to:
+
+1. Establish framework identity (like `twitter:`, `og:`)
+2. Aid discoverability ("mx meta tags" search leads to MX community)
+3. Align with namespace architecture (mx: → mx.ai, mx.co, mx.ho)
+
+**Pattern precedent:**
+
+- `twitter:card`, `twitter:title` — Twitter's framework-specific metadata
+- `og:type`, `og:title` — Open Graph's framework-specific metadata
+- `mx-preferred-access`, `mx-content-policy` — MX Framework's metadata
+
+### Relationship to HTML Living Standard
+
+**HTML Living Standard (WHATWG)** defines:
+
+- Valid HTML elements and attributes
+- `data-*` attribute pattern for custom data
+- `<meta name="...">` extensibility
+
+**MX compliance:**
+
+- ✅ MX meta tags use valid `<meta name="...">` pattern
+- ✅ MX data attributes follow `data-*` pattern
+- ✅ All MX patterns use valid HTML syntax
+- ✅ Forward-compatible (ignored by parsers that don't recognize them)
+
+**MX is valid HTML** using established extension mechanisms.
+
+### Cross-References to Standards Documentation
+
+**For complete specifications, see:**
+
+- **Semantic HTML:** [MDN HTML Elements Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- **ARIA:** [W3C ARIA 1.2](https://www.w3.org/TR/wai-aria-1.2/)
+- **Schema.org:** [Schema.org Documentation](https://schema.org)
+- **Open Graph:** [Open Graph Protocol](https://ogp.me)
+- **robots.txt:** [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html)
+- **HTTP Status Codes:** [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
+- **HTML Living Standard:** [WHATWG HTML](https://html.spec.whatwg.org)
+
+**For MX-specific patterns, see:**
+
+- **This appendix (Appendix L):** Complete MX pattern specifications
+- **Appendix D:** AI-Friendly HTML Guide with practical examples
+- **Appendix M:** Building the MX Operating System (collaborative process)
+
+### Summary: Standards Hierarchy
+
+**Use this hierarchy when making decisions:**
+
+1. **Established standards FIRST** — HTML5, ARIA, Schema.org, HTTP
+2. **Emerging conventions SECOND** — llms.txt, community patterns
+3. **MX patterns THIRD** — Framework-specific metadata and extensions
+
+**Never replace established standards with MX patterns.** Always build on foundations.
 
 ---
 

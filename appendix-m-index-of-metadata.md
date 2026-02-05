@@ -4,7 +4,8 @@ author: "Tom Cranstoun"
 date: "2026-01-22"
 description: "Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, structured data patterns, testing methodologies, and terminology used throughout MX-Bible."
 keywords: [metadata-index, schema-org, yaml-frontmatter, html-attributes, structured-data, testing-methodologies, terminology-framework, anti-patterns-reference]
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book appendix serving as a comprehensive metadata reference.
   Write as if it has always existed. NEVER include: publication dates about
@@ -428,6 +429,8 @@ ai-instruction: |
 
 **Chapter References:** All manuscript chapters
 
+**See also:** [Section 9A - MX Notation Convention](#9a-mx-notation-convention) for understanding how MX-namespaced attributes (`mx:ai:`, `mx:content:`, `mx:rag:`) are referenced in documentation.
+
 ---
 
 ## 5. HTML Meta Tags & Link Elements
@@ -613,7 +616,142 @@ ai-instruction: |
 
 ---
 
-## 10. Common Property Patterns
+## 9A. MX Notation Convention
+
+### Overview
+
+When documenting MX metadata attributes in prose, we use dot notation (`ai.doNotModify`) for readability, even though the actual YAML structure uses nested colons under the `mx:` namespace.
+
+This convention makes documentation cleaner while maintaining clarity about the underlying structure.
+
+---
+
+### Documentation Notation (In Prose)
+
+In manuscripts, documentation, and discussions, MX attributes appear with dot notation:
+
+- `ai.doNotModify` - prevents AI from modifying code
+- `ai.contextRequired` - lists dependencies needed for understanding
+- `content.state` - indicates content lifecycle stage
+- `rag.chunkBoundary` - defines chunking strategy for RAG systems
+
+**Format**: `category.property` where category is the domain (ai, content, rag) and property is the specific attribute.
+
+**Examples in text**:
+
+> "The `ai.doNotModify` attribute prevents AI assistants from modifying this code."
+>
+> "Use `ai.contextRequired` to specify which files must be read first."
+>
+> "Set `rag.chunkBoundary` to 'heading' for document-based chunking."
+
+---
+
+### YAML Structure (In Code)
+
+In actual YAML frontmatter or configuration files, these attributes use nested structure:
+
+```yaml
+mx:
+  ai:
+    doNotModify: true
+    contextRequired:
+      - ../authentication/user-model.ts
+      - ../database/schema.sql
+  content:
+    state: published
+  rag:
+    chunkBoundary: heading
+```
+
+**Format**: All properties nested under `mx:` namespace, with category as first-level key and property as second-level key.
+
+---
+
+### Rationale
+
+This dual notation system provides several benefits:
+
+1. **Readability** - `ai.doNotModify` is cleaner in prose than `mx:ai:doNotModify` or `mx.ai.doNotModify`
+2. **Brevity** - The `mx:` namespace is implied context within MX documentation
+3. **Standard convention** - Similar to writing `user.name` in docs when referring to `{"user": {"name": "..."}}`
+4. **Focus** - Emphasizes the meaningful part (`ai.doNotModify`) over the namespace wrapper
+5. **Scanability** - Easier to spot attribute references in dense documentation
+
+---
+
+### Comparison Table
+
+| Documentation (Prose) | YAML Structure | Description |
+|-----------------------|----------------|-------------|
+| `ai.doNotModify` | `mx: ai: doNotModify: true` | Prevents AI modification |
+| `ai.contextRequired` | `mx: ai: contextRequired: []` | Lists dependencies |
+| `content.state` | `mx: content: state: published` | Content lifecycle stage |
+| `rag.chunkBoundary` | `mx: rag: chunkBoundary: heading` | RAG chunking strategy |
+| `rag.chunkSize` | `mx: rag: chunkSize: 500` | Target chunk size in tokens |
+
+---
+
+### Complete Example
+
+**In documentation prose**:
+
+> Configure the file with `ai.doNotModify: true` to prevent modifications and use
+> `ai.contextRequired` to list prerequisite files. For RAG optimization, set
+> `rag.chunkBoundary` to match your document structure.
+
+**In actual YAML frontmatter**:
+
+```yaml
+---
+title: "User Authentication Module"
+mx:
+  ai:
+    doNotModify: true
+    contextRequired:
+      - ../models/user.ts
+      - ../config/auth-settings.ts
+  rag:
+    chunkBoundary: heading
+    chunkSize: 500
+---
+```
+
+---
+
+### Reading Guidelines
+
+When reading MX documentation:
+
+- **Dot notation in text** (`ai.doNotModify`) refers to the nested YAML property
+- **Always assume** `mx:` namespace is the root in actual implementation
+- **Category** (e.g., `ai`, `content`, `rag`) is the first level of nesting
+- **Property name** (e.g., `doNotModify`, `state`) is the second level
+- **The dot** in prose is equivalent to nested colons in YAML
+
+**Translation pattern**:
+
+```text
+Documentation:  ai.doNotModify
+                ↓
+YAML:          mx:
+                 ai:
+                   doNotModify: true
+```
+
+---
+
+### Related Documentation
+
+- **Complete attribute definitions**: [MX Attributes Registry](../../mx-config/mx-attributes-registry.md)
+- **Namespace specification**: [MX Base Specification](../../packages/mx-gathering/specifications/mx-base-spec.md)
+- **AI-specific attributes**: [MX Code Metadata Specification](../../packages/mx-gathering/specifications/mx-code-metadata-spec.md)
+
+**Note**: This notation convention applies to all MX specifications and documentation. When implementing, always use the full nested YAML structure under the `mx:` namespace.
+
+---
+
+## 11. Common Property Patterns
 
 ### Price & Currency
 
@@ -667,7 +805,7 @@ ai-instruction: |
 
 ---
 
-## 11. Testing & Validation Tools
+## 12. Testing & Validation Tools
 
 ### Mentioned in Chapters
 
@@ -692,7 +830,7 @@ await page.locator('[aria-live="polite"]')
 
 ---
 
-## 12. Multi-Type Combinations
+## 13. Multi-Type Combinations
 
 ### Dual-Typing Pattern
 
@@ -716,7 +854,7 @@ await page.locator('[aria-live="polite"]')
 
 ---
 
-## 13. Strategic Metadata Decisions
+## 14. Strategic Metadata Decisions
 
 ### High Value, No Trade-Off
 
@@ -748,7 +886,7 @@ await page.locator('[aria-live="polite"]')
 
 ---
 
-## 14. Error Prevention Patterns
+## 15. Error Prevention Patterns
 
 ### Critical Failures Documented
 
@@ -761,7 +899,7 @@ await page.locator('[aria-live="polite"]')
 
 ---
 
-## 15. Convergence Principle Examples
+## 16. Convergence Principle Examples
 
 ### What Works for Agents Also Works for Accessibility
 
@@ -779,7 +917,7 @@ await page.locator('[aria-live="polite"]')
 
 ---
 
-## 16. File Format Reference
+## 17. File Format Reference
 
 ### Metadata Storage Formats
 
@@ -792,7 +930,7 @@ await page.locator('[aria-live="polite"]')
 
 ---
 
-## 17. Quick Reference: Most Critical Metadata
+## 18. Quick Reference: Most Critical Metadata
 
 ### Priority 1 (Implement First)
 
@@ -856,7 +994,7 @@ Metadata terms defined in main Glossary.md:
 
 ---
 
-## 18. Testing Methodologies
+## 19. Testing Methodologies
 
 ### Testing Frameworks for AI Readability
 
@@ -902,7 +1040,7 @@ Metadata terms defined in main Glossary.md:
 
 ---
 
-## 19. Anti-Patterns Reference
+## 20. Anti-Patterns Reference
 
 ### Complete List of 13 Anti-Patterns
 
@@ -938,7 +1076,7 @@ Metadata terms defined in main Glossary.md:
 
 ---
 
-## 20. Terminology Framework
+## 21. Terminology Framework
 
 ### Core Concepts and Principles
 
@@ -1022,8 +1160,8 @@ Start with type matching your core content. Complete implementation of one type 
 
 ---
 
-**Document Status:** v1.1 - Extended metadata index with testing methodologies, anti-patterns reference, and terminology framework.
+**Document Status:** v1.2 - Added MX Notation Convention section (9A) explaining dot notation in prose vs. nested YAML structure. Extended metadata index with testing methodologies, anti-patterns reference, and terminology framework.
 
-**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters. New sections integrate patterns from "MX-Handbook" practical guide.
+**Chapter Coverage:** Primarily Chapters 10 (GEO), 11 (Designing for Both), 12 (Technical Advice); references throughout all chapters. New sections integrate patterns from "MX-Handbook" practical guide and MX specifications.
 
-**Total Metadata Elements Cataloged:** 150+ distinct elements across 20 categories (expanded from 17 with testing, anti-patterns, and terminology sections).
+**Total Metadata Elements Cataloged:** 150+ distinct elements across 21 categories (expanded from 20 with notation convention documentation).

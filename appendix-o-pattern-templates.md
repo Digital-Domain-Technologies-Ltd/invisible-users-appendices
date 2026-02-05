@@ -5,7 +5,8 @@ author: "Tom Cranstoun"
 date: "2026-01-26"
 description: "Reusable templates for MX pattern documentation including Pattern Intent, ADR format, Quick Start Cards, and validation checklists"
 keywords: [patterns, templates, adr, documentation, validation]
-ai-instruction: "This document is copyrighted material. No part may be reproduced without permission. This appendix provides standardised templates for pattern documentation. When creating patterns, follow these templates exactly to ensure consistency across all MX pattern documentation. All patterns must include YAML frontmatter for machine readability."
+mx:
+  promptingInstruction: "This document is copyrighted material. No part may be reproduced without permission. This appendix provides standardised templates for pattern documentation. When creating patterns, follow these templates exactly to ensure consistency across all MX pattern documentation. All patterns must include YAML frontmatter for machine readability."
 purpose: "Reference templates for pattern authors"
 ---
 
@@ -37,7 +38,8 @@ author: "Author Name"
 date: "YYYY-MM-DD"
 description: "One-sentence pattern description"
 keywords: [pattern, domain, technology, platform]
-ai-instruction: "Instructions for AI agents parsing this pattern"
+mx:
+  promptingInstruction: "This document is copyrighted material. No part may be reproduced without permission. This appendix provides standardised templates for pattern documentation. When creating patterns, follow these templates exactly to ensure consistency across all MX pattern documentation. All patterns must include YAML frontmatter for machine readability."
 purpose: "Pattern documentation"
 pattern-id: "mx.pattern.domain.purpose.platform"
 version: "1.0.0"

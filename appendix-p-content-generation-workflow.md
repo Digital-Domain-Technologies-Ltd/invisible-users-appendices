@@ -7,7 +7,8 @@ keywords: [content-workflow, metadata-schema, yaml-frontmatter, html-generation,
 book: "MX-Bible"
 appendix: "P"
 wordcount: 5800
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
   "this update", or any meta-commentary about the book's development.
@@ -63,7 +64,8 @@ content-url: ""                         # Full URL (empty until published)
 publication-date: ""                    # Publication date (empty until published)
 description: "Brief summary for meta description and social cards (1-2 sentences)"
 keywords: [keyword1, keyword2, keyword3]  # 3-5 relevant keywords
-ai-instruction: "Context for AI agents parsing this content"
+mx:
+  promptingInstruction: "Context for AI agents parsing this content"
 ---
 ```
 
@@ -759,7 +761,8 @@ blog-url: ""
 publication-date: ""
 description: "How metadata transforms websites from opaque to transparent for AI agents"
 keywords: [metadata, schema-org, ai-agents, semantic-html]
-ai-instruction: "This post explains metadata's role in AI agent compatibility"
+mx:
+  promptingInstruction: "This post explains metadata's role in AI agent compatibility"
 ---
 
 # Machine Experience: Adding Metadata
@@ -779,6 +782,444 @@ outputs/bible/blogs/mx/
 ├── machine-experience-adding-metadata.css
 └── machine-experience-adding-metadata-social.svg
 ```
+
+## Generation Instruction Provenance
+
+### The Transparency Problem
+
+Every content generation system faces the same challenge: how do you know how a file was generated? Traditional systems hide generation instructions in build scripts, makefiles, or tribal knowledge. When files are regenerated months later, the instructions are lost or outdated.
+
+**The cost of opacity:**
+
+- Files accumulate without clear regeneration paths
+- Manual edits to generated files get overwritten
+- Team members don't know which files are source vs. generated
+- Automated systems can't verify generation integrity
+
+### MX Principle 7: Executable Documentation
+
+**Core requirement:** Documents must contain their own generation instructions.
+
+This workflow implements transparent generation provenance where:
+
+1. **Source files declare** how to generate outputs (`mx.generate`)
+2. **Generated files receive** complete provenance tracking (`mx.provenance`)
+3. **Sidecar files preserve** machine-readable provenance (`.mx.json`)
+4. **SHA-256 checksums** verify source integrity across generations
+
+### Mandatory mx.generate Section
+
+All source markdown files must include `mx.generate` in YAML frontmatter:
+
+```yaml
+---
+title: "Document Title"
+author: "Tom Cranstoun"
+date: "2026-02-04"
+
+mx:
+  generate:
+    script: "scripts/generate-content-html.js"
+    format: "html"
+    description: "Generate HTML from markdown with WCAG compliance"
+    arguments: []  # Optional: command-line arguments
+    environment: {} # Optional: required environment variables
+---
+```
+
+**Validation:** Generation scripts validate this section exists before proceeding. Missing `mx.generate` causes immediate failure with clear error messages.
+
+**Why mandatory:** Without explicit generation instructions, files become opaque artifacts. Mandatory validation ensures every generated file can be traced and regenerated.
+
+### Generated File Provenance
+
+When generation completes, outputs receive comprehensive provenance metadata:
+
+**For markdown outputs** (e.g., `document-print.md`):
+
+```yaml
+---
+title: "Document Title"
+author: "Tom Cranstoun"
+date: "2026-02-04"
+
+mx:
+  provenance:
+    source: "path/to/document.md"
+    sourceChecksum: "sha256:abc123def456..."
+    generatedDate: "2026-02-04T14:30:00Z"
+    generatedBy: "scripts/mx-pdf.sh"
+    version: "1.0.0"
+    transformations:
+      - process: "emoji-cleaning"
+        timestamp: "2026-02-04T14:30:00Z"
+        outputFile: "document-print.md"
+      - process: "pdf-generation"
+        timestamp: "2026-02-04T14:30:00Z"
+        outputFile: "document.pdf"
+  generate:
+    script: "scripts/mx-pdf.sh"
+    format: "pdf"
+    description: "Generate PDF from markdown"
+---
+```
+
+**For HTML outputs** (meta tags in `<head>`):
+
+```html
+<!-- MX Provenance (generation transparency) -->
+<meta name="mx:provenance:source" content="path/to/document.md">
+<meta name="mx:provenance:sourceChecksum" content="sha256:abc123...">
+<meta name="mx:provenance:generatedDate" content="2026-02-04T14:30:00Z">
+<meta name="mx:provenance:generatedBy" content="scripts/generate-content-html.js">
+<meta name="mx:provenance:version" content="1.0.0">
+
+<!-- MX Generation Instructions -->
+<meta name="mx:generate:script" content="scripts/generate-content-html.js">
+<meta name="mx:generate:format" content="html">
+```
+
+**For PDF outputs** (`.mx.json` sidecar):
+
+```json
+{
+  "provenance": {
+    "source": "path/to/document.md",
+    "sourceChecksum": "sha256:abc123def456...",
+    "generatedDate": "2026-02-04T14:30:00Z",
+    "generatedBy": "scripts/mx-pdf.sh",
+    "version": "1.0.0",
+    "transformations": [
+      {
+        "process": "emoji-cleaning",
+        "timestamp": "2026-02-04T14:30:00Z",
+        "outputFile": "document-print.md"
+      },
+      {
+        "process": "pdf-generation",
+        "timestamp": "2026-02-04T14:30:00Z",
+        "outputFile": "document.pdf"
+      }
+    ]
+  },
+  "generate": {
+    "script": "scripts/mx-pdf.sh",
+    "format": "pdf",
+    "description": "Generate PDF from markdown with emoji cleaning"
+  }
+}
+```
+
+### MX Sidecar Files (.mx.json)
+
+Binary or structured outputs that can't embed metadata receive `.mx.json` sidecar files:
+
+**Naming convention:** `{filename}.mx.json`
+
+**Purpose:**
+
+- Preserve complete provenance when target format doesn't support metadata
+- Provide machine-readable generation instructions for automation
+- Enable checksum verification without parsing binary formats
+
+**Example:** For `document.pdf`, create `document.mx.json` with:
+
+- Source file path and SHA-256 checksum
+- Generation timestamp and script version
+- Complete transformation chain
+- Original generation instructions
+
+### Checksum Verification
+
+SHA-256 checksums enable integrity verification:
+
+```bash
+# Verify source hasn't changed since generation
+sha256sum document.md
+# Compare to mx.provenance.sourceChecksum in document-print.md
+# or document.mx.json
+
+# If checksums match: safe to use generated files
+# If checksums differ: regenerate to ensure consistency
+```
+
+**Automated workflows:**
+
+```javascript
+// Read sidecar file
+const provenance = JSON.parse(fs.readFileSync('document.mx.json'));
+
+// Calculate current checksum
+const currentChecksum = calculateSHA256('document.md');
+
+// Compare
+if (provenance.provenance.sourceChecksum !== `sha256:${currentChecksum}`) {
+  console.warn('Source file changed - regeneration recommended');
+  // Trigger regeneration pipeline
+}
+```
+
+### Transformation Chains
+
+Complex generation workflows involve multiple steps. The `transformations` array tracks each stage:
+
+**Example: PDF generation workflow**
+
+```json
+{
+  "provenance": {
+    "source": "report.md",
+    "sourceChecksum": "sha256:abc123...",
+    "transformations": [
+      {
+        "process": "emoji-cleaning",
+        "timestamp": "2026-02-04T14:30:00Z",
+        "outputFile": "report-print.md",
+        "description": "Remove emoji characters for LaTeX compatibility"
+      },
+      {
+        "process": "pdf-generation",
+        "timestamp": "2026-02-04T14:30:01Z",
+        "outputFile": "report.pdf",
+        "tool": "pandoc + xelatex",
+        "description": "Generate PDF with professional formatting"
+      }
+    ]
+  }
+}
+```
+
+**Why track transformations:**
+
+- **Debugging:** Identify which stage introduced issues
+- **Optimization:** Measure time per transformation
+- **Caching:** Skip unchanged intermediate steps
+- **Auditing:** Verify complete generation history
+
+### Pass-Through Transparency
+
+**Critical requirement:** Generation instructions pass through to all outputs.
+
+When `document.md` generates `document-print.md`, which generates `document.pdf`:
+
+1. `document.md` contains `mx.generate` (source)
+2. `document-print.md` receives `mx.provenance` + preserves `mx.generate`
+3. `document.pdf` receives `document.mx.json` with both sections
+
+**Result:** Every file in the generation chain can be independently regenerated.
+
+**Anti-pattern to avoid:**
+
+```yaml
+# BAD: Generated file loses generation instructions
+mx:
+  provenance:
+    source: "document.md"
+  # Missing: mx.generate section
+```
+
+This breaks the chain - `document-print.md` can't be regenerated without returning to original source.
+
+### Implementation in Generation Scripts
+
+**scripts/mx-pdf.sh** (Bash + Perl):
+
+```bash
+# 1. Validate mx.generate exists (mandatory)
+validate_mx_generate() {
+    local input_file="$1"
+    if ! grep -q "^mx:" "$input_file"; then
+        echo "Error: Missing required 'mx:' section"
+        exit 2
+    fi
+    # Check for generate: subsection using Perl
+    local has_generate=$(perl -0777 -ne 'if (/^mx:\n(.*?)(?=^\S|\z)/sm) {
+        $mx=$1; print "yes" if $mx =~ /^\s+generate:/m }' "$input_file")
+    if [ "$has_generate" != "yes" ]; then
+        echo "Error: Missing required 'mx.generate'"
+        exit 2
+    fi
+}
+
+# 2. Calculate SHA-256 checksum
+calculate_checksum() {
+    local file="$1"
+    shasum -a 256 "$file" | awk '{print $1}'
+}
+
+# 3. Create MX sidecar JSON
+create_mx_sidecar() {
+    local source_file="$1"
+    local output_file="$2"
+    local checksum="$3"
+    local sidecar_file="${output_file%.pdf}.mx.json"
+
+    # Extract mx.generate section from source
+    # Build JSON with provenance + generate
+    # Write to sidecar file
+}
+```
+
+**scripts/generate-content-html.js** (Node.js):
+
+```javascript
+// 1. Validate mx.generate exists
+function validateMxGenerate(metadata, filePath) {
+  if (!metadata.mx || typeof metadata.mx !== 'object') {
+    console.error('ERROR: Missing required \'mx:\' section');
+    process.exit(2);
+  }
+  if (!metadata.mx.generate || typeof metadata.mx.generate !== 'object') {
+    console.error('ERROR: Missing required \'mx.generate\'');
+    process.exit(2);
+  }
+}
+
+// 2. Calculate SHA-256 checksum
+function calculateChecksum(filePath) {
+  const crypto = require('crypto');
+  const fileBuffer = fs.readFileSync(filePath);
+  const hashSum = crypto.createHash('sha256');
+  hashSum.update(fileBuffer);
+  return hashSum.digest('hex');
+}
+
+// 3. Create MX sidecar JSON
+function createMxSidecar(sourceFile, outputFile, checksum, metadata) {
+  const sidecarPath = outputFile.replace('.html', '.mx.json');
+  const sidecarData = {
+    provenance: {
+      source: path.relative(process.cwd(), sourceFile),
+      sourceChecksum: `sha256:${checksum}`,
+      generatedDate: new Date().toISOString(),
+      generatedBy: 'scripts/generate-content-html.js',
+      version: '1.0.0',
+      transformations: [/* ... */]
+    },
+    generate: metadata.mx.generate
+  };
+  fs.writeFileSync(sidecarPath, JSON.stringify(sidecarData, null, 2));
+}
+```
+
+### Benefits for AI Agents
+
+**Discovery:** Agents can identify generated vs. source files
+
+```javascript
+// Agent reads .mx.json sidecar
+if (file.mx && file.mx.provenance) {
+  // This is a generated file
+  const sourceFile = file.mx.provenance.source;
+  // Follow chain back to authoritative source
+}
+```
+
+**Regeneration:** Agents can regenerate outdated files
+
+```javascript
+// Agent detects source changed
+if (checksumsDiffer(source, generated.mx.provenance.sourceChecksum)) {
+  const script = generated.mx.generate.script;
+  const format = generated.mx.generate.format;
+  // Execute: node scripts/generate-content-html.js source.md
+}
+```
+
+**Verification:** Agents can audit generation history
+
+```javascript
+// Agent validates transformation chain
+generated.mx.provenance.transformations.forEach(transform => {
+  console.log(`${transform.process} at ${transform.timestamp}`);
+  // Verify each step produced expected output
+});
+```
+
+### Storage Patterns
+
+**Hybrid approach:**
+
+- **Source markdown:** `mx.generate` in YAML frontmatter
+- **Generated markdown:** `mx.provenance` + `mx.generate` in YAML frontmatter
+- **Generated HTML:** `mx:*` meta tags in `<head>` + `.mx.json` sidecar
+- **Generated PDF:** `.mx.json` sidecar only (PDF doesn't support frontmatter)
+
+**Why hybrid:** Different formats have different metadata capabilities. Use the most appropriate storage for each format while maintaining complete provenance.
+
+### Common Patterns
+
+**Pattern 1: Single-stage generation**
+
+```
+document.md (source with mx.generate)
+  ↓
+document.html (with mx.provenance meta tags)
+document.mx.json (sidecar)
+```
+
+**Pattern 2: Multi-stage generation**
+
+```
+report.md (source with mx.generate)
+  ↓
+report-print.md (with mx.provenance + mx.generate)
+  ↓
+report.pdf (binary)
+report.mx.json (sidecar)
+```
+
+**Pattern 3: Multiple output formats**
+
+```
+content.md (source with mx.generate)
+  ↓
+content.html (with mx.provenance meta tags + .mx.json)
+content.pdf (with .mx.json)
+content.docx (with .mx.json)
+```
+
+### Error Messages
+
+**Missing mx.generate:**
+
+```
+❌ Error: Missing required 'mx.generate' in YAML frontmatter
+
+The source markdown file must contain an 'mx:' section with 'generate:' instructions.
+
+Add this to your YAML frontmatter:
+
+mx:
+  generate:
+    script: "scripts/generate-content-html.js"
+    format: "html"
+    description: "Generate HTML from markdown"
+```
+
+**Checksum mismatch:**
+
+```
+⚠️  Warning: Source file has changed since generation
+
+Source: document.md
+Generated: document.html
+Expected checksum: sha256:abc123...
+Current checksum:  sha256:def456...
+
+Run generation script to update output files.
+```
+
+### Key Takeaways
+
+1. **Mandatory mx.generate** prevents opaque files from entering the system
+2. **SHA-256 checksums** enable automated integrity verification
+3. **Transformation chains** track multi-stage generation workflows
+4. **Pass-through transparency** ensures every file can be independently regenerated
+5. **MX sidecar files** preserve provenance for formats that don't support metadata
+6. **Hybrid storage** uses appropriate metadata embedding for each format
+
+This system transforms generation from "hidden build script magic" to "explicit, verifiable, agent-friendly provenance."
 
 ## WCAG 2.1 AA Compliance
 

@@ -4,7 +4,8 @@ author: "Tom Cranstoun"
 date: "2026-01-24"
 description: "Comprehensive reference of the 14 most common mistakes that break AI agent compatibility, with detection methods and complete fixes for each pattern."
 keywords: [anti-patterns, common-mistakes, visual-only-state, client-rendering, broken-hierarchy, accessibility-failures, detection-methods, quick-wins, context-free-references]
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book appendix cataloging anti-patterns. Write as if it has always
   existed. NEVER include: publication dates about the appendix itself, "we

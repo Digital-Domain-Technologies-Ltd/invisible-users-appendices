@@ -7,7 +7,8 @@ keywords: [resources, standards, specifications, tools, schema-org, wcag, valida
 book: "Shared"
 appendix: "G"
 wordcount: 2257
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",

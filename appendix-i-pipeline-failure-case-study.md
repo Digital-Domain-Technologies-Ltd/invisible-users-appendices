@@ -7,7 +7,8 @@ keywords: [pipeline-failure, validation-layers, confidence-scoring, data-extract
 book: "Shared"
 appendix: "I"
 wordcount: 2838
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",

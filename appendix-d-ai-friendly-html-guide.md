@@ -7,7 +7,8 @@ keywords: [ai-friendly-html, semantic-html, structured-data, progressive-enhance
 book: "Shared"
 appendix: "D"
 wordcount: 10624
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
@@ -57,7 +58,7 @@ The guide covers 13 major parts:
 **Cross-references**:
 - Appendix A (Implementation Cookbook) - Quick copy-paste recipes
 - Chapter 12 (Technical Advice) - Full narrative with business context
-- Appendix L (Proposed AI Metadata Patterns) - Specifications for experimental patterns
+- **Appendix L (Proposed AI Metadata Patterns)** - Complete MX namespace architecture, metadata specifications, integration guidelines, and relationship to web standards. See Appendix L for comprehensive MX Framework patterns including mx- meta tags, data attributes by namespace (mx.ai, mx.co, mx.ho), JSON-LD integration, and standards compliance.
 
 ---
 
@@ -87,10 +88,13 @@ This guide presents both established standards and proposed patterns:
 
 **Proposed Patterns** (experimental, forward-compatible):
 
-- ai-* meta tag namespace
+- mx-* meta tag namespace (MX Framework)
 - data-agent-visible attribute pattern
+- Common data attributes for state management
 
-**For complete proposal specifications, rationale, and adoption guidelines, see [Appendix L: Proposed AI Metadata Patterns](<https://allabout.network/invisible-users/web/appendix-l.html>).**
+**For complete proposal specifications, namespace architecture, integration guidelines, and adoption guidelines, see [Appendix L: Proposed AI Metadata Patterns](<https://allabout.network/invisible-users/web/appendix-l.html>).**
+
+**Note:** Appendix L has been reorganized to include comprehensive MX namespace architecture (mx:, mx.ai:, mx.co:, mx.ho:), metadata patterns organized by namespace, integration guidelines with existing standards (Schema.org, Open Graph, robots.txt, llms.txt), implementation checklists, and relationship to web standards. All mx- patterns (previously ai- patterns) are documented there with complete rationale.
 
 All patterns shown are designed to be forward-compatible — they won't break anything if agents don't recognise them. Think of them as progressive enhancement for AI.
 

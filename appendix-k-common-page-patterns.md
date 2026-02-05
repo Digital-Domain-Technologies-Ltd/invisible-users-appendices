@@ -7,7 +7,8 @@ keywords: [page-patterns, html-templates, schema-org, semantic-html, production-
 book: "Shared"
 appendix: "K"
 wordcount: 17078
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",

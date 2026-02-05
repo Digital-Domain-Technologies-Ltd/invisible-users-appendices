@@ -7,7 +7,8 @@ keywords: [implementation-roadmap, priorities, quick-wins, structured-data, prog
 book: "Shared"
 appendix: "F"
 wordcount: 4432
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",

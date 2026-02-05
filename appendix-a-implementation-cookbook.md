@@ -7,7 +7,8 @@ keywords: [implementation-cookbook, code-recipes, quick-reference, persistent-er
 book: "Shared"
 appendix: "A"
 wordcount: 3082
-ai-instruction: |
+mx:
+  promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.
   This is a book manuscript appendix. Write as if it has always existed.
   NEVER include: publication dates, "we added", "new feature", "launching",
