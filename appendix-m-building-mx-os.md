@@ -665,6 +665,97 @@ The `.mx.yaml.md` and `.mx.effective.yaml` system is MX OS in action:
 
 ---
 
+## What This Process Built: The Cog System
+
+This appendix was written on 3 February 2026. It described the process. Five days later, that process produced something we did not expect.
+
+### The Problem the Process Revealed
+
+The Investigate-Interview-Iterate-Document pattern, applied to the question "How do AI agents actually read content?", surfaced a gap: there was no simple, universal format for machine-readable documents. AI agents scrape web pages, guess at meaning, and get it wrong. A river cruise at £2,030 becomes £203,000. The information is there. It was never structured for machines to parse.
+
+### What Emerged: Cogs
+
+A **cog** is the atomic unit of MX — a markdown file with YAML frontmatter. Machine-readable metadata at the top, human-readable content below. Any AI agent can parse it.
+
+```yaml
+---
+name: river-cruise-pricing
+version: "1.0"
+description: Pricing for 2026 Rhine river cruises
+category: commerce
+tags: [pricing, cruise, rhine, 2026]
+audience: ai-agents
+---
+
+# Rhine River Cruise Pricing
+
+Standard cabin: £2,030 per person.
+```
+
+The metadata tells the machine what the document is before it starts guessing. The format is deliberately simple — markdown and YAML. Every developer knows it. Every AI agent reads it.
+
+### Cogs as Programs
+
+This appendix stated: "The MX documentation IS the MX Operating System." The cog system made that literal.
+
+- **Static cogs** are the data files of MX OS — documents that describe themselves
+- **Cog-wheels** are the programs — cogs with an `execute` block that define actions
+- **The runtime** is any AI agent — every agent can read markdown and parse YAML
+- **The Gathering specification** defines the system API
+- **The cog registry** is the package index
+
+The `runtime:` field in a cog-wheel's execute block works like a shebang line in Unix — it tells the system how to run the program. Runtimes include `bash`, `node`, `python`, and `ai-prompt` (where the cog-wheel IS the prompt and the AI agent IS the executor).
+
+### The Companion Web
+
+Cogs solve the document problem. The **companion web** solves the web problem.
+
+Every web page has two readers: the human and the AI agent. The companion web adds structured metadata to HTML so both get what they need from the same URL:
+
+```html
+<meta name="cog:name" content="river-cruise-pricing">
+<meta name="cog:description" content="Pricing for 2026 Rhine river cruises">
+<link rel="cog" href="/cogs/river-cruise-pricing.cog.md">
+```
+
+Metadata in the HTML head — like OpenGraph, but for AI agents. No new infrastructure. No API. Just HTML tags that any web server already supports.
+
+QR codes on physical objects point to companion web pages. An agent scans a product and knows what it is — not from a database, not from computer vision, but because the object describes itself. This extends to robotics: warehouse robots, delivery systems, any physical machine.
+
+### Both Directions
+
+The companion web is the world speaking to the agent. The **personal cog** is the person speaking to the agent.
+
+A personal cog is a collection of cogs on the user's device — accessibility needs, interests, dietary requirements, health, skills. The user's AI agent controls what gets shared. A restaurant gets the dietary cog. A hospital gets the health cog. Nobody gets everything. The agent decides.
+
+The companion web is the world speaking cog. The personal cog is the person speaking cog. The agent reads both sides. That is the Machine Experience.
+
+### The Gathering
+
+The cog specification is governed by **The Gathering** — an independent standards body. MIT licensed. W3C model: The Gathering governs the spec, implementers build products on it.
+
+### What the Process Produced
+
+Starting from the pattern described in this appendix:
+
+| Output | Status |
+| --- | --- |
+| Cog specification | v1.0-draft |
+| Working cogs | 11 registered |
+| The Gathering | Founded |
+| Companion web embedding | Specified |
+| Personal cog model | Specified |
+| MX OS runtime model | Documented |
+| Access control layer | Specified |
+| Agent delegation model | Specified |
+
+The Investigate-Interview-Iterate-Document pattern, described here as a way to build documentation, turned out to be the pattern for building the system itself.
+
+**Canonical specification:** `MX-Canon/MX-The-Gathering/deliverables/cog-unified-spec.md`
+**Cog registry:** `MX-Canon/MX-Cog-Registry/cogs/`
+
+---
+
 ## Conclusion
 
 **MX OS is built through:**
@@ -678,9 +769,9 @@ The `.mx.yaml.md` and `.mx.effective.yaml` system is MX OS in action:
 
 **This IS the system.**
 
-When we document how MX works, we create MX OS - the Operating System for Machine Experience.
+The cog system proved it. The process documented in this appendix — applied to itself — produced an open metadata standard, a standards body, and a runtime model where the files are the platform and every AI agent is the runtime.
 
-**Welcome to building the future of machine-readable documentation, one transparent collaboration at a time.**
+When we document how MX works, we create MX OS — the Operating System for Machine Experience.
 
 ---
 
@@ -690,6 +781,7 @@ When we document how MX works, we create MX OS - the Operating System for Machin
 - Case study: Appendix L reorganization (Plans 1-7)
 - Demonstrates: Investigate-Interview-Iterate-Document pattern
 - Purpose: Make the collaborative process replicable and transparent
+- 2026-02-09: Added "What This Process Built" — connecting the pattern to the cog system, companion web, and The Gathering it produced
 
 **See Also:**
 
@@ -697,7 +789,9 @@ When we document how MX works, we create MX OS - the Operating System for Machin
 - [Appendix L](appendix-l-proposed-ai-metadata-patterns.md) - Product of this process
 - [LEARNINGS.md](../../LEARNINGS.md) - Battle-tested principles
 - [.claude/skills/maxine/skill.md](../../.claude/skills/maxine/skill.md) - Operational collaboration pattern
+- [Cog Specification](../../MX-Canon/MX-The-Gathering/deliverables/cog-unified-spec.md) - The canonical cog metadata specification
+- [Cog Registry](../../MX-Canon/MX-Cog-Registry/cogs/) - All registered cogs
 
 ---
 
-*This document was created through the collaborative process it describes - written by Claude Sonnet 4.5 (Maxine) based on Tom Cranstoun's vision, documenting the investigation, interview, iteration, and documentation that produced Appendix L and the comprehensive MX namespace architecture.*
+*This document was created through the collaborative process it describes — written by Claude (Maxine) based on Tom Cranstoun's vision. Originally documenting the investigation that produced Appendix L, it was updated in February 2026 to show what the same process produced when applied to the web itself: the cog system, the companion web, and The Gathering.*
