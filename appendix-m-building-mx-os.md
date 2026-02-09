@@ -704,7 +704,7 @@ This appendix stated: "The MX documentation IS the MX Operating System." The cog
 - **The Gathering specification** defines the system API
 - **The cog registry** is the package index
 
-The `runtime:` field in a cog-wheel's execute block works like a shebang line in Unix — it tells the system how to run the program. Runtimes include `bash`, `node`, `python`, and `ai-prompt` (where the cog-wheel IS the prompt and the AI agent IS the executor).
+The `runtime:` field in a cog-wheel's execute block works like a shebang line in Unix — it tells the system how to run the program. Runtimes include `bash`, `node`, `python`, and `runbook` (where the cog-wheel IS the instruction set and the AI agent IS the executor).
 
 ### The Companion Web
 
