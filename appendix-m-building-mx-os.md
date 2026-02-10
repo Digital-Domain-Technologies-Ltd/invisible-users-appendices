@@ -698,13 +698,13 @@ The metadata tells the machine what the document is before it starts guessing. T
 
 This appendix stated: "The MX documentation IS the MX Operating System." The cog system made that literal.
 
-- **Static cogs** are the data files of MX OS — documents that describe themselves
-- **Cog-wheels** are the programs — cogs with an `execute` block that define actions
+- **Info-cogs** are the data files of MX OS — documents that describe themselves
+- **Action-cogs** are the programs — cogs with an `execute` block that define actions
 - **The runtime** is any AI agent — every agent can read markdown and parse YAML
 - **The Gathering specification** defines the system API
 - **The cog registry** is the package index
 
-The `runtime:` field in a cog-wheel's execute block works like a shebang line in Unix — it tells the system how to run the program. Runtimes include `bash`, `node`, `python`, and `runbook` (where the cog-wheel IS the instruction set and the AI agent IS the executor).
+The `runtime:` field in an action-cog's execute block works like a shebang line in Unix — it tells the system how to run the program. Runtimes include `bash`, `node`, `python`, and `runbook` (where the action-cog IS the instruction set and the AI agent IS the executor).
 
 ### The Companion Web
 
