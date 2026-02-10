@@ -1,3 +1,13 @@
+---
+title: "Shared Appendices"
+description: "Comprehensive implementation guides, code examples, and resources shared across all book variants"
+author: Tom Cranstoun
+created: 2026-01-22
+modified: 2026-02-09
+version: "1.0"
+status: active
+---
+
 # Shared Appendices
 
 **Comprehensive implementation guides, code examples, and resources shared across all book variants.**
