@@ -515,8 +515,8 @@ Consider professional audit or implementation services if:
 
 - [ ] **Add meta tags for API endpoints** - `<meta name="ai-api-endpoint" content="/api/products/123">`
 - [ ] **Declare rate limits** - `<meta name="ai-rate-limit" content="100/minute">`
-- [ ] **State content policy** - `<meta name="ai-content-policy" content="summaries-allowed">`
-- [ ] **Provide structured data format info** - `<meta name="ai-structured-data" content="json-ld">`
+- [ ] **State content policy** - `<meta name="sop-content-policy" content="summaries-allowed">`
+- [ ] **Provide structured data format info** - `<meta name="sop-structured-data" content="json-ld">`
 
 ### HTTP Semantics
 

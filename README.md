@@ -58,7 +58,7 @@ These appendices support both "The Bible" (comprehensive guide) and "MX-Handbook
 **Word count:** ~61,600 words
 **Current state:** Complete and ready for publication
 
-**Latest Update (22 January 2026):** Added Appendix N (Anti-Patterns Catalog) and enhanced Appendix M (Index of Metadata). All 14 appendix files now include standardized YAML frontmatter (author, date, description, keywords, ai-instruction).
+**Latest Update (22 January 2026):** Added Appendix N (Anti-Patterns Catalog) and enhanced Appendix M (Index of Metadata). All 14 appendix files now include standardized YAML frontmatter (author, date, description, keywords, sop-instruction).
 
 ## Appendices
 

@@ -3,7 +3,7 @@ copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
 date: "2026-01-26"
 description: "Complete content generation workflow demonstrating Machine Experience principles through metadata-driven content management, state tracking, and WCAG 2.1 AA compliance."
-keywords: [content-workflow, metadata-schema, yaml-frontmatter, html-generation, wcag-compliance, state-tracking, content-management, ai-friendly-html]
+keywords: [content-workflow, metadata-schema, yaml-frontmatter, html-generation, wcag-compliance, state-tracking, content-management, sop-friendly-html]
 book: "MX-Bible"
 appendix: "P"
 wordcount: 5800
@@ -125,7 +125,7 @@ mx:
 - Used in meta keywords tag and content categorization
 - Format: lowercase, no special characters
 
-**ai-instruction** (optional, string)
+**sop-instruction** (optional, string)
 
 - Guidance for AI agents parsing the content
 - Explains document purpose, special considerations
@@ -760,7 +760,7 @@ blog-filename: "machine-experience-adding-metadata"
 blog-url: ""
 publication-date: ""
 description: "How metadata transforms websites from opaque to transparent for AI agents"
-keywords: [metadata, schema-org, ai-agents, semantic-html]
+keywords: [metadata, schema-org, sop-agents, semantic-html]
 mx:
   promptingInstruction: "This post explains metadata's role in AI agent compatibility"
 ---

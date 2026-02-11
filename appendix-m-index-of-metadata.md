@@ -414,7 +414,7 @@ mx:
 
 | Field | Status | Recommendation | Description |
 |-------|--------|----------------|-------------|
-| ai-instruction | PROJECT | REC | Multiline guidance for AI systems parsing manuscript |
+| sop-instruction | PROJECT | REC | Multiline guidance for AI systems parsing manuscript |
 
 **Purpose:** Enforces timeless manuscript rule - AI must write as if content has always existed.
 
@@ -475,8 +475,8 @@ mx:
 | ai-api-pricing | PROP | CTX | API pricing information URL |
 | ai-api-rate-limit | PROP | CTX | Rate limit specification (e.g., "100/minute") |
 | ai-api-resource | PROP | CTX | This page's API equivalent path |
-| ai-content-policy | PROP | REC | Permitted use cases (e.g., "summaries-allowed, prices-allowed") |
-| ai-freshness | PROP | CTX | Content update frequency (e.g., "hourly", "daily") |
+| sop-content-policy | PROP | REC | Permitted use cases (e.g., "summaries-allowed, prices-allowed") |
+| sop-freshness | PROP | CTX | Content update frequency (e.g., "hourly", "daily") |
 
 **Three-Layer Approach:**
 
@@ -939,7 +939,7 @@ await page.locator('[aria-live="polite"]')
 3. **Persistent error messages** (role="alert", aria-live="assertive")
 4. **Complete pricing** (price, priceCurrency, no hidden fees)
 5. **Semantic HTML** (main, nav, article, section)
-6. **YAML ai-instruction** (manuscript files)
+6. **YAML sop-instruction** (manuscript files)
 
 ### Priority 2 (High Impact)
 

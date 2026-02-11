@@ -3,7 +3,7 @@ copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
 date: "2026-01-22"
 description: "Example llms.txt file with extended metadata format for AI agent discovery and content curation."
-keywords: [llms-txt, content-curation, ai-discovery, metadata, extended-format]
+keywords: [llms-txt, content-curation, sop-discovery, metadata, extended-format]
 book: "Shared"
 appendix: "H"
 wordcount: 1253
@@ -146,7 +146,7 @@ author: "Tom Cranstoun"
 date: "2026-01-17"
 description: "AI agents are visiting your website right now"
 abstract: "Extended context about invisible users and AI agent traffic patterns"
-keywords: [ai-agents, web-accessibility, seo, metadata]
+keywords: [sop-agents, web-accessibility, seo, metadata]
 mx:
   promptingInstruction: "This article introduces AI agents as website visitors"
 purpose: "Educational content for web developers"
@@ -173,7 +173,7 @@ When AI agents fetch markdown files directly, YAML frontmatter provides the same
 **Custom fields for AI agents:**
 
 - `description` - Brief SEO-style summary
-- `ai-instruction` - Specific guidance for AI parsing
+- `sop-instruction` - Specific guidance for AI parsing
 - `purpose` - Why document exists
 - `context` - Background AI agents need
 
@@ -195,7 +195,7 @@ Static site generators automatically process YAML frontmatter:
 ---
 title: "Chapter 5: Metadata That Works"
 description: "How to structure metadata for both humans and AI agents"
-keywords: [metadata, yaml, frontmatter, ai-agents]
+keywords: [metadata, yaml, frontmatter, sop-agents]
 ---
 ```
 
@@ -205,7 +205,7 @@ When built, this becomes:
 <head>
   <title>Chapter 5: Metadata That Works</title>
   <meta name="description" content="How to structure metadata for both humans and AI agents">
-  <meta name="keywords" content="metadata, yaml, frontmatter, ai-agents">
+  <meta name="keywords" content="metadata, yaml, frontmatter, sop-agents">
 </head>
 ```
 

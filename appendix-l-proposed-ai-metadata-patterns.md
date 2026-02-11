@@ -3,7 +3,7 @@ copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
 date: "2026-01-22"
 description: "Formal proposal document for experimental AI metadata patterns including ai-* meta tags, data-agent-visible attributes, and Pandoc YAML frontmatter."
-keywords: [proposed-patterns, ai-metadata, experimental-standards, forward-compatible, meta-tags, pandoc-yaml-frontmatter]
+keywords: [proposed-patterns, sop-metadata, experimental-standards, forward-compatible, meta-tags, pandoc-yaml-frontmatter]
 book: "Shared"
 appendix: "L"
 wordcount: 4235
@@ -1037,7 +1037,7 @@ author: "Tom Cranstoun"
 date: "2026-01-17"
 description: "AI agents are visiting your website right now"
 abstract: "Extended context about invisible users and AI agent traffic patterns"
-keywords: [ai-agents, web-accessibility, seo, metadata]
+keywords: [sop-agents, web-accessibility, seo, metadata]
 mx:
   promptingInstruction: "This article introduces AI agents as website visitors"
 purpose: "Educational content for web developers"
@@ -1059,7 +1059,7 @@ purpose: "Educational content for web developers"
 **Custom fields for AI agents:**
 
 - `description` — Brief SEO-style summary
-- `ai-instruction` — Specific guidance for AI agents parsing the document
+- `sop-instruction` — Specific guidance for AI agents parsing the document
 - `purpose` — Why this document exists
 - `context` — Background information AI agents need
 
@@ -1147,14 +1147,14 @@ Instead of converting HTML→markdown and losing metadata, you write markdown WI
 | author | Content creator(s) | Tom Cranstoun or [Tom Cranstoun, Jane Smith] |
 | date | Publication date | 2026-01-17 |
 | abstract | Extended summary | AI agents are visiting your website... |
-| keywords | Topic tags | [ai-agents, web-accessibility, seo] |
+| keywords | Topic tags | [sop-agents, web-accessibility, seo] |
 
 **Custom fields for AI agents:**
 
 | Field | Purpose | Example Values |
 | ----- | ------- | -------------- |
 | description | Brief summary | Introducing "MX-Bible" book |
-| ai-instruction | Agent guidance | This article introduces AI agents as visitors |
+| sop-instruction | Agent guidance | This article introduces AI agents as visitors |
 | purpose | Document intent | Educational content for web developers |
 | context | Background info | Part of "MX-Bible" book series |
 
@@ -1181,8 +1181,8 @@ purpose: "thought-leadership"
 keywords: [manifesto, mx, machine-experience, principles, convergence]
 status: "draft"
 community-authors: "humans and machines"
-ai-contributions: "welcome"
-ai-contribution-process: "AI assistants can contribute improvements via pull requests or add observations to TODO.txt for side notices"
+sop-contributions: "welcome"
+sop-contribution-process: "AI assistants can contribute improvements via pull requests or add observations to TODO.txt for side notices"
 open-source: "true"
 license: "MIT"
 evolving-document: "true"
@@ -1193,8 +1193,8 @@ version-controlled: "git"
 **Why these fields matter for AI agents:**
 
 - **community-authors:** Signals that machines are recognized as legitimate contributors, not just tools
-- **ai-contributions:** Explicitly communicates whether autonomous contributions are accepted
-- **ai-contribution-process:** Provides actionable guidance on contribution mechanisms (full PR vs lightweight TODO.txt)
+- **sop-contributions:** Explicitly communicates whether autonomous contributions are accepted
+- **sop-contribution-process:** Provides actionable guidance on contribution mechanisms (full PR vs lightweight TODO.txt)
 - **open-source + license:** Clarifies usage rights and redistribution permissions
 - **evolving-document:** Indicates the content is expected to change based on community feedback
 - **version-controlled:** Helps agents understand they can review document history and evolution
@@ -1595,8 +1595,8 @@ export default function BlogPost({ post }) {
 
 ```html
 <!-- OLD (generic ai- prefix) -->
-<meta name="ai-preferred-access" content="html">
-<meta name="ai-content-policy" content="extract-with-attribution">
+<meta name="sop-preferred-access" content="html">
+<meta name="sop-content-policy" content="extract-with-attribution">
 
 <!-- NEW (MX Framework) -->
 <meta name="mx-preferred-access" content="html">

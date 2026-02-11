@@ -3,7 +3,7 @@ copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
 date: "2026-01-22"
 description: "Comprehensive prescriptive guide for building web interfaces that work for both humans and AI agents, covering semantic HTML, structured data, and practical patterns."
-keywords: [ai-friendly-html, semantic-html, structured-data, progressive-enhancement, form-patterns, schema-org]
+keywords: [sop-friendly-html, semantic-html, structured-data, progressive-enhancement, form-patterns, schema-org]
 book: "Shared"
 appendix: "D"
 wordcount: 10624
@@ -1629,8 +1629,8 @@ Page-specific meta tags can override site-wide defaults from llms.txt. Whilst no
 ```html
 <head>
   <meta name="ai-api-endpoint" content="/api/v1/products/WH-1000">
-  <meta name="ai-freshness" content="hourly">
-  <meta name="ai-content-policy" content="full-extraction-allowed">
+  <meta name="sop-freshness" content="hourly">
+  <meta name="sop-content-policy" content="full-extraction-allowed">
 </head>
 ```
 
@@ -2423,7 +2423,7 @@ No JavaScript required. Complete structured data. Clear forms with explicit stat
   <title>Wireless Headphones - TechStore</title>
 
   <meta name="ai-api-endpoint" content="/api/v1/products/WH-1000">
-  <meta name="ai-freshness" content="hourly">
+  <meta name="sop-freshness" content="hourly">
 
   <script type="application/ld+json">
   {

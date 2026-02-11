@@ -184,7 +184,7 @@ Describe how to verify the pattern is correctly implemented:
 | `date` | Yes | Pattern creation/publication date |
 | `description` | Yes | One-sentence summary |
 | `keywords` | Yes | Searchable tags (array) |
-| `ai-instruction` | No | Agent parsing guidance |
+| `sop-instruction` | No | Agent parsing guidance |
 | `purpose` | Yes | "Pattern documentation" |
 | `pattern-id` | Yes | Unique identifier following naming convention |
 | `version` | Yes | Semantic version (MAJOR.MINOR.PATCH) |
@@ -519,7 +519,7 @@ Use this checklist before publishing any pattern documentation.
 - [ ] YAML frontmatter is parseable
 - [ ] Pattern ID is unique
 - [ ] Structured sections use consistent formatting
-- [ ] Metadata includes ai-instruction field
+- [ ] Metadata includes sop-instruction field
 - [ ] All tags are lowercase with hyphens
 
 ### Automated Validation Tools
