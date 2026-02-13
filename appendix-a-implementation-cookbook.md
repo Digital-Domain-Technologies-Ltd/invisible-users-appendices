@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Quick-reference code recipes for implementing AI agent compatibility patterns, including persistent errors, explicit state, and semantic forms."
-keywords: [implementation-cookbook, code-recipes, quick-reference, persistent-errors, explicit-state, semantic-forms]
+tags: [implementation-cookbook, code-recipes, quick-reference, persistent-errors, explicit-state, semantic-forms]
 book: "Shared"
 appendix: "A"
 wordcount: 3082

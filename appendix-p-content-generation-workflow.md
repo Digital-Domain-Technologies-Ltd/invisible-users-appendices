@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-26"
+created: "2026-01-26"
 description: "Complete content generation workflow demonstrating Machine Experience principles through metadata-driven content management, state tracking, and WCAG 2.1 AA compliance."
-keywords: [content-workflow, metadata-schema, yaml-frontmatter, html-generation, wcag-compliance, state-tracking, content-management, sop-friendly-html]
+tags: [content-workflow, metadata-schema, yaml-frontmatter, html-generation, wcag-compliance, state-tracking, content-management, sop-friendly-html]
 book: "MX-Bible"
 appendix: "P"
 wordcount: 5800
@@ -57,13 +57,13 @@ Every content markdown file must include YAML frontmatter with mandatory fields:
 ---
 title: "Content Title"
 author: "Tom Cranstoun"
-date: "2026-01-26"                      # Last modified date (ISO format)
+created: "2026-01-26"                      # Last modified date (ISO format)
 content-state: "draft"                  # Current state in workflow
 content-filename: "url-friendly-name"   # Target filename (no extension)
 content-url: ""                         # Full URL (empty until published)
 publication-date: ""                    # Publication date (empty until published)
 description: "Brief summary for meta description and social cards (1-2 sentences)"
-keywords: [keyword1, keyword2, keyword3]  # 3-5 relevant keywords
+tags: [keyword1, keyword2, keyword3]  # 3-5 relevant keywords
 mx:
   promptingInstruction: "Context for AI agents parsing this content"
 ---
@@ -754,13 +754,13 @@ function generateTOC(html) {
 ---
 title: "Machine Experience: Adding Metadata"
 author: "Tom Cranstoun"
-date: "2026-01-20"
+created: "2026-01-20"
 blog-state: "draft"
 blog-filename: "machine-experience-adding-metadata"
 blog-url: ""
 publication-date: ""
 description: "How metadata transforms websites from opaque to transparent for AI agents"
-keywords: [metadata, schema-org, sop-agents, semantic-html]
+tags: [metadata, schema-org, sop-agents, semantic-html]
 mx:
   promptingInstruction: "This post explains metadata's role in AI agent compatibility"
 ---
@@ -815,7 +815,7 @@ All source markdown files must include `mx.generate` in YAML frontmatter:
 ---
 title: "Document Title"
 author: "Tom Cranstoun"
-date: "2026-02-04"
+created: "2026-02-04"
 
 mx:
   generate:
@@ -841,7 +841,7 @@ When generation completes, outputs receive comprehensive provenance metadata:
 ---
 title: "Document Title"
 author: "Tom Cranstoun"
-date: "2026-02-04"
+created: "2026-02-04"
 
 mx:
   provenance:

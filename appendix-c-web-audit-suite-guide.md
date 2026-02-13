@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Complete guide to auditing your website for AI agent compatibility using Web Audit Suite."
-keywords: [web-audit-suite, site-auditing, compatibility-testing, scoring-system, pa11y, lighthouse]
+tags: [web-audit-suite, site-auditing, compatibility-testing, scoring-system, pa11y, lighthouse]
 book: "Shared"
 appendix: "C"
 wordcount: 5906

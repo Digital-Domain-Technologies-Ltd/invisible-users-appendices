@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Chronological tracking of major AI agent commerce and browser automation developments, including platform launches and protocol announcements."
-keywords: [industry-developments, agentic-commerce-protocol, platform-race, browser-agents, commerce-standards, real-world-deployments]
+tags: [industry-developments, agentic-commerce-protocol, platform-race, browser-agents, commerce-standards, real-world-deployments]
 book: "Shared"
 appendix: "J"
 wordcount: 16460

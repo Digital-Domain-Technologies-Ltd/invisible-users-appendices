@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-24"
+created: "2026-01-24"
 description: "Comprehensive reference of the 14 most common mistakes that break AI agent compatibility, with detection methods and complete fixes for each pattern."
-keywords: [anti-patterns, common-mistakes, visual-only-state, client-rendering, broken-hierarchy, accessibility-failures, detection-methods, quick-wins, context-free-references]
+tags: [anti-patterns, common-mistakes, visual-only-state, client-rendering, broken-hierarchy, accessibility-failures, detection-methods, quick-wins, context-free-references]
 mx:
   promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.

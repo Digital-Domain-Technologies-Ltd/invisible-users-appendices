@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Real-world learnings from production implementations: mistakes to avoid and solutions that work."
-keywords: [battle-tested-lessons, production-learnings, progressive-enhancement, common-mistakes, proven-solutions]
+tags: [battle-tested-lessons, production-learnings, progressive-enhancement, common-mistakes, proven-solutions]
 book: "Shared"
 appendix: "B"
 wordcount: 2701

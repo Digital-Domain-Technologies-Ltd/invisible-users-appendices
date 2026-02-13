@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Priority-based implementation roadmap for AI agent compatibility, from critical quick wins to advanced patterns."
-keywords: [implementation-roadmap, priorities, quick-wins, structured-data, progressive-enhancement, phased-approach]
+tags: [implementation-roadmap, priorities, quick-wins, structured-data, progressive-enhancement, phased-approach]
 book: "Shared"
 appendix: "F"
 wordcount: 4432

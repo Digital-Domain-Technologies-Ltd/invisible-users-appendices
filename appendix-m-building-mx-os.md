@@ -2,8 +2,8 @@
 title: "Appendix M: Building the MX Operating System"
 description: "How MX documentation is created through human-machine collaboration - a meta-reflective look at the process"
 author: "Tom Cranstoun and Claude Sonnet 4.5 (Maxine)"
-date: "2026-02-03"
-keywords: [mx-os, collaboration, documentation-as-specification, meta-reflective, human-machine-partnership]
+created: "2026-02-03"
+tags: [mx-os, collaboration, documentation-as-specification, meta-reflective, human-machine-partnership]
 book: "Shared"
 appendix: "M"
 document-type: "meta-reflective"
@@ -698,13 +698,13 @@ The metadata tells the machine what the document is before it starts guessing. T
 
 This appendix stated: "The MX documentation IS the MX Operating System." The cog system made that literal.
 
-- **Info-cogs** are the data files of MX OS — documents that describe themselves
-- **Action-cogs** are the programs — cogs with an `execute` block that define actions
+- **Info-docs** are the data files of MX OS — documents that describe themselves
+- **Action-docs** are the programs — cogs with an `execute` block that define actions
 - **The runtime** is any AI agent — every agent can read markdown and parse YAML
 - **The Gathering specification** defines the system API
 - **The cog registry** is the package index
 
-The `runtime:` field in an action-cog's execute block works like a shebang line in Unix — it tells the system how to run the program. Runtimes include `bash`, `node`, `python`, and `runbook` (where the action-cog IS the instruction set and the AI agent IS the executor).
+The `runtime:` field in an action-doc's execute block works like a shebang line in Unix — it tells the system how to run the program. Runtimes include `bash`, `node`, `python`, and `runbook` (where the action-doc IS the instruction set and the AI agent IS the executor).
 
 ### The Companion Web
 

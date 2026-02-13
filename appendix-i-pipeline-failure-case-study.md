@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Detailed analysis of the £203,000 cruise pricing error demonstrating why agent creators must build validation layers and confidence scoring."
-keywords: [pipeline-failure, validation-layers, confidence-scoring, data-extraction-errors, guardrails, case-study]
+tags: [pipeline-failure, validation-layers, confidence-scoring, data-extraction-errors, guardrails, case-study]
 book: "Shared"
 appendix: "I"
 wordcount: 2838

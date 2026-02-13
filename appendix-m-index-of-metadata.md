@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Comprehensive categorized reference of all metadata elements, Schema.org types, YAML frontmatter, HTML attributes, structured data patterns, testing methodologies, and terminology used throughout MX-Bible."
-keywords: [metadata-index, schema-org, yaml-frontmatter, html-attributes, structured-data, testing-methodologies, terminology-framework, anti-patterns-reference]
+tags: [metadata-index, schema-org, yaml-frontmatter, html-attributes, structured-data, testing-methodologies, terminology-framework, anti-patterns-reference]
 mx:
   promptingInstruction: |
   This document is copyrighted material. No part may be reproduced without permission.

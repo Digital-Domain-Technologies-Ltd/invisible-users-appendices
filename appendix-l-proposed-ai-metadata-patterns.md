@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Formal proposal document for experimental AI metadata patterns including ai-* meta tags, data-agent-visible attributes, and Pandoc YAML frontmatter."
-keywords: [proposed-patterns, sop-metadata, experimental-standards, forward-compatible, meta-tags, pandoc-yaml-frontmatter]
+tags: [proposed-patterns, sop-metadata, experimental-standards, forward-compatible, meta-tags, pandoc-yaml-frontmatter]
 book: "Shared"
 appendix: "L"
 wordcount: 4235
@@ -1034,10 +1034,10 @@ YAML frontmatter is placed at the **top of the document** (frontmatter position)
 ---
 title: "Your Website Has Invisible Customers"
 author: "Tom Cranstoun"
-date: "2026-01-17"
+created: "2026-01-17"
 description: "AI agents are visiting your website right now"
 abstract: "Extended context about invisible users and AI agent traffic patterns"
-keywords: [sop-agents, web-accessibility, seo, metadata]
+tags: [sop-agents, web-accessibility, seo, metadata]
 mx:
   promptingInstruction: "This article introduces AI agents as website visitors"
 purpose: "Educational content for web developers"
@@ -1175,10 +1175,10 @@ Instead of converting HTML→markdown and losing metadata, you write markdown WI
 ```yaml
 ---
 author: "Tom Cranstoun"
-date: "2026-01-24"
+created: "2026-01-24"
 description: "Draft manifesto for Machine Experience (MX) practice"
 purpose: "thought-leadership"
-keywords: [manifesto, mx, machine-experience, principles, convergence]
+tags: [manifesto, mx, machine-experience, principles, convergence]
 status: "draft"
 community-authors: "humans and machines"
 sop-contributions: "welcome"

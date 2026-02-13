@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Curated directory of standards, specifications, tools, and resources for building AI-friendly websites."
-keywords: [resources, standards, specifications, tools, schema-org, wcag, validation-tools, llms-txt]
+tags: [resources, standards, specifications, tools, schema-org, wcag, validation-tools, llms-txt]
 book: "Shared"
 appendix: "G"
 wordcount: 2257

@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-26"
+created: "2026-01-26"
 description: "Production-ready HTML templates for 20 common page types plus comprehensive reference sections: Schema.org JSON-LD templates (K.3), call-to-action patterns (K.4), and machine-parsable list structures (K.5). Complete implementations with semantic HTML, WCAG 2.1 AA compliance, and AI-friendly patterns."
-keywords: [page-patterns, html-templates, schema-org, semantic-html, production-ready, page-types, json-ld, cta-patterns, resource-lists, navigation-patterns]
+tags: [page-patterns, html-templates, schema-org, semantic-html, production-ready, page-types, json-ld, cta-patterns, resource-lists, navigation-patterns]
 book: "Shared"
 appendix: "K"
 wordcount: 17078

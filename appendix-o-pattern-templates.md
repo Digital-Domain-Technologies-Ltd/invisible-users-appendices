@@ -2,9 +2,9 @@
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 title: "Appendix O: Pattern Documentation Templates"
 author: "Tom Cranstoun"
-date: "2026-01-26"
+created: "2026-01-26"
 description: "Reusable templates for MX pattern documentation including Pattern Intent, ADR format, Quick Start Cards, and validation checklists"
-keywords: [patterns, templates, adr, documentation, validation]
+tags: [patterns, templates, adr, documentation, validation]
 mx:
   promptingInstruction: "This document is copyrighted material. No part may be reproduced without permission. This appendix provides standardised templates for pattern documentation. When creating patterns, follow these templates exactly to ensure consistency across all MX pattern documentation. All patterns must include YAML frontmatter for machine readability."
 purpose: "Reference templates for pattern authors"
@@ -35,9 +35,9 @@ Use this template when creating new MX patterns. This format combines the clarit
 ---
 title: "Pattern Name: Brief Description"
 author: "Author Name"
-date: "YYYY-MM-DD"
+created: "YYYY-MM-DD"
 description: "One-sentence pattern description"
-keywords: [pattern, domain, technology, platform]
+tags: [pattern, domain, technology, platform]
 mx:
   promptingInstruction: "This document is copyrighted material. No part may be reproduced without permission. This appendix provides standardised templates for pattern documentation. When creating patterns, follow these templates exactly to ensure consistency across all MX pattern documentation. All patterns must include YAML frontmatter for machine readability."
 purpose: "Pattern documentation"

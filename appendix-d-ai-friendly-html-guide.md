@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Comprehensive prescriptive guide for building web interfaces that work for both humans and AI agents, covering semantic HTML, structured data, and practical patterns."
-keywords: [sop-friendly-html, semantic-html, structured-data, progressive-enhancement, form-patterns, schema-org]
+tags: [sop-friendly-html, semantic-html, structured-data, progressive-enhancement, form-patterns, schema-org]
 book: "Shared"
 appendix: "D"
 wordcount: 10624

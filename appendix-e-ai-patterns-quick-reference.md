@@ -1,9 +1,9 @@
 ---
 copyright: "Copyright © 2026 Tom Cranstoun. All rights reserved."
 author: "Tom Cranstoun"
-date: "2026-01-22"
+created: "2026-01-22"
 description: "Quick reference guide for AI assistants generating HTML, covering data attributes, core rules, and semantic patterns."
-keywords: [quick-reference, sop-patterns, data-attributes, semantic-markup, validation, state-management]
+tags: [quick-reference, sop-patterns, data-attributes, semantic-markup, validation, state-management]
 book: "Shared"
 appendix: "E"
 wordcount: 1394
